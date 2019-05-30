@@ -697,7 +697,7 @@ namespace SisAdmisiones.Forms
         {
             if (ddlEstadoNac.SelectedValue != string.Empty)
             {
-                CargarDdlLocalidadesNac(ddlPaisNac.SelectedValue);
+                CargarDdlLocalidadesNac(ddlEstadoNac.SelectedValue);
             }
             else
             {
@@ -899,13 +899,6 @@ namespace SisAdmisiones.Forms
                     }
                     if (libDatosPer.InsertarVarios(sqls, numsqls))
                     {
-                        /*axVarSes.Escribe("strMensajeExito", "Registro exitoso.");
-                        Exportar_Reporte1();
-                        axVarSes.Escribe("strOperacion", "0");
-                        axVarSes.Escribe("strPersonaRegistrar", string.Empty);
-                        Response.Redirect("ADMIS_FormRegistro.aspx");*/
-
-
                         consolidar(libDatosPer, libContacto, libtutor);
                     }
                     else
@@ -1152,10 +1145,12 @@ namespace SisAdmisiones.Forms
                     Estudiantes.Retirar = 0;
                     Estudiantes.Estado = 1;
                     Estudiantes.NumSecCarrera = 0;
-                    Estudiantes.TipoAdmision = Convert.ToInt16(ddlTipoAdmision.SelectedValue);
-                    CadSqls[numSqls] = Estudiantes.cadSqlInsertar();
-                    numSqls++;
-
+                    if (!Estudiantes.RevisarSiExiste())
+                    {
+                        Estudiantes.TipoAdmision = Convert.ToInt16(ddlTipoAdmision.SelectedValue);
+                        CadSqls[numSqls] = Estudiantes.cadSqlInsertar();
+                        numSqls++;
+                    }
 
                     if (!blError && !AlumnoExiste && !FamiliarExiste)
                     {

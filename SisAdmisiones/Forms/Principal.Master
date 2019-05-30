@@ -42,6 +42,9 @@
                         <a id="sbBuscarPersona" runat="server" href="ADMIS_BuscarPersona.aspx" visible="false" ><i class="fa fa-search"></i> Buscar registro</a>
                     </li>
                     <li>
+                        <a id="sbBuscarPersonaConsolidada" runat="server" href="ADMIS_BuscarPersonaConsolidada.aspx" visible="false" ><i class="fa fa-check"></i> Buscar registro consolidado</a>
+                    </li>
+                    <li>
                         <%--<a id="sbRegistrarPersona" runat="server" href="ADMIS_FormRegistro.aspx" visible="false" ><i class="fa fa-home fa-fw"></i>Registrar nuevo</a>--%>
                          <asp:LinkButton ID="lnkbtnRegistarNuevo" runat="server" CausesValidation="false" Visible="false" OnClick="lnkbtnRegistarNuevo_Click"><i class="fa fa-plus"></i> Registrar nuevo</asp:LinkButton>
                     </li>

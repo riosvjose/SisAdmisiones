@@ -133,7 +133,7 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbPrimerApellido" runat="server" CssClass="form-control" MaxLength="40" AutoCompleteType="Disabled" ></asp:TextBox>
-                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" BehaviorID="tbPrimerApellido_FilteredTextBoxExtender" TargetControlID="tbPrimerApellido" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-." />
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" BehaviorID="tbPrimerApellido_FilteredTextBoxExtender" TargetControlID="tbPrimerApellido" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-. " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblPrimerAp" runat="server">Primer Apellido</asp:Label></strong>
@@ -143,7 +143,7 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbSegundoApellido" runat="server" CssClass="form-control" MaxLength="40" AutoCompleteType="Disabled" ></asp:TextBox>
-                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" BehaviorID="tbSegundoApellido_FilteredTextBoxExtender" TargetControlID="tbSegundoApellido" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-." />
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" BehaviorID="tbSegundoApellido_FilteredTextBoxExtender" TargetControlID="tbSegundoApellido" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-. " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblSegundoAp" runat="server">Segundo Apellido</asp:Label></strong>
@@ -153,7 +153,7 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbNombres" runat="server" CssClass="form-control" MaxLength="50" AutoCompleteType="Disabled" ></asp:TextBox>
-                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" BehaviorID="tbNombres_FilteredTextBoxExtender" TargetControlID="tbNombres" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-." />
+                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" BehaviorID="tbNombres_FilteredTextBoxExtender" TargetControlID="tbNombres" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-. " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblNombres" runat="server" >Nombres</asp:Label></strong>
@@ -215,7 +215,7 @@
                                       <asp:DropDownList ID="ddlDiscapacidad" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <strong><asp:Label ID="Label3" runat="server" >Tiene alguna discapacidad</asp:Label></strong>
+                                    <strong><asp:Label ID="Label3" runat="server" >Tiene alguna capacidad especial</asp:Label></strong>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +239,7 @@
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblFechaNac" runat="server">Fecha de nacimiento</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="tbFechaNac" CssClass="text-danger" ErrorMessage="El campo 'Primer apellido' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="tbFechaNac" CssClass="text-danger" ErrorMessage="El campo 'Fecha de nacimiento' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
@@ -294,7 +294,7 @@
                             <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbCalleAvenida" runat="server" CssClass="form-control" MaxLength="250" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" BehaviorID="tbCalleAvenida_FilteredTextBoxExtender" TargetControlID="tbCalleAvenida" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-./\#" />
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" BehaviorID="tbCalleAvenida_FilteredTextBoxExtender" TargetControlID="tbCalleAvenida" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-./\# " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblCalleAvenida" runat="server">Calle o avenida</asp:Label></strong>
@@ -304,7 +304,7 @@
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbNumeroDom" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
-                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" BehaviorID="tbNumeroDom_FilteredTextBoxExtender" TargetControlID="tbNumeroDom" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-/\" />
+                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" BehaviorID="tbNumeroDom_FilteredTextBoxExtender" TargetControlID="tbNumeroDom" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-/\ " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblNumeroDom" runat="server">N°</asp:Label></strong>
@@ -314,11 +314,11 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbZona" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender7" runat="server" BehaviorID="tbZona_FilteredTextBoxExtender" TargetControlID="tbZona" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-./\°" />
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender7" runat="server" BehaviorID="tbZona_FilteredTextBoxExtender" TargetControlID="tbZona" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-./\° " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblZona" runat="server" >Zona</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="tbZona" CssClass="text-danger" ErrorMessage="El campo 'Nombre' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="tbZona" CssClass="text-danger" ErrorMessage="El campo 'Zona' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -326,7 +326,7 @@
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-5">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbNombreEdificio" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender8" runat="server" BehaviorID="tbNombreEdificio_FilteredTextBoxExtender" TargetControlID="tbNombreEdificio" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-.°" />
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender8" runat="server" BehaviorID="tbNombreEdificio_FilteredTextBoxExtender" TargetControlID="tbNombreEdificio" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-.° " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblNombreEdificio" runat="server">Nombre edificio</asp:Label></strong>
@@ -336,7 +336,7 @@
                             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbPiso" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
-                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender9" runat="server" BehaviorID="tbPiso_FilteredTextBoxExtender" TargetControlID="tbPiso" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-°" />
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender9" runat="server" BehaviorID="tbPiso_FilteredTextBoxExtender" TargetControlID="tbPiso" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-° " />
 
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -347,7 +347,7 @@
                            <div class="col-xs-12 col-sm-5 col-md-3 col-lg-2">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbNumeroDepto" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
-                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender10" runat="server" BehaviorID="tbNumeroDepto_FilteredTextBoxExtender" TargetControlID="tbNumeroDepto" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-°" />
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender10" runat="server" BehaviorID="tbNumeroDepto_FilteredTextBoxExtender" TargetControlID="tbNumeroDepto" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-° " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblNumeroDepto" runat="server">N° de departamento</asp:Label></strong>
@@ -367,7 +367,7 @@
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbEmail" runat="server" CssClass="form-control" TextMode="Email" MaxLength="50" AutoCompleteType="Disabled" ></asp:TextBox>
-                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender11" runat="server" BehaviorID="tbEmail_FilteredTextBoxExtender" TargetControlID="tbEmail" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@" />
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender11" runat="server" BehaviorID="tbEmail_FilteredTextBoxExtender" TargetControlID="tbEmail" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@ " />
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblEmail" runat="server">Correo electrónico</asp:Label></strong>
@@ -391,7 +391,6 @@
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblTelefonoDomicilio" runat="server" >Teléfono de domicilio</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="tbTelefonoDomicilio" CssClass="text-danger" ErrorMessage="El campo 'Nombre' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -520,17 +519,17 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbPrimerApTutor" runat="server" CssClass="form-control" MaxLength="40" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender14" runat="server" BehaviorID="tbPrimerApTutor_FilteredTextBoxExtender" TargetControlID="tbPrimerApTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._°"/>    
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender14" runat="server" BehaviorID="tbPrimerApTutor_FilteredTextBoxExtender" TargetControlID="tbPrimerApTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblPrimerApTutor" runat="server">Primer Apellido</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="tbPrimerApTutor" CssClass="text-danger" ErrorMessage="El campo 'Primer apellido' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="tbPrimerApTutor" CssClass="text-danger" ErrorMessage="El campo 'Primer apellido' en 'Datos tutor' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbSegundoApTutor" runat="server" CssClass="form-control" MaxLength="40" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender15" runat="server" BehaviorID="tbSegundoApTutor_FilteredTextBoxExtender" TargetControlID="tbSegundoApTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._°"/>    
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender15" runat="server" BehaviorID="tbSegundoApTutor_FilteredTextBoxExtender" TargetControlID="tbSegundoApTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblSegundoApTutor" runat="server">Segundo Apellido</asp:Label></strong>
@@ -540,11 +539,11 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbNombreTutor" runat="server" CssClass="form-control" MaxLength="50" AutoCompleteType="Disabled" ></asp:TextBox>
-                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender16" runat="server" BehaviorID="tbNombreTutor_FilteredTextBoxExtender" TargetControlID="tbNombreTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._°"/>    
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender16" runat="server" BehaviorID="tbNombreTutor_FilteredTextBoxExtender" TargetControlID="tbNombreTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblNombreTutor" runat="server" >Nombres</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="tbNombreTutor" CssClass="text-danger" ErrorMessage="El campo 'Nombre' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="tbNombreTutor" CssClass="text-danger" ErrorMessage="El campo 'Nombre' en 'Datos tutor' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -552,11 +551,11 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbDocIdentidadTutor" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender17" runat="server" BehaviorID="tbDocIdentidadTutor_FilteredTextBoxExtender" TargetControlID="tbDocIdentidadTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/"/>    
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender17" runat="server" BehaviorID="tbDocIdentidadTutor_FilteredTextBoxExtender" TargetControlID="tbDocIdentidadTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/ "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblDocIdentidadTutor" runat="server">N° Documento de Identidad</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="tbDocIdentidadTutor" CssClass="text-danger" ErrorMessage="El campo 'N° Documento de identidad' del tutor es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="tbDocIdentidadTutor" CssClass="text-danger" ErrorMessage="El campo 'N° Documento de identidad' en'Datos tutor' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
@@ -587,31 +586,31 @@
                             <div class="col-xs-12 col-sm-8 col-md-7 col-lg-5">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbCalleAvenidaTutor" runat="server" CssClass="form-control" MaxLength="250" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender18" runat="server" BehaviorID="tbCalleAvenidaTutor_FilteredTextBoxExtender" TargetControlID="tbCalleAvenidaTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/°"/>    
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender18" runat="server" BehaviorID="tbCalleAvenidaTutor_FilteredTextBoxExtender" TargetControlID="tbCalleAvenidaTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblCalleAvenidaTutor" runat="server">Calle o avenida</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="tbCalleAvenidaTutor" CssClass="text-danger" ErrorMessage="El campo 'Calle o avenida' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="tbCalleAvenidaTutor" CssClass="text-danger" ErrorMessage="El campo 'Calle o avenida' en 'Datos tutor' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-5 col-lg-3">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbNumeroDomTutor" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender19" runat="server" BehaviorID="tbNumeroDomTutor_FilteredTextBoxExtender" TargetControlID="tbNumeroDomTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/°"/>    
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender19" runat="server" BehaviorID="tbNumeroDomTutor_FilteredTextBoxExtender" TargetControlID="tbNumeroDomTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblNumeroDomTutor" runat="server">N°</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="tbNumeroDomTutor" CssClass="text-danger" ErrorMessage="El campo 'N°' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="tbNumeroDomTutor" CssClass="text-danger" ErrorMessage="El campo 'N°' en 'Datos tutor' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                     <asp:TextBox ID="tbZonaTutor" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
-                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender20" runat="server" BehaviorID="tbZonaTutor_FilteredTextBoxExtender" TargetControlID="tbZonaTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/°"/>    
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender20" runat="server" BehaviorID="tbZonaTutor_FilteredTextBoxExtender" TargetControlID="tbZonaTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblZonaTutor" runat="server" >Zona</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="tbZonaTutor" CssClass="text-danger" ErrorMessage="El campo 'Nombre' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="tbZonaTutor" CssClass="text-danger" ErrorMessage="El campo 'Zona' en 'Datos tutor' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -619,7 +618,7 @@
                             <div class="col-xs-12 col-sm-8 col-md-7 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbEdificioTutor" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender21" runat="server" BehaviorID="tbEdificioTutor_FilteredTextBoxExtender" TargetControlID="tbEdificioTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/°"/>    
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender21" runat="server" BehaviorID="tbEdificioTutor_FilteredTextBoxExtender" TargetControlID="tbEdificioTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblEdificioTutor" runat="server">Nombre edificio</asp:Label></strong>
@@ -629,7 +628,7 @@
                            <div class="col-xs-12 col-sm-4 col-md-5 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbDeptoTutor" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender22" runat="server" BehaviorID="tbDeptoTutor_FilteredTextBoxExtender" TargetControlID="tbDeptoTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/°"/>    
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender22" runat="server" BehaviorID="tbDeptoTutor_FilteredTextBoxExtender" TargetControlID="tbDeptoTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblDeptoTutor" runat="server">N° de departamento</asp:Label></strong>
@@ -642,7 +641,7 @@
                             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbEmailTutor" runat="server" CssClass="form-control" TextMode="Email" MaxLength="50" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender23" runat="server" BehaviorID="tbEmailTutor_FilteredTextBoxExtender" TargetControlID="tbEmailTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@"/>  
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender23" runat="server" BehaviorID="tbEmailTutor_FilteredTextBoxExtender" TargetControlID="tbEmailTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@ "/>  
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblEmailTutor" runat="server">Correo electrónico</asp:Label></strong>
@@ -656,7 +655,7 @@
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblCelularTutor" runat="server">Celular</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="tbCelularTutor" CssClass="text-danger" ErrorMessage="El campo 'Celular' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="tbCelularTutor" CssClass="text-danger" ErrorMessage="El campo 'Celular' en 'Datos tutor' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
@@ -666,7 +665,6 @@
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="Label17" runat="server" >Teléfono de domicilio</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="tbTelefonoTutor" CssClass="text-danger" ErrorMessage="El campo 'Telefono' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -680,7 +678,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbInstitucionLaboralTutor" runat="server" CssClass="form-control" MaxLength="100" AutoCompleteType="Disabled" ></asp:TextBox>
-                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender26" runat="server" BehaviorID="tbInstitucionLaboralTutor_FilteredTextBoxExtender" TargetControlID="tbInstitucionLaboralTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@"/>  
+                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender26" runat="server" BehaviorID="tbInstitucionLaboralTutor_FilteredTextBoxExtender" TargetControlID="tbInstitucionLaboralTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@ "/>  
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="Label2" runat="server">Institución en la que trabaja</asp:Label></strong>
@@ -690,7 +688,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbCargoTutor" runat="server" CssClass="form-control" MaxLength="100" AutoCompleteType="Disabled" ></asp:TextBox>
-                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender27" runat="server" BehaviorID="tbCargoTutor_FilteredTextBoxExtender" TargetControlID="tbCargoTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@"/>  
+                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender27" runat="server" BehaviorID="tbCargoTutor_FilteredTextBoxExtender" TargetControlID="tbCargoTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@ "/>  
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblCargoTutor" runat="server">Cargo</asp:Label></strong>
@@ -737,7 +735,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbNombreCompleto" runat="server" CssClass="form-control" MaxLength="150" AutoCompleteType="Disabled" ></asp:TextBox>
-                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender29" runat="server" BehaviorID="tbNombreCompleto_FilteredTextBoxExtender" TargetControlID="tbNombreCompleto" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@"/>  
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender29" runat="server" BehaviorID="tbNombreCompleto_FilteredTextBoxExtender" TargetControlID="tbNombreCompleto" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@ "/>  
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblNombreCompleto" runat="server">Nombre completo</asp:Label></strong>
@@ -764,7 +762,7 @@
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblTelefonoContacto2" runat="server">Teléfono de referencia 2</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="tbTelefonoContacto2" CssClass="text-danger" ErrorMessage="El campo 'Telefono de referencia 1' es obligatorio.">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="tbTelefonoContacto2" CssClass="text-danger" ErrorMessage="El campo 'Telefono de referencia 2' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -814,7 +812,7 @@
                             <div class="col-xs-12">
                                 <strong><asp:Label ID="lblObservaciones" Text="Observaciones: " runat="server" ></asp:Label></strong>
                                 <asp:TextBox ID="tbObservaciones" runat="server" CssClass="form-control" TextMode="MultiLine" AutoCompleteType="Disabled" ></asp:TextBox>
-                                <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender32" runat="server" BehaviorID="tbObservaciones_FilteredTextBoxExtender" TargetControlID="tbObservaciones" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@"/>  
+                                <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender32" runat="server" BehaviorID="tbObservaciones_FilteredTextBoxExtender" TargetControlID="tbObservaciones" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@ "/>  
                             </div>
                         </div>
                       </div>

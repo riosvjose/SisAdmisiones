@@ -12,7 +12,7 @@ using nsGEN;
 
 namespace SisAdmisiones.Forms
 {
-    public partial class ADMIS_BuscarPersona : System.Web.UI.Page
+    public partial class ADMIS_BuscarPersonaConsolidada : System.Web.UI.Page
     {
         #region "Librerias Externas"
         GEN_VarSession axVarSes = new GEN_VarSession();
@@ -31,17 +31,14 @@ namespace SisAdmisiones.Forms
         {
             if (!string.IsNullOrEmpty(strCon.Trim()))
             {
-
+                
             }
             else
             {
                 Response.Redirect("~/Default.aspx");
             }
         }
-        protected void llenartabla()
-        {
-            
-        }
+
         #endregion
 
         #region "Eventos"
@@ -61,7 +58,7 @@ namespace SisAdmisiones.Forms
             libDatos.StrConexion = axVarSes.Lee<string>("strConexion");
             gvUsuarios.Visible = true;
             gvUsuarios.Columns[0].Visible = true;
-            gvUsuarios.DataSource = libDatos.dtObtenerPersonas(tbusuario.Text);
+            gvUsuarios.DataSource = libDatos.dtObtenerPersonasConsolidadas(tbusuario.Text);
             gvUsuarios.DataBind();
             gvUsuarios.Columns[0].Visible = false;
         }

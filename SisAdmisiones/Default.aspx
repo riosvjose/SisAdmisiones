@@ -48,7 +48,7 @@
                                         </h5>
                                     </div>
                                         <div class="col-xs-12 text-right">
-                                            <a id="A1" runat="server" href="../Forms/ADMIS_FormRegistro.aspx" visible="true" ><h3 style ="color:#0e0e38; ">Registrar nuevo</h3></a>
+                                            <a id="A1" runat="server" href="~/Forms/ADMIS_FormRegistro.aspx" visible="true" ><h3 style ="color:#0e0e38; ">Registrar nuevo</h3></a>
                                         </div>
                                 </div>
                             </div>

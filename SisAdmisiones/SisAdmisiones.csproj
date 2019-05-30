@@ -140,6 +140,7 @@
     <Content Include="Default.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Forms\ADMIS_BuscarPersonaConsolidada.aspx" />
     <Content Include="Forms\ADMIS_BuscarPersona.aspx" />
     <Content Include="Forms\ADMIS_FormRegistro.aspx" />
     <Content Include="Forms\Index.aspx" />
@@ -244,6 +245,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ADMIS_BuscarPersonaConsolidada.aspx.cs">
+      <DependentUpon>ADMIS_BuscarPersonaConsolidada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\ADMIS_BuscarPersonaConsolidada.aspx.designer.cs">
+      <DependentUpon>ADMIS_BuscarPersonaConsolidada.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\ADMIS_BuscarPersona.aspx.cs">
       <DependentUpon>ADMIS_BuscarPersona.aspx</DependentUpon>

@@ -217,6 +217,21 @@ namespace nsBD_GEN
                     _num_sec_subdepartamento + "," +_num_sec_carrera+","+ _adicionar + "," + _retirar + "," + _estado + "," + _tipo_admision + "," + "trunc(sysdate)" + ",'" + _observaciones + "'," + "sysdate,'" + _usuario_registro + "')";
             return strSql;
         }
+
+        public bool RevisarSiExiste()
+        {
+            strSql = " select * from acad_carreras_estudiantes" +
+                     " where num_sec_persona = " + _num_sec_persona+
+                     " and num_sec_semestre = "+_num_sec_semestre+
+                     " and num_sec_subdepartamento="+_num_sec_subdepartamento;
+            OracleBD.StrConexion = _strconexion;
+            OracleBD.Sql = strSql;
+            OracleBD.sqlDataTable();
+            if (OracleBD.DataTable.Rows.Count == 0)
+                return false;
+            else
+                return true;
+        }
         #endregion
     }
 }

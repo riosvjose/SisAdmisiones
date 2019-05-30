@@ -214,7 +214,7 @@ namespace nsBD_ACAD
         {
             strSql = " select * from familiares" +
                      " where num_sec_familiar = " + _num_sec_familiar.ToString().Trim()+
-                     " and num_sec = " + _num_sec_persona.ToString().Trim();
+                     " and num_sec_persona = " + _num_sec_persona.ToString().Trim();
             OracleBD.StrConexion = _strconexion;
             OracleBD.Sql = strSql;
             OracleBD.sqlDataTable();

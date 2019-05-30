@@ -27,15 +27,13 @@ namespace SisAdmisiones.Forms
             {
                 Response.Redirect("~/Default.aspx");
             }
-            if (Convert.ToInt32(axVarSes.Lee<string>("strRol")) == 1) 
+            if (Convert.ToInt32(axVarSes.Lee<string>("strRol")) == 1) { 
                 sbInicio.Visible = true;
-            if (Convert.ToInt32(axVarSes.Lee<string>("strRol")) == 1)
                 sbBuscarPersona.Visible = true;
-            if (Convert.ToInt32(axVarSes.Lee<string>("strRol")) == 1)
-                //sbRegistrarPersona.Visible = true;
+                sbBuscarPersonaConsolidada.Visible = true;
                 lnkbtnRegistarNuevo.Visible = true;
-            if (Convert.ToInt32(axVarSes.Lee<string>("strRol")) == 1)
                 sbCerrarSesion.Visible = true;
+             }
             if (Request.UserAgent.IndexOf("AppleWebKit") > 0)
             {
                 Request.Browser.Adapters.Clear();

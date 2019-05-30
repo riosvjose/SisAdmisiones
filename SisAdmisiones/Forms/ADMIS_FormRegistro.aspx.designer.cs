@@ -841,15 +841,6 @@ namespace SisAdmisiones.Forms {
         protected global::System.Web.UI.WebControls.Label lblTelefonoDomicilio;
         
         /// <summary>
-        /// Control RequiredFieldValidator11.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
-        
-        /// <summary>
         /// Control pnDatosBachillerato.
         /// </summary>
         /// <remarks>
@@ -1496,15 +1487,6 @@ namespace SisAdmisiones.Forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label17;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator25.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
         
         /// <summary>
         /// Control tbInstitucionLaboralTutor.
