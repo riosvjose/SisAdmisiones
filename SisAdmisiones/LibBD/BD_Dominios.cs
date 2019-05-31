@@ -143,6 +143,19 @@ namespace nsBD_GEN
             return OracleBD.DataTable;
         }
 
+        public DataTable DTDominiosAlfa(string ValoresExcluidos, string strConexion)
+        {
+            strSql = "select valor, descripcion, abreviacion " +
+                    "from dominios " +
+                    "where dominio = '" + _dominio + "' ";
+            if (ValoresExcluidos != "")
+                strSql += "and valor not in (" + ValoresExcluidos + ") ";
+            strSql += "order by descripcion";
+            OracleBD.StrConexion = strConexion;
+            OracleBD.Sql = strSql;
+            OracleBD.sqlDataTable();
+            return OracleBD.DataTable;
+        }
 
     }
 }

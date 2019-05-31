@@ -11,7 +11,7 @@ using System.Data;
 
 namespace nsBD_GEN
 {
-    // Creado por: Ignacio Rios; Fecha: 08/05/2019
+    // Creado por: Ignacio Rios; Fecha: 30/05/2019
     // Ultima modificación: 
     // Descripción: Clase referente a la tabla carreras_estudiantes
 
@@ -221,9 +221,8 @@ namespace nsBD_GEN
         public bool RevisarSiExiste()
         {
             strSql = " select * from acad_carreras_estudiantes" +
-                     " where num_sec_persona = " + _num_sec_persona+
-                     " and num_sec_semestre = "+_num_sec_semestre+
-                     " and num_sec_subdepartamento="+_num_sec_subdepartamento;
+                     " where num_sec_persona = " + _num_sec_persona +
+                     " and num_sec_semestre = " + _num_sec_semestre;
             OracleBD.StrConexion = _strconexion;
             OracleBD.Sql = strSql;
             OracleBD.sqlDataTable();

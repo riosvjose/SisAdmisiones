@@ -49,7 +49,15 @@ namespace SisAdmisiones.Forms
         {
             if (!Page.IsPostBack)
             {
-                CargarDatosIniciales(axVarSes.Lee<string>("strConexion"));
+                if (axVarSes.Lee<string>("strRol").Equals("1"))
+                {
+                    CargarDatosIniciales(axVarSes.Lee<string>("strConexion"));
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
+                
             }            
         }
 
@@ -82,8 +90,9 @@ namespace SisAdmisiones.Forms
             if (e.CommandName == "eliminar")
             {
                 libDatos.StrConexion= axVarSes.Lee<string>("strConexion");
-                libDatos.NumSecPersona = Convert.ToInt64(gvUsuarios.Rows[indice].Cells[0].Text);
+                libDatos.NumSecDatosPer = Convert.ToInt64(gvUsuarios.Rows[indice].Cells[0].Text);
                 libDatos.Ver();
+                libDatos.FechaNacimiento= Convert.ToDateTime(libDatos.FechaNacimiento.Trim()).ToString("dd/MM/yyyy");
                 libDatos.Estado = 2;//eliminado
                 if (!libDatos.Modificar())
                 {

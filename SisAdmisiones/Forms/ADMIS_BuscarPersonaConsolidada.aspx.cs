@@ -46,7 +46,14 @@ namespace SisAdmisiones.Forms
         {
             if (!Page.IsPostBack)
             {
-                CargarDatosIniciales(axVarSes.Lee<string>("strConexion"));
+                if (axVarSes.Lee<string>("strRol").Equals("1"))
+                {
+                    CargarDatosIniciales(axVarSes.Lee<string>("strConexion"));
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }            
         }
 

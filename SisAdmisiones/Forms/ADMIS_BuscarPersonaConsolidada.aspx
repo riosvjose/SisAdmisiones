@@ -6,7 +6,7 @@
         <ContentTemplate>
             <div class="row">
 	            <div class="col-xs-12">
-		            <h1>Buscar persona</h1>
+		            <h1>Buscar registro consolidado</h1>
 	            </div>
             </div>            
             <div class="row">
@@ -29,7 +29,7 @@
 		        <div class="panel panel-info">
                     <%--ENCABEZADO DEL PANEL--%>
 			        <div class="panel-heading">
-                        <h3> <strong><asp:Label ID="lblAdmUsuarios" runat="server" Text="Administrar usuarios"></asp:Label></strong></h3>
+                        <h3> <strong><asp:Label ID="lblAdmUsuarios" runat="server" Text="Buscar persona consolidada"></asp:Label></strong></h3>
 			        </div>
                     <%--CUERPO DEL PANEL--%>
 			        <div class="panel-body">

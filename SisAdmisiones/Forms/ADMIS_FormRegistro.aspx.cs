@@ -332,7 +332,7 @@ namespace SisAdmisiones.Forms
         {
             BD_Dominios libDominios = new BD_Dominios();
             libDominios.Dominio = "TIPO_FAMILIAR";
-            ddlParentesco.DataSource = libDominios.DTDominiosAbr("", axVarSes.Lee<string>("strConexion"));
+            ddlParentesco.DataSource = libDominios.DTDominiosAlfa("", axVarSes.Lee<string>("strConexion"));
             ddlParentesco.DataTextField = "DESCRIPCION";
             ddlParentesco.DataValueField = "VALOR";
             ddlParentesco.DataBind();
@@ -341,7 +341,7 @@ namespace SisAdmisiones.Forms
         {
             BD_Dominios libDominios = new BD_Dominios();
             libDominios.Dominio = "VIVE_CON";
-            ddlViveCon.DataSource = libDominios.DTDominiosAbr("", axVarSes.Lee<string>("strConexion"));
+            ddlViveCon.DataSource = libDominios.DTDominiosAlfa("", axVarSes.Lee<string>("strConexion"));
             ddlViveCon.DataTextField = "DESCRIPCION";
             ddlViveCon.DataValueField = "VALOR";
             ddlViveCon.DataBind();
@@ -350,7 +350,7 @@ namespace SisAdmisiones.Forms
         {
             BD_Dominios libDominios = new BD_Dominios();
             libDominios.Dominio = "TIPO_DOC";
-            ddlTipoDocIdentidad.DataSource = libDominios.DTDominiosAbr("2", axVarSes.Lee<string>("strConexion"));
+            ddlTipoDocIdentidad.DataSource = libDominios.DTDominiosAlfa("2", axVarSes.Lee<string>("strConexion"));
             ddlTipoDocIdentidad.DataTextField = "DESCRIPCION";
             ddlTipoDocIdentidad.DataValueField = "VALOR";
             ddlTipoDocIdentidad.DataBind();
@@ -359,7 +359,7 @@ namespace SisAdmisiones.Forms
         {
             BD_Dominios libDominios = new BD_Dominios();
             libDominios.Dominio = "TIPO_DOC";
-            ddlTipoDocIdentidadTutor.DataSource = libDominios.DTDominiosAbr("2", axVarSes.Lee<string>("strConexion"));
+            ddlTipoDocIdentidadTutor.DataSource = libDominios.DTDominiosAlfa("2", axVarSes.Lee<string>("strConexion"));
             ddlTipoDocIdentidadTutor.DataTextField = "DESCRIPCION";
             ddlTipoDocIdentidadTutor.DataValueField = "VALOR";
             ddlTipoDocIdentidadTutor.DataBind();

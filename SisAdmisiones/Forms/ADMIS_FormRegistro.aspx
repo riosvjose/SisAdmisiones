@@ -33,7 +33,7 @@
 		        <div class="panel panel-info">
                     <%--ENCABEZADO DEL PANEL--%>
 			        <div class="panel-heading">
-                        <h3> <strong><asp:Label ID="Label5" runat="server" Text="Datos inscripcion"></asp:Label></strong></h3>
+                        <h3> <strong><asp:Label ID="Label5" runat="server" Text="Datos de inscripcion"></asp:Label></strong></h3>
 			        </div>
                     <%--CUERPO DEL PANEL--%>
 			        <div class="panel-body">
@@ -182,11 +182,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12 text-center">
-                                    <div class="form-group">
-                                        <div class="form-inline">
                                             <asp:DropDownList ID="ddlGrupoSangre" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
-                                            </div>
-                                        </div>
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblGrupoSangre" runat="server" >Grupo sanguíneo</asp:Label></strong>
@@ -227,7 +223,7 @@
 		        <div class="panel panel-info">
                     <%--ENCABEZADO DEL PANEL--%>
 			        <div class="panel-heading">
-                        <h3> <strong><asp:Label ID="lblTitulopnDatosNac" runat="server" Text="Datos nacimiento"></asp:Label></strong></h3>
+                        <h3> <strong><asp:Label ID="lblTitulopnDatosNac" runat="server" Text="Datos de nacimiento"></asp:Label></strong></h3>
 			        </div>
                     <%--CUERPO DEL PANEL--%>
 			        <div class="panel-body">
@@ -402,7 +398,7 @@
 		        <div class="panel panel-info">
                     <%--ENCABEZADO DEL PANEL--%>
 			        <div class="panel-heading">
-                        <h3> <strong><asp:Label ID="lblTitulopnDatosBachillerato" runat="server" Text="Datos bachillerato"></asp:Label></strong></h3>
+                        <h3> <strong><asp:Label ID="lblTitulopnDatosBachillerato" runat="server" Text="Datos de bachillerato"></asp:Label></strong></h3>
 			        </div>
                     <%--CUERPO DEL PANEL--%>
 			        <div class="panel-body">
@@ -485,7 +481,7 @@
 		        <div class="panel panel-info">
                     <%--ENCABEZADO DEL PANEL--%>
 			        <div class="panel-heading">
-                        <h3> <strong><asp:Label ID="lblTituloDatosTutor" runat="server" Text="Datos tutor"></asp:Label></strong></h3>
+                        <h3> <strong><asp:Label ID="lblTituloDatosTutor" runat="server" Text="Datos del padre, madre, tutor/a u otro"></asp:Label></strong></h3>
 			        </div>
                     <%--CUERPO DEL PANEL--%>
 			        <div class="panel-body">
@@ -578,7 +574,7 @@
                        
                         <div class="row mb-3">
                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
-                                <h3>Datos domicilio</h3>
+                                <h3>Datos de domicilio</h3>
                                     <br />
                             </div>
                         </div>

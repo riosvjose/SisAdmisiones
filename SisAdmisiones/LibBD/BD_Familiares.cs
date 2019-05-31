@@ -10,7 +10,7 @@ using nsGEN;
 
 namespace nsBD_ACAD
 {
-    // Creado por: Willy Tenorio Palza; Fecha: 13/04/2018
+    // Creado por: Willy Tenorio Palza; Fecha: 30/05/2018
     // Ultima modificación:
     // Descripción: Clase referente a la tabla FAMILIARES
 

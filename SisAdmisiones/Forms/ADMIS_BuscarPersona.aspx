@@ -6,7 +6,7 @@
         <ContentTemplate>
             <div class="row">
 	            <div class="col-xs-12">
-		            <h1>Buscar persona</h1>
+		            <h1>Buscar registro</h1>
 	            </div>
             </div>            
             <div class="row">
@@ -29,7 +29,7 @@
 		        <div class="panel panel-info">
                     <%--ENCABEZADO DEL PANEL--%>
 			        <div class="panel-heading">
-                        <h3> <strong><asp:Label ID="lblAdmUsuarios" runat="server" Text="Administrar usuarios"></asp:Label></strong></h3>
+                        <h3> <strong><asp:Label ID="lblAdmUsuarios" runat="server" Text="Buscar persona"></asp:Label></strong></h3>
 			        </div>
                     <%--CUERPO DEL PANEL--%>
 			        <div class="panel-body">
@@ -62,6 +62,9 @@
                                                             <asp:BoundField DataField="nombres" HeaderText="Nombre" />
                                                             <asp:ButtonField HeaderText="" ButtonType="Button" CommandName="ver" Text="Ver" >
                                                                  <ControlStyle CssClass="btn btn-sm btn-success "/>
+                                                            </asp:ButtonField>
+                                                            <asp:ButtonField HeaderText="" ButtonType="Button" CommandName="eliminar" Text="Eliminar" >
+                                                                 <ControlStyle CssClass="btn btn-sm btn-danger "/>
                                                             </asp:ButtonField>
                                                         </Columns>
                                                         <PagerStyle CssClass="GridPager" Wrap="True" />
