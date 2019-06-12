@@ -18,10 +18,10 @@ namespace SisAdmisiones
         protected void Session_Start(object sender, EventArgs e)
         {
             // SERVIDOR PRUEBA UCBP ** copiar valores en form salir
-            Session["strUsuario"] = "ucbadmin";
-            Session["UsuarioLogin"] = "ucbadmin";
-            Session["strUsuarioBD"] = "ucbadmin";
-            Session["strPassword"] = "Prueba_2192";
+            Session["strUsuario"] = "aespinar";
+            Session["UsuarioLogin"] = "aespinar";
+            Session["strUsuarioBD"] = "aespinar";
+            Session["strPassword"] = "12345";
             Session["strServidor"] = "ucbp";
             
             Session["EnviarNotificaciones"] = false;

@@ -74,13 +74,13 @@ namespace SisAdmisiones.Forms
                 CargarDdlAnios();
                 CargarDdlTipoAdmision();
 
-                /*if (!string.IsNullOrEmpty(axVarSes.Lee<string>("strMensajeExito")))
+                if (!string.IsNullOrEmpty(axVarSes.Lee<string>("strMensajeExito")))
                 {
                     pnMensajeOK.Visible = true;
                     pnMensajeOK.Focus();
                     lblMensajeOK.Text = axVarSes.Lee<string>("strMensajeExito");
                     axVarSes.Escribe("strMensajeExito", string.Empty);
-                }*/
+                }
                 if (axVarSes.Lee<string>("strRol").Equals("1"))
                 {
                     pnObservaciones.Visible = true;
@@ -626,7 +626,6 @@ namespace SisAdmisiones.Forms
                     datasource.Name = "DsDatos";
                     datasource.Value = DtDatos;
                     string _path = string.Empty;
-
                     _path = axVarSes.Lee<string>("Path");
                     reportviewer.LocalReport.DataSources.Clear();
                     reportviewer.LocalReport.ReportPath = _path + "Reports\\FormInscripcion.rdlc";// "\\Reports\\FormInscripcion.rdlc";
@@ -639,15 +638,13 @@ namespace SisAdmisiones.Forms
                     byte[] bytes;
                     
                     bytes = reportviewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamids, out warnings);
-
                     MemoryStream ms = new MemoryStream(bytes);
                     Response.ContentType = "Application/pdf";
                     Response.Charset = "UTF-8"; 
-                    Response.AppendHeader("Content-Disposition", "attachment; filename=FormularioInscripcion"+axVarSes.Lee<string>("strPersonaRegistrar") +".pdf");
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=FormularioInscripcion.pdf");
                     Response.BinaryWrite(ms.ToArray());
-                    //VaciarBoxes();//********************************************
                     Response.Flush();
-                    //Response.End();
+                    Response.Close();
                 }
                 catch(Exception ex)
                 {
@@ -745,202 +742,205 @@ namespace SisAdmisiones.Forms
         }
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
-            pnMensajeError.Visible = false;
-            pnMensajeOK.Visible = false;
-            GEN_Cadenas Cadenas = new GEN_Cadenas();
-            if (Cadenas.Texto_Contiene_Caracteres_Especiales(tbCaptcha.Text, 1, 1))
-            {
-                axVarSes.Escribe("ContadorIngresos", axVarSes.Lee<int>("ContadorIngresos") + 1);
-                pnMensajeError.Visible = true;
-                lblMensajeError.Text = "NO debe ingresar caracteres especiales en el Carnet de identidad, contraseña y patrón.";
-                if (axVarSes.Lee<int>("ContadorIngresos") >= 3)
+            if (!tbTelefonoContacto1.Text.Equals(tbTelefonoContacto2.Text)) {
+                pnMensajeError.Visible = false;
+                pnMensajeOK.Visible = false;
+                GEN_Cadenas Cadenas = new GEN_Cadenas();
+                if (Cadenas.Texto_Contiene_Caracteres_Especiales(tbCaptcha.Text, 1, 1))
                 {
-                    Response.Redirect("~/Forms/SDOC_Salir.aspx");
-                }
-            }
-            else
-            {
-
-                BD_ADMIS_DatosPersonales libDatosPer = new BD_ADMIS_DatosPersonales();
-                libDatosPer.StrConexion = axVarSes.Lee<string>("strConexion");
-                if (axVarSes.Lee<string>("strOperacion").Equals("0"))
-                {
-                    libDatosPer.GenerarNS();
+                    axVarSes.Escribe("ContadorIngresos", axVarSes.Lee<int>("ContadorIngresos") + 1);
+                    pnMensajeError.Visible = true;
+                    lblMensajeError.Text = "NO debe ingresar caracteres especiales en el Carnet de identidad, contraseña y patrón.";
                 }
                 else
                 {
-                    libDatosPer.NumSecDatosPer = Convert.ToInt64(axVarSes.Lee<string>("strPersonaRegistrar"));
-                }
-                libDatosPer.PrimerApellido = tbPrimerApellido.Text;
-                libDatosPer.SegundoApellido = tbSegundoApellido.Text;
-                libDatosPer.Nombres = tbNombres.Text;
-                libDatosPer.DocIdentidad = tbDocIdentidad.Text;
-                libDatosPer.TipoDocIdentidad = Convert.ToInt16(ddlTipoDocIdentidad.SelectedValue);
-                libDatosPer.Genero = Convert.ToInt16(ddlGenero.SelectedValue);
-                libDatosPer.GrupoSangre = Convert.ToInt16(ddlGrupoSangre.SelectedValue);
-                libDatosPer.EstadoCivil = Convert.ToInt16(ddlEstadoCivil.SelectedValue);
-                libDatosPer.TipoDiscapacidad = Convert.ToInt16(ddlDiscapacidad.SelectedValue);
-                libDatosPer.AvenidaCalle = tbCalleAvenida.Text;
-                libDatosPer.Numero = tbNumeroDom.Text;
-                libDatosPer.Zona = tbZona.Text;
-                libDatosPer.Edificio = tbNombreEdificio.Text;
-                libDatosPer.Piso = tbPiso.Text;
-                libDatosPer.Depto = tbNumeroDepto.Text;
-                
-                Match me = Regex.Match(tbTelefonoDomicilio.Text, "(\\d+)");
-                if (me.Success)
-                {
-                    libDatosPer.Telefono = Convert.ToInt32(me.Value);
-                }
-                if (!string.IsNullOrEmpty(tbCelular.Text))
-                {
-                    libDatosPer.Celular = tbCelular.Text;
-                }
-               
-                libDatosPer.Email = tbEmail.Text;
-                libDatosPer.ViveCon = Convert.ToInt16(ddlViveCon.SelectedValue);
-                libDatosPer.FechaNacimiento = Convert.ToDateTime(tbFechaNac.Text.Trim()).ToString("dd/MM/yyyy");
-                libDatosPer.NumSecNacionalidad = Convert.ToInt64(ddlNacionalidad.SelectedValue);
-                libDatosPer.Observaciones = tbObservaciones.Text;
 
-                libDatosPer.NumSecLocalidadNac = Convert.ToInt64(ddlCiudadNac.SelectedValue);
-                libDatosPer.NumSecLocalidadBachillerato = Convert.ToInt64(ddlCiudadBach.SelectedValue);
-                libDatosPer.NumSecColegio = Convert.ToInt64(ddlColegio.SelectedValue);
-                libDatosPer.AnioBachillerato = Convert.ToInt32(ddlAnio.SelectedValue);
-                libDatosPer.TipoColegio = Convert.ToInt16(ddlTipoColegio.SelectedValue);
-                libDatosPer.AreaColegio = Convert.ToInt16(ddlAreaColegio.SelectedValue);
-                libDatosPer.Turno = Convert.ToInt16(ddlTurno.SelectedValue);
-
-                libDatosPer.NumSecSubdepartamento = Convert.ToInt64(ddlCarreras.SelectedValue);
-                libDatosPer.NumSecSemestre = 0;
-                libDatosPer.NumSecPersona = 0;
-                libDatosPer.UsuarioRegistro = axVarSes.Lee<string>("UsuarioLogin");
-
-                BD_ADMIS_DatosTutor libtutor = new BD_ADMIS_DatosTutor();
-                libtutor.StrConexion = axVarSes.Lee<string>("strConexion");
-                libtutor.TipoTutor = Convert.ToInt16(ddlParentesco.SelectedValue);
-                libtutor.NumSecDatosPer = libDatosPer.NumSecDatosPer;
-                libtutor.PrimerApellido = tbPrimerApTutor.Text;
-                libtutor.SegundoApellido = tbSegundoApTutor.Text;
-                libtutor.Nombres = tbNombreTutor.Text;
-                libtutor.DocIdentidad = tbDocIdentidadTutor.Text;
-                libtutor.TipoDocIdentidad = Convert.ToInt16(ddlTipoDocIdentidadTutor.SelectedValue);
-                libtutor.Genero = Convert.ToInt16(ddlGeneroTutor.SelectedValue);
-                libtutor.AvenidaCalle = tbCalleAvenidaTutor.Text;
-                libtutor.Numero = tbNumeroDomTutor.Text;
-                libtutor.Zona = tbZonaTutor.Text;
-                libtutor.Edificio = tbEdificioTutor.Text;
-                libtutor.Depto = tbDeptoTutor.Text;
-                me = Regex.Match(tbTelefonoTutor.Text, "(\\d+)");
-                if (me.Success)
-                {
-                    libtutor.Telefono = Convert.ToInt32(me.Value);
-                }
-                if (!string.IsNullOrEmpty(tbCelularTutor.Text))
-                {
-                    libtutor.Celular = tbCelularTutor.Text;
-                }
-                libtutor.Email = tbEmailTutor.Text;
-                libtutor.InstitucionTrabajo = tbInstitucionLaboralTutor.Text;
-                libtutor.Cargo = tbCargoTutor.Text;
-                libtutor.TelefonoTrabajo = tbTelefonoOficina.Text;
-                if (rbSi.Checked)
-                {
-                    libtutor.AutSeguimiento = 1;
-                }
-                if (rbNo.Checked)
-                {
-                    libtutor.AutSeguimiento = 0;
-                }
-                libtutor.NumSecPersona = 0;
-                libtutor.UsuarioRegistro = axVarSes.Lee<string>("UsuarioLogin");
-
-                BD_ADMIS_ContactoEmergencia libContacto = new BD_ADMIS_ContactoEmergencia();
-                libContacto.StrConexion = axVarSes.Lee<string>("strConexion");
-                libContacto.NumSecDatosPer = libDatosPer.NumSecDatosPer;
-                libContacto.NombreCompleto = tbNombreCompleto.Text;
-                if (!string.IsNullOrEmpty(tbTelefonoContacto1.Text))
-                {
-                    libContacto.TelefonoContacto1 = tbTelefonoContacto1.Text;
-                }
-                if (!string.IsNullOrEmpty(tbTelefonoContacto2.Text))
-                {
-                    libContacto.TelefonoContacto2 = tbTelefonoContacto2.Text;
-                }
-                
-                libContacto.UsuarioRegistro = axVarSes.Lee<string>("UsuarioLogin");
-                string[] sqls = new string[10];
-                int numsqls = 0;
-                if (axVarSes.Lee<string>("strRol").Equals("1"))
-                {
+                    BD_ADMIS_DatosPersonales libDatosPer = new BD_ADMIS_DatosPersonales();
+                    libDatosPer.StrConexion = axVarSes.Lee<string>("strConexion");
                     if (axVarSes.Lee<string>("strOperacion").Equals("0"))
                     {
-                        libDatosPer.Estado = 0;//consolidado
-                        sqls[0] = libDatosPer.CadsqlInsert();
-                        numsqls++;
-                        sqls[1] = libtutor.cadSqlInsertar();
-                        numsqls++;
-                        sqls[2] = libContacto.cadSqlInsertar();
-                        numsqls++;
+                        libDatosPer.GenerarNS();
                     }
                     else
                     {
-                        if (axVarSes.Lee<string>("strOperacion").Equals("1"))
-                        {
-                            libDatosPer.Estado = 0;//consolidado
-                            sqls[0] = libDatosPer.CadsqlActualizar();
-                            numsqls++;
-                            sqls[1] = libtutor.cadSqlActualizar();
-                            numsqls++;
-                            sqls[2] = libContacto.cadSqlActualizar();
-                            numsqls++;
-                            
-                        }
+                        libDatosPer.NumSecDatosPer = Convert.ToInt64(axVarSes.Lee<string>("strPersonaRegistrar"));
                     }
-                    if (libDatosPer.InsertarVarios(sqls, numsqls))
+                    libDatosPer.PrimerApellido = tbPrimerApellido.Text;
+                    libDatosPer.SegundoApellido = tbSegundoApellido.Text;
+                    libDatosPer.Nombres = tbNombres.Text;
+                    libDatosPer.DocIdentidad = tbDocIdentidad.Text;
+                    libDatosPer.TipoDocIdentidad = Convert.ToInt16(ddlTipoDocIdentidad.SelectedValue);
+                    libDatosPer.Genero = Convert.ToInt16(ddlGenero.SelectedValue);
+                    libDatosPer.GrupoSangre = Convert.ToInt16(ddlGrupoSangre.SelectedValue);
+                    libDatosPer.EstadoCivil = Convert.ToInt16(ddlEstadoCivil.SelectedValue);
+                    libDatosPer.TipoDiscapacidad = Convert.ToInt16(ddlDiscapacidad.SelectedValue);
+                    libDatosPer.AvenidaCalle = tbCalleAvenida.Text;
+                    libDatosPer.Numero = tbNumeroDom.Text;
+                    libDatosPer.Zona = tbZona.Text;
+                    libDatosPer.Edificio = tbNombreEdificio.Text;
+                    libDatosPer.Piso = tbPiso.Text;
+                    libDatosPer.Depto = tbNumeroDepto.Text;
+
+                    Match me = Regex.Match(tbTelefonoDomicilio.Text, "(\\d+)");
+                    if (me.Success)
                     {
-                        consolidar(libDatosPer, libContacto, libtutor);
+                        libDatosPer.Telefono = Convert.ToInt32(me.Value);
                     }
-                    else
+                    if (!string.IsNullOrEmpty(tbCelular.Text))
                     {
-                        pnMensajeError.Visible = true;
-                        pnMensajeOK.Visible = false;
-                        lblMensajeError.Text = "No se pudo almacenar el formulario. " + libDatosPer.Mensaje;
+                        libDatosPer.Celular = tbCelular.Text;
                     }
-                }
-                else
-                {
-                    if (tbCaptcha.Text.ToString().ToUpper() == axVarSes.Lee<string>("captchastr").ToString().ToUpper())
+
+                    libDatosPer.Email = tbEmail.Text;
+                    libDatosPer.ViveCon = Convert.ToInt16(ddlViveCon.SelectedValue);
+                    libDatosPer.FechaNacimiento = Convert.ToDateTime(tbFechaNac.Text.Trim()).ToString("dd/MM/yyyy");
+                    libDatosPer.NumSecNacionalidad = Convert.ToInt64(ddlNacionalidad.SelectedValue);
+                    libDatosPer.Observaciones = tbObservaciones.Text;
+
+                    libDatosPer.NumSecLocalidadNac = Convert.ToInt64(ddlCiudadNac.SelectedValue);
+                    libDatosPer.NumSecLocalidadBachillerato = Convert.ToInt64(ddlCiudadBach.SelectedValue);
+                    libDatosPer.NumSecColegio = Convert.ToInt64(ddlColegio.SelectedValue);
+                    libDatosPer.AnioBachillerato = Convert.ToInt32(ddlAnio.SelectedValue);
+                    libDatosPer.TipoColegio = Convert.ToInt16(ddlTipoColegio.SelectedValue);
+                    libDatosPer.AreaColegio = Convert.ToInt16(ddlAreaColegio.SelectedValue);
+                    libDatosPer.Turno = Convert.ToInt16(ddlTurno.SelectedValue);
+
+                    libDatosPer.NumSecSubdepartamento = Convert.ToInt64(ddlCarreras.SelectedValue);
+                    libDatosPer.NumSecSemestre = 0;
+                    libDatosPer.NumSecPersona = 0;
+                    libDatosPer.UsuarioRegistro = axVarSes.Lee<string>("UsuarioLogin");
+
+                    BD_ADMIS_DatosTutor libtutor = new BD_ADMIS_DatosTutor();
+                    libtutor.StrConexion = axVarSes.Lee<string>("strConexion");
+                    libtutor.TipoTutor = Convert.ToInt16(ddlParentesco.SelectedValue);
+                    libtutor.NumSecDatosPer = libDatosPer.NumSecDatosPer;
+                    libtutor.PrimerApellido = tbPrimerApTutor.Text;
+                    libtutor.SegundoApellido = tbSegundoApTutor.Text;
+                    libtutor.Nombres = tbNombreTutor.Text;
+                    libtutor.DocIdentidad = tbDocIdentidadTutor.Text;
+                    libtutor.TipoDocIdentidad = Convert.ToInt16(ddlTipoDocIdentidadTutor.SelectedValue);
+                    libtutor.Genero = Convert.ToInt16(ddlGeneroTutor.SelectedValue);
+                    libtutor.AvenidaCalle = tbCalleAvenidaTutor.Text;
+                    libtutor.Numero = tbNumeroDomTutor.Text;
+                    libtutor.Zona = tbZonaTutor.Text;
+                    libtutor.Edificio = tbEdificioTutor.Text;
+                    libtutor.Depto = tbDeptoTutor.Text;
+                    me = Regex.Match(tbTelefonoTutor.Text, "(\\d+)");
+                    if (me.Success)
+                    {
+                        libtutor.Telefono = Convert.ToInt32(me.Value);
+                    }
+                    if (!string.IsNullOrEmpty(tbCelularTutor.Text))
+                    {
+                        libtutor.Celular = tbCelularTutor.Text;
+                    }
+                    libtutor.Email = tbEmailTutor.Text;
+                    libtutor.InstitucionTrabajo = tbInstitucionLaboralTutor.Text;
+                    libtutor.Cargo = tbCargoTutor.Text;
+                    libtutor.TelefonoTrabajo = tbTelefonoOficina.Text;
+                    if (rbSi.Checked)
+                    {
+                        libtutor.AutSeguimiento = 1;
+                    }
+                    if (rbNo.Checked)
+                    {
+                        libtutor.AutSeguimiento = 0;
+                    }
+                    libtutor.NumSecPersona = 0;
+                    libtutor.UsuarioRegistro = axVarSes.Lee<string>("UsuarioLogin");
+
+                    BD_ADMIS_ContactoEmergencia libContacto = new BD_ADMIS_ContactoEmergencia();
+                    libContacto.StrConexion = axVarSes.Lee<string>("strConexion");
+                    libContacto.NumSecDatosPer = libDatosPer.NumSecDatosPer;
+                    libContacto.NombreCompleto = tbNombreCompleto.Text;
+                    if (!string.IsNullOrEmpty(tbTelefonoContacto1.Text))
+                    {
+                        libContacto.TelefonoContacto1 = tbTelefonoContacto1.Text;
+                    }
+                    if (!string.IsNullOrEmpty(tbTelefonoContacto2.Text))
+                    {
+                        libContacto.TelefonoContacto2 = tbTelefonoContacto2.Text;
+                    }
+
+                    libContacto.UsuarioRegistro = axVarSes.Lee<string>("UsuarioLogin");
+                    string[] sqls = new string[10];
+                    int numsqls = 0;
+                    if (axVarSes.Lee<string>("strRol").Equals("1"))
                     {
                         if (axVarSes.Lee<string>("strOperacion").Equals("0"))
                         {
-                            libDatosPer.Estado = 1;//enviado
+                            libDatosPer.Estado = 0;//consolidado
                             sqls[0] = libDatosPer.CadsqlInsert();
                             numsqls++;
                             sqls[1] = libtutor.cadSqlInsertar();
                             numsqls++;
                             sqls[2] = libContacto.cadSqlInsertar();
                             numsqls++;
-                            if (libDatosPer.InsertarVarios(sqls, numsqls))
+                        }
+                        else
+                        {
+                            if (axVarSes.Lee<string>("strOperacion").Equals("1"))
                             {
-                                axVarSes.Escribe("strMensajeExito", "Registro exitoso.");
-                                Response.Redirect("ADMIS_FormRegistro.aspx");
+                                libDatosPer.Estado = 0;//consolidado
+                                sqls[0] = libDatosPer.CadsqlActualizar();
+                                numsqls++;
+                                sqls[1] = libtutor.cadSqlActualizar();
+                                numsqls++;
+                                sqls[2] = libContacto.cadSqlActualizar();
+                                numsqls++;
+
                             }
-                            else
-                            {
-                                pnMensajeError.Visible = true;
-                                pnMensajeOK.Visible = false;
-                                lblMensajeError.Text = "No se pudo almacenar el formulario. " + libDatosPer.Mensaje;
-                            }
+                        }
+                        if (libDatosPer.InsertarVarios(sqls, numsqls))
+                        {
+                            consolidar(libDatosPer, libContacto, libtutor);
+                        }
+                        else
+                        {
+                            pnMensajeError.Visible = true;
+                            pnMensajeOK.Visible = false;
+                            lblMensajeError.Text = "No se pudo almacenar el formulario. " + libDatosPer.Mensaje;
                         }
                     }
                     else
                     {
-                        pnMensajeError.Visible = true;
-                        lblMensajeError.Text = "El patrón de la imagen no coincide con el texto ingresado.";
+                        if (tbCaptcha.Text.ToString().ToUpper() == axVarSes.Lee<string>("captchastr").ToString().ToUpper())
+                        {
+                            if (axVarSes.Lee<string>("strOperacion").Equals("0"))
+                            {
+                                libDatosPer.Estado = 1;//enviado
+                                sqls[0] = libDatosPer.CadsqlInsert();
+                                numsqls++;
+                                sqls[1] = libtutor.cadSqlInsertar();
+                                numsqls++;
+                                sqls[2] = libContacto.cadSqlInsertar();
+                                numsqls++;
+                                if (libDatosPer.InsertarVarios(sqls, numsqls))
+                                {
+                                    axVarSes.Escribe("strMensajeExito", "Registro exitoso.");
+                                    Response.Redirect("ADMIS_FormRegistro.aspx");
+                                }
+                                else
+                                {
+                                    pnMensajeError.Visible = true;
+                                    pnMensajeOK.Visible = false;
+                                    lblMensajeError.Text = "No se pudo almacenar el formulario. " + libDatosPer.Mensaje;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            pnMensajeError.Visible = true;
+                            lblMensajeError.Text = "El patrón de la imagen no coincide con el texto ingresado.";
+                        }
                     }
+
                 }
-                
+            }
+            else
+            {
+                pnMensajeError.Visible = true;
+                lblMensajeError.Text = "Debe proporcionar dos teléfonos de contacto distintos.";
             }
         }
         #endregion
@@ -1154,6 +1154,7 @@ namespace SisAdmisiones.Forms
 
                     if (!blError && !AlumnoExiste && !FamiliarExiste)
                     {
+                        btnEnviar.Visible = false;
                         axVarSes.Escribe("strOperacion", "0");
                         axVarSes.Escribe("strPersonaRegistrar", string.Empty);
                         axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
@@ -1162,17 +1163,14 @@ namespace SisAdmisiones.Forms
                         axVarSes.Escribe("strNSFamiliar", string.Empty);
                         if (DatosPer.InsertarVarios(CadSqls, numSqls))
                         {
-
-
-                            //axVarSes.Escribe("strMensajeExito", "Registro exitoso.");
-
-                            //Response.Redirect("ADMIS_FormRegistro.aspx");
-                            //VaciarBoxes();
                             pnMensajeOK.Visible = true;
                             lblMensajeOK.Text = "Se almacenaron correctamente los datos.";
                             pnMensajeOK.Focus();
+                            pnObservaciones.Visible = false;
                             //VaciarBoxes();
                             Exportar_Reporte1();
+                            axVarSes.Escribe("strMensajeExito", "Registro exitoso.");
+                            Response.Redirect("ADMIS_FormRegistro.aspx", false);
                         }
                         else
                         {

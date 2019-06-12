@@ -269,7 +269,7 @@ namespace SisAdmisiones
                     _area_bachillerato = Convert.ToInt16(OracleBD.DataTable.Rows[0]["AREA_BACHILLERATO"].ToString());
                     _num_sec_persona = Convert.ToInt64(OracleBD.DataTable.Rows[0]["NUM_SEC_PERSONA"].ToString());
                     _estado = Convert.ToInt16(OracleBD.DataTable.Rows[0]["ESTADO"].ToString());
-                    _num_sec_semestre = Convert.ToInt64(OracleBD.DataTable.Rows[0]["NUM_SEC_SEMESTRE_INGRESO"].ToString());
+                    _num_sec_semestre = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_semestre"].ToString());
                     _num_sec_subdepartamento = Convert.ToInt64(OracleBD.DataTable.Rows[0]["NUM_SEC_SUBDEPARTAMENTO"].ToString());
                     _observaciones = OracleBD.DataTable.Rows[0]["OBSERVACIONES"].ToString();
                     _usuario_registro = OracleBD.DataTable.Rows[0]["USUARIO_REGISTRO"].ToString();
@@ -440,7 +440,7 @@ namespace SisAdmisiones
                        "(NUM_SEC_DATOS_PER, PRIMER_APELLIDO, NOMBRES, SEGUNDO_APELLIDO, DOC_IDENTIDAD, TIPO_DOC, GENERO, GRUPO_SANGUINEO, ESTADO_CIVIL, TIPO_DISCAPACIDAD," +
                        " AVENIDA_CALLE, NUMERO, ZONA, EDIFICIO, PISO, DEPTO,TELEFONO, CELULAR, EMAIL, VIVE_CON, FECHA_NACIMIENTO, NUM_SEC_LOCALIDAD_NACIMIENTO, " +
                        " NUM_SEC_COLEGIO, ANIO_EGRESO, TIPO_COLEGIO, TURNO, NUM_SEC_LOCALIDAD_BACHILLERATO, AREA_BACHILLERATO,OBSERVACIONES, NUM_SEC_PERSONA," +
-                       " ESTADO, NUM_SEC_SUBDEPARTAMENTO, NUM_SEC_SEMESTRE_INGRESO, NUM_SEC_NACIONALIDAD, FECHA_REGISTRO, USUARIO_REGISTRO) " +
+                       " ESTADO, NUM_SEC_SUBDEPARTAMENTO, num_sec_semestre, NUM_SEC_NACIONALIDAD, FECHA_REGISTRO, USUARIO_REGISTRO) " +
                        "values " +
                        "(" + _num_sec_datos_personales + ", " +
                        "upper('" + _primer_apellido + "')," +
@@ -515,7 +515,7 @@ namespace SisAdmisiones
                        ", NUM_SEC_PERSONA=" + _num_sec_persona +
                        ", ESTADO =" + _estado +
                        ", NUM_SEC_SUBDEPARTAMENTO=" + _num_sec_subdepartamento +
-                       ", NUM_SEC_SEMESTRE_INGRESO=" + _num_sec_semestre +
+                       ", NUM_SEC_SEMESTRE=" + _num_sec_semestre +
                        ", NUM_SEC_NACIONALIDAD=" + _num_sec_nacionalidad +
                        ", FECHA_REGISTRO=sysdate" +
                        ", USUARIO_REGISTRO=" + " upper('" + _usuario_registro + "')" +

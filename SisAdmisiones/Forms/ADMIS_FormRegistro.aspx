@@ -231,7 +231,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbFechaNac" runat="server" TextMode="Date" CssClass="form-control" MaxLength="10" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbFechaNac" runat="server" TextMode="Date" max="2010-12-31" min="1940-01-01" MaxLength="10" CssClass="form-control" AutoCompleteType="Disabled" ></asp:TextBox>
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblFechaNac" runat="server">Fecha de nacimiento</asp:Label></strong>

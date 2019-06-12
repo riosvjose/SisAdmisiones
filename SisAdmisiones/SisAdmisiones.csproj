@@ -295,9 +295,9 @@
     <Compile Include="LibBD\BD_ADMIS_ContactoEmergencia.cs" />
     <Compile Include="LibBD\BD_ADMIS_DatosPersonales.cs" />
     <Compile Include="LibBD\BD_ADMIS_DatosTutor.cs" />
+    <Compile Include="LibBD\BD_Asignaciones.cs" />
     <Compile Include="LibBD\BD_Careras_Estudiantes.cs" />
     <Compile Include="LibBD\BD_Alumnos_Paralelos.cs" />
-    <Compile Include="LibBD\BD_Asignaciones.cs" />
     <Compile Include="LibBD\BD_Bachilleres.cs" />
     <Compile Include="LibBD\BD_Colegios.cs" />
     <Compile Include="LibBD\BD_Dominios.cs" />

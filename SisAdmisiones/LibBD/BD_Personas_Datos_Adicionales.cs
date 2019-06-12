@@ -33,7 +33,7 @@ namespace nsBD_GEN
         // Campos de la tabla PERSONAS_DATOS_ADICIONALES
         private long _num_sec_persona = 0;            
         private string _email = string.Empty;         
-        private long _num_sec_semestre_ingreso = 0;   
+        private long _num_sec_semestre = 0;   
         private long _telefono = 0;                  
         private string _celular = string.Empty;       
         private long _casilla = 0;                    
@@ -61,7 +61,7 @@ namespace nsBD_GEN
         // Definicion GET y SET de los campos de la tabla PERSONAS_DATOS_ADICIONALES
         public long NumSecPersona { get { return _num_sec_persona; } set { _num_sec_persona = value; } }
         public string Email { get { return _email; } set { _email = value; } }
-        public long NumSecSemestreIngreso { get { return _num_sec_semestre_ingreso; } set { _num_sec_semestre_ingreso = value; } }
+        public long NumSecSemestreIngreso { get { return _num_sec_semestre; } set { _num_sec_semestre = value; } }
         public long Telefono { get { return _telefono; } set { _telefono = value; } }
         public string Celular { get { return _celular; } set { _celular = value; } }
         public long Casilla { get { return _casilla; } set { _casilla = value; } }
@@ -102,7 +102,7 @@ namespace nsBD_GEN
         {
             _num_sec_persona = 0;          
             _email = string.Empty;         
-            _num_sec_semestre_ingreso = 0; 
+            _num_sec_semestre = 0; 
             _telefono = 0;                 
             _celular = string.Empty;       
             _casilla = 0;                  
@@ -233,7 +233,7 @@ namespace nsBD_GEN
             string strSql = string.Empty;
             if (!string.IsNullOrEmpty(_num_sec_persona.ToString()))
             {
-                strSql = "select num_sec_persona,email,num_sec_semestre_ingreso,telefono,celular, nvl(casilla,0) casilla,nvl(titulo_bachiller,0) titulo_bachiller, " +
+                strSql = "select num_sec_persona,email,num_sec_semestre,telefono,celular, nvl(casilla,0) casilla,nvl(titulo_bachiller,0) titulo_bachiller, " +
                          "email_ucb,email_pass,nvl(email_activo,0) email_activo,avenida_calle,numero,zona,barrio,edificio,piso,depto, " +
                          "nvl(codigo_regional,0) codigo_regional,nvl(cambiar,0) cambiar,nvl(permitir_acceso_padres,0) permitir_acceso_padres,nvl(tipo_lugar_nacimiento,0) tipo_lugar_nacimiento, nvl(interno_ucb,0) interno_ucb " +
                          "from personas_datos_adicionales  " +
@@ -247,10 +247,10 @@ namespace nsBD_GEN
                     blEncontrado = true;
                     _num_sec_persona = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_persona"].ToString());
                     _email = OracleBD.DataTable.Rows[0]["email"].ToString();
-                    if (OracleBD.DataTable.Rows[0]["num_sec_semestre_ingreso"].ToString().Trim() == "")
-                        _num_sec_semestre_ingreso = 0;
+                    if (OracleBD.DataTable.Rows[0]["num_sec_semestre"].ToString().Trim() == "")
+                        _num_sec_semestre = 0;
                     else
-                        _num_sec_semestre_ingreso = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_semestre_ingreso"].ToString());
+                        _num_sec_semestre = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_semestre"].ToString());
                     if (OracleBD.DataTable.Rows[0]["telefono"].ToString().Trim() == "")
                         _telefono = 0;
                     else
@@ -291,7 +291,7 @@ namespace nsBD_GEN
             {
                 _num_sec_persona = 0;
                 _email = string.Empty;
-                _num_sec_semestre_ingreso = 0;
+                _num_sec_semestre = 0;
                 _telefono = 0;
                 _celular = string.Empty;
                 _casilla = 0;
@@ -459,8 +459,8 @@ namespace nsBD_GEN
                         GeneralesSistema.IIf(_celular.Trim() == "", "NULL", "'" + _celular + "'") + ", " +
                         GeneralesSistema.IIf(_email.Trim() == "", "NULL", "'" + _email + "'") + ", " +
                         GeneralesSistema.IIf(_email_ucb.Trim() == "", "NULL", "'" + _email_ucb + "'") + ", " +
-                        GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _interno_ucb.ToString().Trim()) + ", " +
-                        GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _permitir_acceso_padres.ToString().Trim()) + ")";
+                        GeneralesSistema.IIf(string.IsNullOrEmpty(_interno_ucb.ToString()), "0", _interno_ucb.ToString().Trim()) + ", " +
+                        _permitir_acceso_padres.ToString().Trim() + ")";
             return strSql;
         }
         #endregion
