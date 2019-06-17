@@ -211,7 +211,7 @@
                                       <asp:DropDownList ID="ddlDiscapacidad" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <strong><asp:Label ID="Label3" runat="server" >Tiene alguna capacidad especial</asp:Label></strong>
+                                    <strong><asp:Label ID="Label3" runat="server" >Tiene alguna discapacidad</asp:Label></strong>
                                 </div>
                             </div>
                         </div>
@@ -955,22 +955,10 @@
             </div>            
             <script type="text/javascript">
                 function CancelarModalAlumno() {
-                    /*document.getElementById('</%= tbNombreCategoria.ClientID %>').removeAttribute('required');
-                    document.getElementById('</%= tbDescripcionCategoria.ClientID %>').removeAttribute('required');
-                    document.getElementById('</%= ddlGrupoCategoria.ClientID %>').removeAttribute('required');*/
                 }
                 function CancelarModalFamiliar() {
 
                 }
-                /*function showPopUp() {
-                    $(document).ready(function () {
-                        $('#modalAlumnoExistente').modal('show');
-                    });                    
-                }*/
-                /*function CancelarModalMedida() {
-                    document.getElementById('</%= tbNombreMedida.ClientID %>').removeAttribute('required');
-                    document.getElementById('</%= tbAbrevMedida.ClientID %>').removeAttribute('required');                    
-                }*/
             </script>
         </ContentTemplate>
     </asp:UpdatePanel>

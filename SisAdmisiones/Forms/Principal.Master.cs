@@ -49,17 +49,6 @@ namespace SisAdmisiones.Forms
         #region "Procedimientos y Funciones Públicos"
         #endregion
         #region "Eventos"
-        protected void lbnAtenea_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(axVarSes.Lee<string>("strRol").Trim()) % 2 == 0)
-            {
-                Response.Redirect("Index.aspx");
-            }
-            else
-            {
-                Response.Redirect("STRS_Salir");
-            }
-        }
         protected void lblSalir_Click(object sender, EventArgs e)
         {
             Response.Redirect("STRS_Salir.aspx");

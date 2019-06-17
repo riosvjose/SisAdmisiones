@@ -167,10 +167,11 @@ namespace SisAdmisiones.Forms
         {
             BD_Dominios libDominios = new BD_Dominios();
             libDominios.Dominio = "TIPO_DISCAPACIDAD";
-            ddlDiscapacidad.DataSource = libDominios.DTDominiosAbr("", axVarSes.Lee<string>("strConexion"));
+            ddlDiscapacidad.DataSource = libDominios.DTDominiosAlfa("", axVarSes.Lee<string>("strConexion"));
             ddlDiscapacidad.DataTextField = "DESCRIPCION";
             ddlDiscapacidad.DataValueField = "VALOR";
             ddlDiscapacidad.DataBind();
+            ddlDiscapacidad.SelectedValue = "0";
         }
         public void CargarDdlTipoColegio()
         {
@@ -354,6 +355,7 @@ namespace SisAdmisiones.Forms
             ddlTipoDocIdentidad.DataTextField = "DESCRIPCION";
             ddlTipoDocIdentidad.DataValueField = "VALOR";
             ddlTipoDocIdentidad.DataBind();
+            ddlTipoDocIdentidad.SelectedValue = "1";
         }
         public void CargarDdlTipoDocTutor()
         {
@@ -363,6 +365,7 @@ namespace SisAdmisiones.Forms
             ddlTipoDocIdentidadTutor.DataTextField = "DESCRIPCION";
             ddlTipoDocIdentidadTutor.DataValueField = "VALOR";
             ddlTipoDocIdentidadTutor.DataBind();
+            ddlTipoDocIdentidadTutor.SelectedValue = "1";
         }
         public void CargarDdlColegios()
         {
@@ -556,9 +559,9 @@ namespace SisAdmisiones.Forms
             rwFila["Edad"] = Generales.EdadPersona(Convert.ToDateTime(tbFechaNac.Text.Trim()).ToString("dd/MM/yyyy"))+" años.";
             rwFila["Semestre"] = "2-2019";
             rwFila["Carrera"] = ddlCarreras.SelectedItem;
-            rwFila["PrimerApellido"] = tbPrimerApellido.Text;
-            rwFila["SegundoApellido"] = tbSegundoApellido.Text;
-            rwFila["Nombres"] = tbNombres.Text;
+            rwFila["PrimerApellido"] = tbPrimerApellido.Text.ToUpper();
+            rwFila["SegundoApellido"] = tbSegundoApellido.Text.ToUpper();
+            rwFila["Nombres"] = tbNombres.Text.ToUpper();
             rwFila["DocIdentidad"] = tbDocIdentidad.Text;
             rwFila["TipoDoc"] = ddlTipoDocIdentidad.SelectedItem;
             rwFila["Genero"] = ddlGenero.SelectedItem;
@@ -584,9 +587,9 @@ namespace SisAdmisiones.Forms
             
             rwFila["TipoTutor"] = ddlParentesco.SelectedItem;
             rwFila["TutorDocIdentidad"] = tbDocIdentidadTutor.Text;
-            rwFila["TutorPrimerAp"] = tbPrimerApTutor.Text;
-            rwFila["TutorSegundoAp"] = tbSegundoApTutor.Text;
-            rwFila["TutorNombres"] = tbNombreTutor.Text;
+            rwFila["TutorPrimerAp"] = tbPrimerApTutor.Text.ToUpper();
+            rwFila["TutorSegundoAp"] = tbSegundoApTutor.Text.ToUpper();
+            rwFila["TutorNombres"] = tbNombreTutor.Text.ToUpper();
             rwFila["TutorDireccion"] = tbCalleAvenidaTutor.Text+" N° "+tbNumeroDomTutor.Text;
             rwFila["TutorZona"] = tbZonaTutor.Text;
             rwFila["TutorTelfDom"] = tbTelefonoTutor.Text;
@@ -608,10 +611,10 @@ namespace SisAdmisiones.Forms
             {
                 rwFila["AutorizaSeguimientoNo"] = "x";
                 rwFila["AutorizaSeguimientoSi"] = "";
-            }
-            
+            }           
             dtDatos.Rows.Add(rwFila);
-
+            VaciarBoxes();
+            pnObservaciones.Visible = false;
         }
         protected void Exportar_Reporte1()
         {
@@ -765,9 +768,9 @@ namespace SisAdmisiones.Forms
                     {
                         libDatosPer.NumSecDatosPer = Convert.ToInt64(axVarSes.Lee<string>("strPersonaRegistrar"));
                     }
-                    libDatosPer.PrimerApellido = tbPrimerApellido.Text;
-                    libDatosPer.SegundoApellido = tbSegundoApellido.Text;
-                    libDatosPer.Nombres = tbNombres.Text;
+                    libDatosPer.PrimerApellido = tbPrimerApellido.Text.ToUpper();
+                    libDatosPer.SegundoApellido = tbSegundoApellido.Text.ToUpper();
+                    libDatosPer.Nombres = tbNombres.Text.ToUpper();
                     libDatosPer.DocIdentidad = tbDocIdentidad.Text;
                     libDatosPer.TipoDocIdentidad = Convert.ToInt16(ddlTipoDocIdentidad.SelectedValue);
                     libDatosPer.Genero = Convert.ToInt16(ddlGenero.SelectedValue);
@@ -984,9 +987,9 @@ namespace SisAdmisiones.Forms
                 Personas.DocIdentidad = Convert.ToInt64(m.Value);
             }
             Personas.TipoDoc = DatosPer.TipoDocIdentidad;
-            Personas.ApPaterno = DatosPer.PrimerApellido;
-            Personas.ApMaterno = DatosPer.SegundoApellido;
-            Personas.Nombres = DatosPer.Nombres;
+            Personas.ApPaterno = DatosPer.PrimerApellido.ToUpper();
+            Personas.ApMaterno = DatosPer.SegundoApellido.ToUpper();
+            Personas.Nombres = DatosPer.Nombres.ToUpper();
             Personas.Sexo = DatosPer.Genero;
             Personas.EstadoCivil = DatosPer.EstadoCivil;
             Personas.TipoSangre = DatosPer.GrupoSangre;
@@ -1015,9 +1018,9 @@ namespace SisAdmisiones.Forms
                 Familiar.DocIdentidad = Convert.ToInt64(me.Value);
             }
             Familiar.TipoDoc = Tutor.TipoDocIdentidad;
-            Familiar.ApPaterno = Tutor.PrimerApellido;
-            Familiar.ApMaterno = Tutor.SegundoApellido;
-            Familiar.Nombres = Tutor.Nombres;
+            Familiar.ApPaterno = Tutor.PrimerApellido.ToUpper();
+            Familiar.ApMaterno = Tutor.SegundoApellido.ToUpper();
+            Familiar.Nombres = Tutor.Nombres.ToUpper();
             Familiar.Sexo = Tutor.Genero;
             Familiar.Tipo = 32; //define familiar segun dominio
          
@@ -1155,12 +1158,7 @@ namespace SisAdmisiones.Forms
                     if (!blError && !AlumnoExiste && !FamiliarExiste)
                     {
                         btnEnviar.Visible = false;
-                        axVarSes.Escribe("strOperacion", "0");
-                        axVarSes.Escribe("strPersonaRegistrar", string.Empty);
-                        axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
-                        axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
-                        axVarSes.Escribe("strNSAlumno", string.Empty);
-                        axVarSes.Escribe("strNSFamiliar", string.Empty);
+                        
                         if (DatosPer.InsertarVarios(CadSqls, numSqls))
                         {
                             pnMensajeOK.Visible = true;
@@ -1170,7 +1168,13 @@ namespace SisAdmisiones.Forms
                             //VaciarBoxes();
                             Exportar_Reporte1();
                             axVarSes.Escribe("strMensajeExito", "Registro exitoso.");
-                            Response.Redirect("ADMIS_FormRegistro.aspx", false);
+                            axVarSes.Escribe("strOperacion", "0");
+                            axVarSes.Escribe("strPersonaRegistrar", string.Empty);
+                            axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
+                            axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
+                            axVarSes.Escribe("strNSAlumno", string.Empty);
+                            axVarSes.Escribe("strNSFamiliar", string.Empty);
+                            Response.Redirect("ADMIS_FormRegistro.aspx");
                         }
                         else
                         {
