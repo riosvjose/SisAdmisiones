@@ -41,7 +41,12 @@ namespace SisAdmisiones.Forms
 
             Session["strRol"] = "0"; // 1 administrativo, 0 externo
             Session["strOperacion"] = "0"; // 0 registrar, 1 consolidar
-            Session["strPersonaRegistrar"] = "0"; // num_sec_datos_personales tabla admins_datos_personales
+            Session["strPersonaRegistrar"] = ""; // num_sec_datos_personales tabla admins_datos_personales
+            axVarSes.Escribe("strPersonaRegistrar", string.Empty);
+            axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
+            axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
+            axVarSes.Escribe("strNSAlumno", string.Empty);
+            axVarSes.Escribe("strNSFamiliar", string.Empty);
             Response.Write(@"<script language='javascript'>window.close();</script>");
             Response.Redirect("~/Default.aspx");
         }

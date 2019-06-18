@@ -30,7 +30,6 @@ namespace SisAdmisiones.Forms
             if (Convert.ToInt32(axVarSes.Lee<string>("strRol")) == 1) { 
                 sbInicio.Visible = true;
                 sbBuscarPersona.Visible = true;
-                sbBuscarPersonaConsolidada.Visible = true;
                 lnkbtnRegistarNuevo.Visible = true;
                 sbCerrarSesion.Visible = true;
              }
@@ -59,9 +58,7 @@ namespace SisAdmisiones.Forms
         {
             axVarSes.Escribe("strPersonaRegistrar","0");
             axVarSes.Escribe("strOperacion", "0");
-            // Response.Redirect("../Forms/ADMIS_FormRegistro");
             Response.Redirect("ADMIS_FormRegistro.aspx");
-            // Response.Redirect("ADMIS_FormRegistro.aspx", false);
         }
     }
 }
