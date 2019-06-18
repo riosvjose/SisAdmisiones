@@ -643,11 +643,11 @@ namespace SisAdmisiones.Forms
                     bytes = reportviewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamids, out warnings);
                     MemoryStream ms = new MemoryStream(bytes);
                     Response.ContentType = "Application/pdf";
-                    Response.Charset = "UTF-8"; 
+                   /// Response.Charset = "UTF-8"; 
                     Response.AppendHeader("Content-Disposition", "attachment; filename=FormularioInscripcion.pdf");
                     Response.BinaryWrite(ms.ToArray());
                     Response.Flush();
-                    Response.Close();
+                    //Response.Close();
                 }
                 catch(Exception ex)
                 {
@@ -1165,8 +1165,9 @@ namespace SisAdmisiones.Forms
                             lblMensajeOK.Text = "Se almacenaron correctamente los datos.";
                             pnMensajeOK.Focus();
                             pnObservaciones.Visible = false;
-                            //VaciarBoxes();
+                            
                             Exportar_Reporte1();
+                            VaciarBoxes();
                             axVarSes.Escribe("strMensajeExito", "Registro exitoso.");
                             axVarSes.Escribe("strOperacion", "0");
                             axVarSes.Escribe("strPersonaRegistrar", string.Empty);
@@ -1174,7 +1175,7 @@ namespace SisAdmisiones.Forms
                             axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
                             axVarSes.Escribe("strNSAlumno", string.Empty);
                             axVarSes.Escribe("strNSFamiliar", string.Empty);
-                            Response.Redirect("ADMIS_FormRegistro.aspx");
+                            //Response.Redirect("ADMIS_FormRegistro.aspx");
                         }
                         else
                         {

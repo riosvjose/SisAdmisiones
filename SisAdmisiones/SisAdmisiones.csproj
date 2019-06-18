@@ -313,6 +313,7 @@
     <Compile Include="LibBD\BD_Personas_Datos_Adicionales.cs" />
     <Compile Include="LibBD\BD_Semestres.cs" />
     <Compile Include="LibBD\BD_Titulos.cs" />
+    <Compile Include="Lib\BD_ProcAdicionales.cs" />
     <Compile Include="Lib\GEN_AutenticacionBD.cs" />
     <Compile Include="Lib\GEN_Cadenas.cs" />
     <Compile Include="Lib\GEN_Java1.cs" />

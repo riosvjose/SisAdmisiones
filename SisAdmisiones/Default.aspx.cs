@@ -13,7 +13,7 @@ using System.Data;
 using nsGEN_ReCaptcha;
 
 
-namespace Admisiones
+namespace SisAdmisiones
 {
     public partial class Default : System.Web.UI.Page
     {
@@ -25,12 +25,12 @@ namespace Admisiones
         GEN_Java libJava = new GEN_Java();
         GEN_WebForms webForms = new GEN_WebForms();
         GEN_AutenticacionBD AutenticacionBD = new GEN_AutenticacionBD();
- 
+
 
         #endregion
 
         #region "Clase de tablas de la Base de Datos"
-
+        BD_ProcAdicionales libproc = new BD_ProcAdicionales();
         #endregion
 
         #region "Variables Globales"
@@ -76,19 +76,20 @@ namespace Admisiones
             
             if (AutenticacionBD.Autenticado)
             {
-                lblMensaje.Visible = false;
-                axVarSes.Escribe("Path", webForms.Determinar_Path_App());
-
-                if (AutenticacionBD.CambioPwd)
+                libproc.StrConexion = axVarSes.Lee<string>("strConexion");
+                List<string> AccesoObjeto = new List<string>();
+                AccesoObjeto = libproc.ListaAccesoObjetoUsuario(); //Lista de todos los objetos a los que tiene permiso el usuario que Inicio Sesión
+                if (AccesoObjeto.Contains("ADMIS_Ingreso"))
                 {
-                    axVarSes.Escribe("UsuarioLogin", "");
-                    axVarSes.Escribe("usuario_login_cambiopwd", AutenticacionBD.Login);
-                    Response.Redirect("~/Forms/SACAD_CambioPassword.aspx");
+                    lblMensaje.Visible = false;
+                    axVarSes.Escribe("Path", webForms.Determinar_Path_App());
+                    axVarSes.Escribe("strRol", "1");
+                    Response.Redirect("~/Forms/Index.aspx");
                 }
                 else
                 {
-                    axVarSes.Escribe("strRol","1");
-                    Response.Redirect("~/Forms/Index.aspx");
+                    lblMensaje.Visible = true;
+                    lblMensaje.Text = "Acceso no autorizado";
                 }
             }
             else
@@ -96,21 +97,6 @@ namespace Admisiones
                 lblMensaje.Visible = true;
                 lblMensaje.Text = AutenticacionBD.Mensaje;
             }
-        }
-        private void Determinar_Path()
-        {
-            string appPath = string.Empty;
-            string physicalPath = string.Empty;
-            appPath = HttpContext.Current.Request.ApplicationPath;
-            physicalPath = HttpContext.Current.Request.MapPath(appPath);
-            //if (physicalPath.Substring(physicalPath.Length, 1) == "\\")
-            //{
-            axVarSes.Escribe("Path", physicalPath);
-            //}
-            //else
-            //{
-            //    axVarSes.Escribe("Path", physicalPath + "/");
-            //}
         }
     }
 }

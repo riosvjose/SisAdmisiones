@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Admisiones {
+namespace SisAdmisiones {
     
     
     public partial class Default {
