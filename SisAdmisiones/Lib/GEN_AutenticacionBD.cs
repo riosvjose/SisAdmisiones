@@ -220,14 +220,13 @@ namespace nsGEN_AutenticacionBD
                 if (_mostrarerror && _mensaje != string.Empty) MostrarVentanaError();
             }
         }
-
         public bool CumpleTipoPermitido(int intTipoPersona, int intTipoPermitido)
         {
             bool blCumpleTipo = false;
 
             if (intTipoPermitido > 0)
             {
-                if (((2 ^ intTipoPermitido) & intTipoPersona) == (2 ^ intTipoPermitido))
+                if (((Convert.ToInt16(Math.Pow(2, intTipoPermitido))) & intTipoPersona) == Convert.ToInt16(Math.Pow(2, intTipoPermitido)))
                     blCumpleTipo = true;
             }
             else
