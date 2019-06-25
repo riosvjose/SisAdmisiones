@@ -542,6 +542,23 @@ namespace SisAdmisiones
                 _mensaje = "No fue posible insertar los datos. " + _mensaje;
             return blOperacionCorrecta;
         }
+
+        public bool MarcarComoNoConsolidado()
+        {
+            bool blOperacionCorrecta = true;
+            strSql = "UPDATE admis_datos_personales SET estado = 1 where num_sec_datos_per= " + _num_sec_datos_personales;
+            OracleBD.MostrarError = false;
+            OracleBD.StrConexion = _strconexion;
+            OracleBD.Sql = strSql;
+            OracleBD.EjecutarSqlTrans();
+
+            _mensaje = OracleBD.Mensaje;
+            blOperacionCorrecta = !OracleBD.Error;
+            if (OracleBD.Error)
+                _mensaje = "No fue posible modificar el dato. Se encontró un error al modificar en la tabla ADMIS_DATOS_PERSONALES. " + _mensaje;
+
+            return blOperacionCorrecta;
+        }
         #endregion
     }
 }

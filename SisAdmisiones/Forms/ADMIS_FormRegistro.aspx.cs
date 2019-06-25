@@ -882,7 +882,7 @@ namespace SisAdmisiones.Forms
                     {
                         if (axVarSes.Lee<string>("strOperacion").Equals("0"))
                         {
-                            libDatosPer.Estado = 0;//consolidado
+                            libDatosPer.Estado = 1;//Registrado
                             sqls[0] = libDatosPer.CadsqlInsert();
                             numsqls++;
                             sqls[1] = libtutor.cadSqlInsertar();
@@ -894,7 +894,7 @@ namespace SisAdmisiones.Forms
                         {
                             if (axVarSes.Lee<string>("strOperacion").Equals("1"))
                             {
-                                libDatosPer.Estado = 0;//consolidado
+                                libDatosPer.Estado = 1;//Registrado
                                 sqls[0] = libDatosPer.CadsqlActualizar();
                                 numsqls++;
                                 sqls[1] = libtutor.cadSqlActualizar();
@@ -984,7 +984,9 @@ namespace SisAdmisiones.Forms
             BD_Personas_Datos_Adicionales DatosAdicionales = new BD_Personas_Datos_Adicionales();
             BD_Personas_Datos_Adicionales DatosAdicionalesFamiliares = new BD_Personas_Datos_Adicionales();
             BD_Carreras_Estudiantes Estudiantes = new BD_Carreras_Estudiantes();
-            Estudiantes.StrConexion= axVarSes.Lee<string>("strConexion");
+            BD_Bachilleres Bachilleres = new BD_Bachilleres();
+            Bachilleres.StrConexion = axVarSes.Lee<string>("strConexion");
+            Estudiantes.StrConexion = axVarSes.Lee<string>("strConexion");
             Familiar.StrConexion = axVarSes.Lee<string>("strConexion");
             Personas.StrConexion = axVarSes.Lee<string>("strConexion");
             DatosAdicionales.StrConexion = axVarSes.Lee<string>("strConexion");
@@ -1066,6 +1068,14 @@ namespace SisAdmisiones.Forms
                         DatosAdicionales.NumSecPersona = Personas.NumSec;
                         CadSqls[numSqls] = DatosAdicionales.cadSqlInsertar();
                         numSqls++;
+                        Bachilleres.NumSecPersona = Personas.NumSec;
+                        Bachilleres.Tipo = Convert.ToInt16(ddlTipoColegio.SelectedValue);
+                        Bachilleres.NumSecColegio = Convert.ToInt64(ddlColegio.SelectedValue);
+                        Bachilleres.TipoLugarBachiller = Convert.ToInt16(ddlAreaColegio.SelectedValue);
+                        Bachilleres.TurnoColegio = Convert.ToInt16(ddlTurno.SelectedValue);
+                        Bachilleres.AnioEgreso = Convert.ToInt16(ddlAnio.SelectedValue);
+                        CadSqls[numSqls] = Bachilleres.sqlCadInsertar();//*****
+                        numSqls++;//***
                     }
                     else if (axVarSes.Lee<string>("strCrearNuevoAlumno").Equals("no"))
                     {
@@ -1089,9 +1099,21 @@ namespace SisAdmisiones.Forms
                         DatosAdicionales.NumSecPersona = Personas.NumSec;
                         CadSqls[numSqls] = DatosAdicionales.sqlCadActualizar();
                         numSqls++;
+                        Bachilleres.NumSecPersona = Personas.NumSec;
+                        if (!Bachilleres.Ver())
+                        {
+                            Bachilleres.Tipo = Convert.ToInt16(ddlTipoColegio.SelectedValue);
+                            Bachilleres.NumSecColegio = Convert.ToInt64(ddlColegio.SelectedValue);
+                            Bachilleres.TipoLugarBachiller = Convert.ToInt16(ddlAreaColegio.SelectedValue);
+                            Bachilleres.TurnoColegio = Convert.ToInt16(ddlTurno.SelectedValue);
+                            Bachilleres.AnioEgreso = Convert.ToInt16(ddlAnio.SelectedValue);
+                            CadSqls[numSqls] = Bachilleres.sqlCadInsertar();
+                            numSqls++;
+                        }
                     }
                     else
                     {
+                        blError = true;
                         pnMensajeError.Visible = true;
                         lblMensajeError.Text = "Error en validacion se Registro de estudiante";
                     }
@@ -1166,7 +1188,10 @@ namespace SisAdmisiones.Forms
                         CadSqls[numSqls] = Estudiantes.cadSqlInsertar();
                         numSqls++;
                     }
-
+                    DatosPer.Estado = 0;//consolidado
+                    CadSqls[numSqls] = DatosPer.CadsqlActualizar();
+                    numSqls++;
+                    
                     if (!blError && !AlumnoExiste && !FamiliarExiste)
                     {
                         btnEnviar.Visible = false;
@@ -1181,7 +1206,7 @@ namespace SisAdmisiones.Forms
                             Exportar_Reporte1();
                             VaciarBoxes();
                             axVarSes.Escribe("strMensajeExito", "Registro exitoso.");
-                            axVarSes.Escribe("strOperacion", "0");
+                            //axVarSes.Escribe("strOperacion", "0");
                             axVarSes.Escribe("strPersonaRegistrar", string.Empty);
                             axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
                             axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
@@ -1191,9 +1216,17 @@ namespace SisAdmisiones.Forms
                         }
                         else
                         {
+                            if (DatosPer.MarcarComoNoConsolidado())
+                            {
+                                lblMensajeError.Text = "Se almacenó el formulario pero no se pudo crear a la persona. Los datos no fueron consolidados. " + DatosPer.Mensaje;
+                            }
+                            else
+                            {
+                                lblMensajeError.Text = "Se almacenó el formulario pero no se pudo crear a la persona. Los datos no fueron consolidados. " + DatosPer.Mensaje;
+                            }
                             pnMensajeError.Visible = true;
                             pnMensajeOK.Visible = false;
-                            lblMensajeError.Text = "Se almacenó el formulario pero no se pudo crear a la persona. Los datos no fueron consolidados. " + DatosPer.Mensaje;
+                            
                         }
                         
                         
@@ -1217,8 +1250,6 @@ namespace SisAdmisiones.Forms
             {
                 upAlumnoExiste.Visible = true;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#modalAlumnoExistente').modal('show');", true);
-
-                // Inicio Prueba
                 pnMensajeError.Visible = false;
                 pnMensajeOK.Visible = false;
                 pnsugeridos.Visible = true;

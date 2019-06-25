@@ -214,6 +214,28 @@ namespace nsBD_GEN
                 return System.Convert.ToByte(OracleBD.DataTable.Rows[0]["valor"]);
         }
 
+        public string sqlCadInsertar()
+        {
+            strSql = "insert into BACHILLERES (  " +
+                     "num_sec_persona, " +
+                     "num_sec_colegio, " +
+                     "turno_colegio, " +
+                     "anio_egreso, " +
+                     "tipo, " +
+                     "tipo_lugar_bachiller " +
+                     ") " +
+                     "values " +
+                     "(" +
+                     _num_sec_persona.ToString() + ", " +
+                     _num_sec_colegio.ToString() + ", " +
+                     _turno_colegio.ToString() + ", " +
+                     _anio_egreso.ToString() + ", " +
+                     _tipo.ToString() + ", " +
+                     _tipo_lugar_bachiller.ToString() + " " +
+                     ")";
+            return strSql;
+        }
+
         #endregion
     }
 }
