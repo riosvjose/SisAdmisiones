@@ -445,7 +445,7 @@ namespace nsBD_GEN
         {
             strSql = "insert into personas_datos_adicionales " +
                         "(num_sec_persona, zona, barrio, avenida_calle, numero, edificio, piso, depto, " +
-                        "telefono, celular, email, email_ucb, interno_ucb, permitir_acceso_padres) " +
+                        "telefono, celular, email, email_ucb, interno_ucb, permitir_acceso_padres, tipo_lugar_nacimiento) " +
                         "values " +
                         "(" + _num_sec_persona.ToString() + ", " +
                         GeneralesSistema.IIf(_zona.Trim() == "", "NULL", "'" + _zona + "'") + ", " +
@@ -460,7 +460,8 @@ namespace nsBD_GEN
                         GeneralesSistema.IIf(_email.Trim() == "", "NULL", "'" + _email + "'") + ", " +
                         GeneralesSistema.IIf(_email_ucb.Trim() == "", "NULL", "'" + _email_ucb + "'") + ", " +
                         GeneralesSistema.IIf(string.IsNullOrEmpty(_interno_ucb.ToString()), "0", _interno_ucb.ToString().Trim()) + ", " +
-                        _permitir_acceso_padres.ToString().Trim() + ")";
+                        _permitir_acceso_padres.ToString().Trim() +","+
+                        GeneralesSistema.IIf(_tipo_lugar_nacimiento == 0, "NULL", _tipo_lugar_nacimiento)+ ")";
             return strSql;
         }
         #endregion
@@ -544,6 +545,7 @@ namespace nsBD_GEN
                         "email_ucb = " + GeneralesSistema.IIf(_email_ucb.Trim() == "", "NULL", "'" + _email_ucb + "'") + ", " +
                         "interno_ucb = " + GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _interno_ucb.ToString().Trim()) + ", " +
                         "permitir_acceso_padres = " + GeneralesSistema.IIf(_permitir_acceso_padres == 0, "NULL", _permitir_acceso_padres.ToString().Trim()) + " " +
+                        "TIPO_LUGAR_NACIMIENTO = " + GeneralesSistema.IIf(_tipo_lugar_nacimiento == 0, "NULL",TipoLugarNacimiento.ToString().Trim()) + " " +
                         "where num_sec_persona = " + _num_sec_persona.ToString();
             return strSql;
         }

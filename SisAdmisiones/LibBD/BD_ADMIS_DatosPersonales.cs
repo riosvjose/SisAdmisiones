@@ -60,6 +60,7 @@ namespace SisAdmisiones
         private short _turno = 0;
         private long _num_sec_localidad_bachillerato = 0;
         private short _area_bachillerato = 0;
+        private short _area_nacimiento = 0;//***
         private long _num_sec_persona = 0;
         private short _estado = 0;
         private long _num_sec_semestre = 0;
@@ -82,6 +83,7 @@ namespace SisAdmisiones
         public string SegundoApellido { get { return _segundo_apellido; } set { _segundo_apellido = value; } }
         public string Nombres { get { return _nombres; } set { _nombres = value; } }
         public short Genero { get { return _genero; } set { _genero = value; } }
+        public short AreaNacimiento { get { return _area_nacimiento; } set { _area_nacimiento = value; } }
         public short EstadoCivil { get { return _estado_civil; } set { _estado_civil = value; } }
         public short GrupoSangre { get { return _grupo_sangre; } set { _grupo_sangre = value; } }
         public long NumSecLocalidadNac { get { return _num_sec_localidad_nacimiento; } set { _num_sec_localidad_nacimiento = value; } }
@@ -158,6 +160,7 @@ namespace SisAdmisiones
             _turno = 0;
             _num_sec_localidad_bachillerato = 0;
             _area_bachillerato = 0;
+            _area_nacimiento = 0;
             _num_sec_persona = 0;
             _estado = 0;
             _num_sec_semestre = 0;
@@ -272,6 +275,7 @@ namespace SisAdmisiones
                     _num_sec_semestre = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_semestre"].ToString());
                     _num_sec_subdepartamento = Convert.ToInt64(OracleBD.DataTable.Rows[0]["NUM_SEC_SUBDEPARTAMENTO"].ToString());
                     _observaciones = OracleBD.DataTable.Rows[0]["OBSERVACIONES"].ToString();
+                    _area_nacimiento = Convert.ToInt16(OracleBD.DataTable.Rows[0]["TIPO_LUGAR_NACIMIENTO"].ToString());
                     _usuario_registro = OracleBD.DataTable.Rows[0]["USUARIO_REGISTRO"].ToString();
                     _fecha_registro = OracleBD.DataTable.Rows[0]["FECHA_REGISTRO_FORMATO"].ToString();
                 }
@@ -440,7 +444,7 @@ namespace SisAdmisiones
                        "(NUM_SEC_DATOS_PER, PRIMER_APELLIDO, NOMBRES, SEGUNDO_APELLIDO, DOC_IDENTIDAD, TIPO_DOC, GENERO, GRUPO_SANGUINEO, ESTADO_CIVIL, TIPO_DISCAPACIDAD," +
                        " AVENIDA_CALLE, NUMERO, ZONA, EDIFICIO, PISO, DEPTO,TELEFONO, CELULAR, EMAIL, VIVE_CON, FECHA_NACIMIENTO, NUM_SEC_LOCALIDAD_NACIMIENTO, " +
                        " NUM_SEC_COLEGIO, ANIO_EGRESO, TIPO_COLEGIO, TURNO, NUM_SEC_LOCALIDAD_BACHILLERATO, AREA_BACHILLERATO,OBSERVACIONES, NUM_SEC_PERSONA," +
-                       " ESTADO, NUM_SEC_SUBDEPARTAMENTO, num_sec_semestre, NUM_SEC_NACIONALIDAD, FECHA_REGISTRO, USUARIO_REGISTRO) " +
+                       " ESTADO, NUM_SEC_SUBDEPARTAMENTO, num_sec_semestre, NUM_SEC_NACIONALIDAD, TIPO_LUGAR_NACIMIENTO, FECHA_REGISTRO, USUARIO_REGISTRO) " +
                        "values " +
                        "(" + _num_sec_datos_personales + ", " +
                        "upper('" + _primer_apellido + "')," +
@@ -476,6 +480,7 @@ namespace SisAdmisiones
                        _num_sec_subdepartamento + "," +
                        _num_sec_semestre + "," +
                        _num_sec_nacionalidad + "," +
+                       _area_nacimiento + "," +
                        " sysdate, " +
                        "upper('" + _usuario_registro + "'))";
             return strSql;
@@ -517,6 +522,7 @@ namespace SisAdmisiones
                        ", NUM_SEC_SUBDEPARTAMENTO=" + _num_sec_subdepartamento +
                        ", NUM_SEC_SEMESTRE=" + _num_sec_semestre +
                        ", NUM_SEC_NACIONALIDAD=" + _num_sec_nacionalidad +
+                       ", TIPO_LUGAR_NACIMIENTO=" + _area_nacimiento +
                        ", FECHA_REGISTRO=sysdate" +
                        ", USUARIO_REGISTRO=" + " upper('" + _usuario_registro + "')" +
                        " where num_sec_datos_per= " + _num_sec_datos_personales;

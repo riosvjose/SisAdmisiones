@@ -17,21 +17,16 @@ namespace SisAdmisiones
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            // SERVIDOR PRUEBA UCBP ** copiar valores en form salir
-            Session["strUsuario"] = "aespinar";
-            Session["UsuarioLogin"] = "aespinar";
-            Session["strUsuarioBD"] = "aespinar";
-            Session["strPassword"] = "12345";
+            // SERVIDOR ** copiar valores en form salir
+            Session["strUsuario"] = "USR_SIS_ADMISIONES";
+            Session["UsuarioLogin"] = "USR_SIS_ADMISIONES";
+            Session["strUsuarioBD"] = "USR_SIS_ADMISIONES";
+            Session["strPassword"] = "vhtmP.37609_c";
             Session["strServidor"] = "ucbp";
-            
+            //Session["strServidor"] = "ucbl";
+
             Session["EnviarNotificaciones"] = false;
             Session["Path"] = "";
-            // SERVIDOR PRODUCCIÓN UCBL ** copiar valores en form salir
-            //Session["strUsuario"] = "USR_DOCENTES_INTERNET";
-            //Session["strUsuarioBD"] = "USR_DOCENTES_INTERNET";
-            //Session["strPassword"] = "sdjUCB-621#7";
-            //Session["strServidor"] = "ucbl";
-            //Session["EnviarNotificaciones"] = true;
             Session["strConexion"] = "Data Source= " + Session["strServidor"] + ";Password=" + Session["strPassword"] + ";User ID=" + Session["strUsuario"] + ";";
 
 

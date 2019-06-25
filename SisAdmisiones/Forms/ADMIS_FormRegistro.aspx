@@ -264,6 +264,14 @@
                                     <strong><asp:Label ID="lblCiudadNac" runat="server">Ciudad de Nacimiento</asp:Label></strong>
                                 </div>
                             </div>
+                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="col-xs-12">
+                                        <asp:DropDownList ID="ddlAreaNacimiento" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                    </div>
+                                    <div class="col-xs-12 text-center">
+                                        <strong><asp:Label ID="lblAreaNacimiento" runat="server">En el área</asp:Label></strong>
+                                    </div>
+                                </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
                                       <asp:DropDownList ID="ddlNacionalidad" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
@@ -758,7 +766,6 @@
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblTelefonoContacto2" runat="server">Teléfono de referencia 2</asp:Label></strong>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="tbTelefonoContacto2" CssClass="text-danger" ErrorMessage="El campo 'Telefono de referencia 2' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>

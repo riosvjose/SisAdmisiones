@@ -499,6 +499,24 @@ namespace SisAdmisiones.Forms {
         protected global::System.Web.UI.WebControls.Label lblCiudadNac;
         
         /// <summary>
+        /// Control ddlAreaNacimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAreaNacimiento;
+        
+        /// <summary>
+        /// Control lblAreaNacimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAreaNacimiento;
+        
+        /// <summary>
         /// Control ddlNacionalidad.
         /// </summary>
         /// <remarks>
@@ -1712,15 +1730,6 @@ namespace SisAdmisiones.Forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTelefonoContacto2;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator30.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator30;
         
         /// <summary>
         /// Control pnEnviar.

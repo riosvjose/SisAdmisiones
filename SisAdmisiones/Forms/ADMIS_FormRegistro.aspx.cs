@@ -73,6 +73,7 @@ namespace SisAdmisiones.Forms
                 CargarDdlTipoDoc();
                 CargarDdlAnios();
                 CargarDdlTipoAdmision();
+                CargarDdlAreaNac();
 
                 if (!string.IsNullOrEmpty(axVarSes.Lee<string>("strMensajeExito")))
                 {
@@ -237,6 +238,15 @@ namespace SisAdmisiones.Forms
             ddlGeneroTutor.DataTextField = "DESCRIPCION";
             ddlGeneroTutor.DataValueField = "VALOR";
             ddlGeneroTutor.DataBind();
+        }
+        public void CargarDdlAreaNac()
+        {
+            BD_Dominios libDominios = new BD_Dominios();
+            libDominios.Dominio = "TIPO_LUGAR";
+            ddlAreaNacimiento.DataSource = libDominios.DTDominiosAbr("0", axVarSes.Lee<string>("strConexion"));
+            ddlAreaNacimiento.DataTextField = "DESCRIPCION";
+            ddlAreaNacimiento.DataValueField = "VALOR";
+            ddlAreaNacimiento.DataBind();
         }
         public void CargarDdlPaisNac()
         {
@@ -419,7 +429,7 @@ namespace SisAdmisiones.Forms
                 tbEmail.Text = libDatosPer.Email;
                 ddlViveCon.SelectedValue = libDatosPer.ViveCon.ToString();
                 tbFechaNac.Text = libDatosPer.FechaNacimiento;
-                
+                ddlAreaNacimiento.SelectedValue = libDatosPer.AreaNacimiento.ToString();
                 BD_Localidades liblocalidades = new BD_Localidades();
                 liblocalidades.StrConexion = axVarSes.Lee<string>("strConexion");
                 liblocalidades.NumSec = libDatosPer.NumSecLocalidadNac;
@@ -783,7 +793,7 @@ namespace SisAdmisiones.Forms
                     libDatosPer.Edificio = tbNombreEdificio.Text;
                     libDatosPer.Piso = tbPiso.Text;
                     libDatosPer.Depto = tbNumeroDepto.Text;
-
+                    libDatosPer.AreaNacimiento = Convert.ToInt16(ddlAreaNacimiento.SelectedValue);
                     Match me = Regex.Match(tbTelefonoDomicilio.Text, "(\\d+)");
                     if (me.Success)
                     {
@@ -951,8 +961,8 @@ namespace SisAdmisiones.Forms
         protected void rbContactoEmerTutorSi_CheckedChanged(object sender, EventArgs e)
         {
             tbNombreCompleto.Text= tbNombreTutor.Text.Trim() + " " + tbPrimerApTutor.Text.Trim() + " " + tbSegundoApTutor.Text.Trim();
-            tbTelefonoContacto1.Text = tbTelefonoTutor.Text;
-            tbTelefonoContacto2.Text = tbCelularTutor.Text;
+            tbTelefonoContacto2.Text = tbTelefonoTutor.Text;
+            tbTelefonoContacto1.Text = tbCelularTutor.Text;
         }
 
         protected void rbContactoEmerTutorNo_CheckedChanged(object sender, EventArgs e)
@@ -1010,6 +1020,8 @@ namespace SisAdmisiones.Forms
             DatosAdicionales.Edificio = DatosPer.Edificio;
             DatosAdicionales.Depto = DatosPer.Depto;
             DatosAdicionales.Piso = DatosPer.Piso;
+            DatosAdicionales.TipoLugarNacimiento =DatosPer.AreaNacimiento;
+
 
             Familiar.CedulaIdentidad = Tutor.DocIdentidad;
             Match me = Regex.Match(Tutor.DocIdentidad, "(\\d+)");

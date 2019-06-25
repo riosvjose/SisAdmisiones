@@ -25,19 +25,12 @@ namespace SisAdmisiones.Forms
         protected void Page_Load(object sender, EventArgs e)
         {
             // SERVIDOR PRUEBA UCBP ** copiar valores en form salir
-            Session["strUsuario"] = "ucbadmin";
-            Session["UsuarioLogin"] = "ucbadmin";
-            Session["strUsuarioBD"] = "ucbadmin";
-            Session["strPassword"] = "Prueba_2192";
+            Session["strUsuario"] = "USR_SIS_ADMISIONES";
+            Session["UsuarioLogin"] = "USR_SIS_ADMISIONES";
+            Session["strUsuarioBD"] = "USR_SIS_ADMISIONES";
+            Session["strPassword"] = "vhtmP.37609_c";
             Session["strServidor"] = "ucbp";
-
-            // SERVIDOR PRODUCCIÓN UCBL ** copiar valores en form salir
-            //Session["strUsuario"] = "USR_DOCENTES_INTERNET";
-            //Session["strUsuarioBD"] = "USR_DOCENTES_INTERNET";
-            //Session["strPassword"] = "sdjUCB-621#7";
             //Session["strServidor"] = "ucbl";
-            //Session["EnviarNotificaciones"] = true;
-
 
             Session["strRol"] = "0"; // 1 administrativo, 0 externo
             Session["strOperacion"] = "0"; // 0 registrar, 1 consolidar
