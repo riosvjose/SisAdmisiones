@@ -384,7 +384,7 @@
                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender12" runat="server" BehaviorID="tbCelular_FilteredTextBoxExtender" TargetControlID="tbCelular" ValidChars="1234567890+-" />
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <strong><asp:Label ID="Label4" runat="server">Celular</asp:Label></strong>
+                                    <strong><asp:Label ID="Label4" runat="server">N° de celular</asp:Label></strong>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="tbCelular" CssClass="text-danger" ErrorMessage="El campo 'Celular' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
@@ -477,7 +477,7 @@
                                      <asp:DropDownList ID="ddlAnio" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <strong><asp:Label ID="lblAnio" runat="server">Año</asp:Label></strong>
+                                    <strong><asp:Label ID="lblAnio" runat="server">Año egreso</asp:Label></strong>
                                 </div>
                             </div>
                             </div>
@@ -499,7 +499,7 @@
                                     <br />
                             </div>
                         </div>
-                        <div class="row mb-3">
+                        <div class="row mb-5">
                             <div class="col-xs-12">
                                 <div class="col-xs-12 col-sm-5 col-md-3 col-lg-2 text-center">
                                     <strong><asp:Label ID="lblParentescoTutor" runat="server">Parentesco</asp:Label></strong>
@@ -507,15 +507,16 @@
                                 <div class="col-sm-5 col-md-4 col-lg-3">
                                        <asp:DropDownList ID="ddlParentesco" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
                                 </div>
-                                <div class="col-sm-5 col-md-4 col-lg-3">
-                                      <div class="col-xs-12 text-center">
+                                <div class="col-sm-5 col-md-4 col-lg-2 text-right">
+                                    <strong><asp:Label ID="lblAutseguimiento" runat="server">Autorizar seguimiento</asp:Label></strong>
+                                </div>
+                                <div class="col-sm-5 col-md-3 col-lg-2">
+                                      <div class="col-xs-6 text-center">
                                         <asp:RadioButton id="rbSi" GroupName="Seguimiento" Text="Si" runat="server" Checked="true"/>
-                                          <br />
+                                      </div>   
+                                      <div class="col-xs-6 text-center">
                                         <asp:RadioButton id="rbNo" GroupName="Seguimiento" Text="No" runat="server"/>
                                     </div>
-                                    <div class="col-xs-12 text-center">
-                                        <strong><asp:Label ID="lblAutseguimiento" runat="server">Autorizar seguimiento</asp:Label></strong>
-                                </div>
                                 </div>
                             </div>
                         </div>
@@ -572,10 +573,10 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:DropDownList ID="ddlGeneroTutor" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                      <asp:DropDownList ID="ddlGeneroTutor" runat="server" CssClass="form-control" AutoPostBack="True" ></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <strong><asp:Label ID="lblGeneroTuror" runat="server" >Género</asp:Label></strong>
+                                    <strong><asp:Label ID="lblGeneroTuror" runat="server">Género</asp:Label></strong>
                                 </div>
                             </div>
                         </div>
@@ -658,7 +659,7 @@
                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender24" runat="server" BehaviorID="tbCelularTutor_FilteredTextBoxExtender" TargetControlID="tbCelularTutor" ValidChars="1234567890-+"/>  
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <strong><asp:Label ID="lblCelularTutor" runat="server">Celular</asp:Label></strong>
+                                    <strong><asp:Label ID="lblCelularTutor" runat="server">N° de celular</asp:Label></strong>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="tbCelularTutor" CssClass="text-danger" ErrorMessage="El campo 'Celular' en 'Datos tutor' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>

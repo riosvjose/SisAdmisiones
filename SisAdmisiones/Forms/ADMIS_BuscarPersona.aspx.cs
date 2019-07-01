@@ -85,6 +85,7 @@ namespace SisAdmisiones.Forms
             {
                 axVarSes.Escribe("strPersonaRegistrar", gvUsuarios.Rows[indice].Cells[0].Text);
                 axVarSes.Escribe("strOperacion", "1");
+                axVarSes.Escribe("strConsolidado", "0");
                 axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
                 axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
                 axVarSes.Escribe("strNSAlumno", string.Empty);

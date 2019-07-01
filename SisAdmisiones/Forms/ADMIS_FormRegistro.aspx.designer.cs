@@ -1057,6 +1057,15 @@ namespace SisAdmisiones.Forms {
         protected global::System.Web.UI.WebControls.DropDownList ddlParentesco;
         
         /// <summary>
+        /// Control lblAutseguimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAutseguimiento;
+        
+        /// <summary>
         /// Control rbSi.
         /// </summary>
         /// <remarks>
@@ -1073,15 +1082,6 @@ namespace SisAdmisiones.Forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbNo;
-        
-        /// <summary>
-        /// Control lblAutseguimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAutseguimiento;
         
         /// <summary>
         /// Control tbPrimerApTutor.

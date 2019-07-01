@@ -220,6 +220,7 @@ namespace SisAdmisiones
                     _institucion_trabajo = OracleBD.DataTable.Rows[0]["INSTITUCION_TRABAJO"].ToString();
                     _cargo = OracleBD.DataTable.Rows[0]["CARGO"].ToString();
                     _telefono_trabajo = OracleBD.DataTable.Rows[0]["TELEFONO_TRABAJO"].ToString();
+                    _autorizacion_seguimiento = Convert.ToInt16(OracleBD.DataTable.Rows[0]["autorizacion_seguimiento"].ToString());
                     _email = OracleBD.DataTable.Rows[0]["CORREO_ELECTRONICO"].ToString();
                     _num_sec_persona = Convert.ToInt64(OracleBD.DataTable.Rows[0]["NUM_SEC_PERSONA"].ToString());
                     _usuario_registro = OracleBD.DataTable.Rows[0]["USUARIO_REGISTRO"].ToString();

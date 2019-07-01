@@ -58,6 +58,7 @@ namespace SisAdmisiones.Forms
         {
             axVarSes.Escribe("strPersonaRegistrar","0");
             axVarSes.Escribe("strOperacion", "0");
+            axVarSes.Escribe("strConsolidado", "0");
             Response.Redirect("ADMIS_FormRegistro.aspx");
         }
     }

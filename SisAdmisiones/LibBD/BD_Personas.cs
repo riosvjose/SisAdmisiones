@@ -758,8 +758,24 @@ namespace nsBD_GEN
                     "(" + _num_sec.ToString().Trim() + ", " + GeneralesSistema.IIf(_tipo.ToString().Trim() == "", "NULL", _tipo.ToString()) + ", " + GeneralesSistema.IIf(_doc_identidad.ToString().Trim() == "", "0", _doc_identidad) +
                     ", " + GeneralesSistema.IIf(_cedula_identidad.ToString().Trim() == "", "NULL", "'" + _cedula_identidad.ToUpper() + "'") + ", " + GeneralesSistema.IIf(_tipo_doc.ToString().Trim() == "", "NULL",  _tipo_doc )  + ", " +
                     "'" + _ap_paterno.ToUpper().Trim() + "', '" + _ap_materno.ToUpper().Trim() + "', '" + _nombres.ToUpper().Trim() + "', " +
-                    "'" + _apellido_casada.ToUpper().Trim() + "', " + GeneralesSistema.IIf(_sexo.ToString().Trim() == "0", "NULL", _sexo.ToString()) + ", " + GeneralesSistema.IIf(_estado_civil.ToString().Trim() == "0", "NULL", _estado_civil) + ", " +
+                    "'" + _apellido_casada.ToUpper().Trim() + "', " + _sexo.ToString() + ", " + GeneralesSistema.IIf(_estado_civil.ToString().Trim() == "0", "NULL", _estado_civil) + ", " +
                     GeneralesSistema.IIf(_tipo_sangre.ToString().Trim() == "0", "NULL", _tipo_sangre) + ", " + GeneralesSistema.IIf(_num_sec_localidad_nac.ToString().Trim() == "0", "NULL", _num_sec_localidad_nac) + ", "+ GeneralesSistema.IIf(_fecha_nacimiento.ToString().Trim() == "", "NULL", "to_date('" + _fecha_nacimiento.ToUpper().Trim() + "','dd/mm/yyyy')")+", " +
+                    GeneralesSistema.IIf(_num_sec_nacionalidad.ToString().Trim() == "0", "NULL", _num_sec_nacionalidad) + ", " + GeneralesSistema.IIf(_lugar_expedicion_ci.ToString().Trim() == "0", "NULL", _lugar_expedicion_ci) + ")";
+            return strSql;
+        }
+        public string sqlCadInsertarFamiliar()
+        {
+            strSql = "insert into personas " +
+                    "(num_sec, tipo, doc_identidad, cedula_identidad, tipo_doc, " +
+                    "ap_paterno, ap_materno, nombres, apellido_casada, sexo, estado_civil, " +
+                    "tipo_sangre, num_sec_localidad_nacimiento, fecha_nacimiento, " +
+                    "num_sec_nacionalidad, lugar_expedicion_ci) " +
+                    "values " +
+                    "(" + _num_sec.ToString().Trim() + ", " + GeneralesSistema.IIf(_tipo.ToString().Trim() == "", "NULL", _tipo.ToString()) + ", " + GeneralesSistema.IIf(_doc_identidad.ToString().Trim() == "", "0", _doc_identidad) +
+                    ", " + GeneralesSistema.IIf(_cedula_identidad.ToString().Trim() == "", "NULL", "'" + _cedula_identidad.ToUpper() + "'") + ", " + GeneralesSistema.IIf(_tipo_doc.ToString().Trim() == "", "NULL", _tipo_doc) + ", " +
+                    "'" + _ap_paterno.ToUpper().Trim() + "', '" + _ap_materno.ToUpper().Trim() + "', '" + _nombres.ToUpper().Trim() + "', " +
+                    "'" + _apellido_casada.ToUpper().Trim() + "', " +"NULL" + ", " + GeneralesSistema.IIf(_estado_civil.ToString().Trim() == "0", "NULL", _estado_civil) + ", " +
+                    GeneralesSistema.IIf(_tipo_sangre.ToString().Trim() == "0", "NULL", _tipo_sangre) + ", " + GeneralesSistema.IIf(_num_sec_localidad_nac.ToString().Trim() == "0", "NULL", _num_sec_localidad_nac) + ", " + GeneralesSistema.IIf(_fecha_nacimiento.ToString().Trim() == "", "NULL", "to_date('" + _fecha_nacimiento.ToUpper().Trim() + "','dd/mm/yyyy')") + ", " +
                     GeneralesSistema.IIf(_num_sec_nacionalidad.ToString().Trim() == "0", "NULL", _num_sec_nacionalidad) + ", " + GeneralesSistema.IIf(_lugar_expedicion_ci.ToString().Trim() == "0", "NULL", _lugar_expedicion_ci) + ")";
             return strSql;
         }

@@ -802,6 +802,21 @@ namespace nsBD_GEN
             OracleBD.sqlDataTable();
             return OracleBD.DataTable;
         }
+
+        public string strCarrerasSubdepto()
+        {
+            strSql = "SELECT num_sec FROM carreras WHERE num_sec_subdepartamento="+ _numsecsubdepartamento;
+            OracleBD.StrConexion = _strconexion;
+            OracleBD.Sql = strSql;
+            OracleBD.sqlDataTable();
+            string carrera = string.Empty;
+            if (OracleBD.DataTable.Rows.Count>0)
+            {
+                carrera = OracleBD.DataTable.Rows[0][0].ToString();
+            }
+            return carrera;
+        }
+       
         #endregion
     }
 }

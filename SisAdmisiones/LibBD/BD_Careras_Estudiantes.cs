@@ -231,6 +231,17 @@ namespace nsBD_GEN
             else
                 return true;
         }
+
+        public string strSqlInsertarCarrerasSubdepto()
+        {
+            strSql = "insert into alumnos_carreras " +
+                    " (num_sec_persona, num_sec_carrera, num_sec_semestre_ingreso, activo, estado, tipo_admision, num_sec_pensum_ingreso, " +
+                    " fecha_ingreso_carr, motivo, observaciones, num_sec_pensum_egreso) " +
+                    " values " +
+                    " (" + _num_sec_persona + ", "+_num_sec_carrera+", "+_num_sec_semestre+", 1, 1, 1, "+_num_sec_pensum_ingreso+", " +
+                    " trunc(sysdate), 1, null, "+"null"+")";
+            return strSql;
+        }
         #endregion
     }
 }

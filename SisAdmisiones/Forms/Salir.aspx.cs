@@ -29,8 +29,8 @@ namespace SisAdmisiones.Forms
             Session["UsuarioLogin"] = "USR_SIS_ADMISIONES";
             Session["strUsuarioBD"] = "USR_SIS_ADMISIONES";
             Session["strPassword"] = "vhtmP.37609_c";
-            Session["strServidor"] = "ucbp";
-            //Session["strServidor"] = "ucbl";
+            //Session["strServidor"] = "ucbp";
+            Session["strServidor"] = "ucbl";
 
             Session["strRol"] = "0"; // 1 administrativo, 0 externo
             Session["strOperacion"] = "0"; // 0 registrar, 1 consolidar
