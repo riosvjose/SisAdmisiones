@@ -946,13 +946,13 @@ namespace SisAdmisiones.Forms
                                     if (axVarSes.Lee<string>("strOperacion").Equals("1"))
                                     {
                                         libDatosPer.Estado = 1;//Registrado
+                                        libDatosPer.NumSecSemestre = Convert.ToInt64(ddlSemestre.SelectedValue);
                                         sqls[0] = libDatosPer.CadsqlActualizar();
                                         numsqls++;
                                         sqls[1] = libtutor.cadSqlActualizar();
                                         numsqls++;
                                         sqls[2] = libContacto.cadSqlActualizar();
                                         numsqls++;
-
                                     }
                                 }
                                 if (libDatosPer.InsertarVarios(sqls, numsqls))
