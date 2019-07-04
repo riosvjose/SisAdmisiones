@@ -617,7 +617,7 @@ namespace SisAdmisiones.Forms
             rwFila["ViveCon"] = ddlViveCon.SelectedItem;
             rwFila["ColegioEgreso"] = ddlColegio.SelectedItem;
             rwFila["AnioEgreso"] = ddlAnio.SelectedItem;
-            rwFila["TipoColegio"] = ddlAnio.SelectedItem;
+            rwFila["TipoColegio"] = ddlTipoColegio.SelectedItem;
             rwFila["TurnoColegio"] = ddlTurno.SelectedItem;
             rwFila["PaisBach"] = ddlPaisNac.SelectedItem;
             rwFila["CiudadBach"] = ddlCiudadBach.SelectedItem;
