@@ -801,19 +801,11 @@ namespace nsBD_GEN
             return strSql;
         }
 
-        public string sqlCadActualizarSiFamiliar()
+        public string sqlCadActualizarTipoPersona()
         {
             strSql = "update personas " +
-                    "set tipo = " + GeneralesSistema.IIf(_tipo.ToString().Trim() == "", "NULL", "'" + _tipo + "'") + ", " +
-                    "cedula_identidad = " + GeneralesSistema.IIf(_cedula_identidad.ToString().Trim() == "", "NULL", "'" + _cedula_identidad + "'") + ", " +
-                    "doc_identidad = " + GeneralesSistema.IIf(_doc_identidad.ToString().Trim() == "", "NULL", "'" + _doc_identidad + "'")  + ", " +
-                    "tipo_doc = " + GeneralesSistema.IIf(_tipo_doc.ToString().Trim() == "", "NULL", "'" + _tipo_doc + "'")     .ToString() + ", " +
-                    "ap_paterno = '" + GeneralesSistema.IIf(_ap_paterno.ToString().Trim() == "", "NULL", "'" + _ap_paterno + "'")  + "', " +
-                    "ap_materno = '" + GeneralesSistema.IIf(_ap_materno.ToString().Trim() == "", "NULL", "'" + _ap_materno + "'") + "', " +
-                    "nombres = '" + GeneralesSistema.IIf(_nombres.ToString().Trim() == "", "NULL", "'" + _nombres + "'") + "', " +
-                    "sexo = " + GeneralesSistema.IIf(_sexo.ToString().Trim() == "", "NULL", "'" + _sexo + "'")  + ", " +
-                    "estado_civil = " + GeneralesSistema.IIf(_estado_civil.ToString().Trim() == "", "NULL", "'" + _estado_civil + "'")  + ", " +
-                    "where num_sec = " + _num_sec.ToString();
+                    " set tipo = " + GeneralesSistema.IIf(_tipo.ToString().Trim() == "", "0", _tipo ) + 
+                    " where num_sec = " + _num_sec.ToString();
             return strSql;
         }
 

@@ -1179,6 +1179,8 @@ namespace SisAdmisiones.Forms
                         DatosAdicionales.NumSecPersona = Personas.NumSec;
                         CadSqls[numSqls] = DatosAdicionales.sqlCadActualizar();
                         numSqls++;
+                        CadSqls[numSqls] = Personas.sqlCadActualizarTipoPersona();
+                        numSqls++;
                         long aux = Personas.NumSec; //se usa en caso de que no exista registro en bachilleres porque la busqueda vacia los datos
                         Bachilleres.NumSecPersona = Personas.NumSec;
                         if (!Bachilleres.Ver())
@@ -1226,16 +1228,18 @@ namespace SisAdmisiones.Forms
                         GEN_AutenticacionBD aut = new GEN_AutenticacionBD();
                         if (!aut.CumpleTipoPermitido(PersonaAux.Tipo, 5))
                         {
-                            Personas.Tipo = Convert.ToInt16(PersonaAux.Tipo + 32);
+                            Familiar.Tipo = Convert.ToInt16(PersonaAux.Tipo + 32);
                         }
                         else
                         {
-                            Personas.Tipo = PersonaAux.Tipo;
+                            Familiar.Tipo = PersonaAux.Tipo;
                         }
                         CadSqls[numSqls] = Tutor.cadSqlActualizar();
                         numSqls++;
                         DatosAdicionalesFamiliares.NumSecPersona = Familiar.NumSec;
                         CadSqls[numSqls] = DatosAdicionalesFamiliares.sqlCadActualizar();
+                        numSqls++;
+                        CadSqls[numSqls] = Familiar.sqlCadActualizarTipoPersona();
                         numSqls++;
                     }
                     else

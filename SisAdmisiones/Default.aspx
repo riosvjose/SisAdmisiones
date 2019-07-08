@@ -117,8 +117,8 @@
                             <div class="col-xs-12">
                                 <div class="text-right">
                                     <br />
-                                    <asp:Label ID="Label1" runat="server" Text="Version 2019.02" CssClass="text-info small"></asp:Label><br />
-                                    <asp:Label ID="Label2" runat="server" Text="Fecha Publicacion: 03/07/2019" CssClass="text-info small"></asp:Label>
+                                    <asp:Label ID="Label1" runat="server" Text="Version 2019.03" CssClass="text-info small"></asp:Label><br />
+                                    <asp:Label ID="Label2" runat="server" Text="Fecha Publicacion: 08/07/2019" CssClass="text-info small"></asp:Label>
                                 </div>
                             </div>
                         </div>
