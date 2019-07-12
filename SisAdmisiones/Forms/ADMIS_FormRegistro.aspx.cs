@@ -342,6 +342,7 @@ namespace SisAdmisiones.Forms
                 ddlEstadoBach.DataTextField = "nombre";
                 ddlEstadoBach.DataValueField = "num_sec";
                 ddlEstadoBach.DataBind();
+                
             }
             else
             {
@@ -358,6 +359,11 @@ namespace SisAdmisiones.Forms
                 ddlCiudadBach.DataTextField = "nombre";
                 ddlCiudadBach.DataValueField = "num_sec";
                 ddlCiudadBach.DataBind();
+                if (!string.IsNullOrEmpty(ddlCiudadBach.SelectedValue))
+                {
+                    CargarDdlColegios();
+                }
+
             }
             else
             {
