@@ -802,7 +802,7 @@ namespace SisAdmisiones.Forms
             pnMensajeOK.Visible = false;
             if (!axVarSes.Lee<string>("strConsolidado").Equals("1"))
             {
-                if (((axVarSes.Lee<string>("strOperacion").Equals("1")) && (tbObservaciones.Text.Length < 500)) || (axVarSes.Lee<string>("strOperacion").Equals("0")))
+                if (((axVarSes.Lee<string>("strRol").Equals("1")) && (tbObservaciones.Text.Length < 500)) || (axVarSes.Lee<string>("strRol").Equals("0")))
                 {
                     if (!tbTelefonoContacto1.Text.Equals(tbTelefonoContacto2.Text))
                     {

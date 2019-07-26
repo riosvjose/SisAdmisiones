@@ -63,6 +63,11 @@ namespace SisAdmisiones.Forms
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            axVarSes.Escribe("strPersonaRegistrar", string.Empty);
+            axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
+            axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
+            axVarSes.Escribe("strNSAlumno", string.Empty);
+            axVarSes.Escribe("strNSFamiliar", string.Empty);
             pnMensajeError.Visible = false;
             pnMensajeOK.Visible = false;
             pnsugeridos.Visible = true;

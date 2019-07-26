@@ -56,9 +56,13 @@ namespace SisAdmisiones.Forms
 
         protected void lnkbtnRegistarNuevo_Click(object sender, EventArgs e)
         {
-            axVarSes.Escribe("strPersonaRegistrar","0");
             axVarSes.Escribe("strOperacion", "0");
             axVarSes.Escribe("strConsolidado", "0");
+            axVarSes.Escribe("strPersonaRegistrar", string.Empty);
+            axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
+            axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
+            axVarSes.Escribe("strNSAlumno", string.Empty);
+            axVarSes.Escribe("strNSFamiliar", string.Empty);
             Response.Redirect("ADMIS_FormRegistro.aspx");
         }
     }
