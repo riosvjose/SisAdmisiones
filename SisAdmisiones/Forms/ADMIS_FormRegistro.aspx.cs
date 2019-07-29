@@ -625,7 +625,7 @@ namespace SisAdmisiones.Forms
             rwFila["AnioEgreso"] = ddlAnio.SelectedItem;
             rwFila["TipoColegio"] = ddlTipoColegio.SelectedItem;
             rwFila["TurnoColegio"] = ddlTurno.SelectedItem;
-            rwFila["PaisBach"] = ddlPaisNac.SelectedItem;
+            rwFila["PaisBach"] = ddlPaisBach.SelectedItem;
             rwFila["CiudadBach"] = ddlCiudadBach.SelectedItem;
             rwFila["Discapacidad"] = ddlDiscapacidad.SelectedItem;
             
