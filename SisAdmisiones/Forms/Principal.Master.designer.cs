@@ -49,6 +49,15 @@ namespace SisAdmisiones.Forms {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor sbInicio;
         
         /// <summary>
+        /// Control lnkbtnBuscarPersona.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnBuscarPersona;
+        
+        /// <summary>
         /// Control sbBuscarPersona.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace SisAdmisiones.Forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkbtnRegistarNuevo;
+        
+        /// <summary>
+        /// Control lnkbtnReimprimir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnReimprimir;
         
         /// <summary>
         /// Control sbCerrarSesion.

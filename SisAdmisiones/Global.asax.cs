@@ -74,6 +74,7 @@ namespace SisAdmisiones
             Session["strNSAlumno"] = ""; // NumSec persona del estudiante si ya estaba registrado
             Session["strNSFamiliar"] = ""; // NumSec persona del familiar si ya estaba registrado
             Session["strConsolidado"] = ""; // 1 indica que el registro ha sido consolidado, 0 que no hay datos a consolidar
+            Session["strReimprimir"] = "0"; // 1 indica que se reimprimirá registro, 0 que se realizara busqueda para consolidar
 
             // ***** PARAMETROS ENVIO DE CORREOS DE TAREAS ÚNICAS
             Session["Email_IPHost"] = "";

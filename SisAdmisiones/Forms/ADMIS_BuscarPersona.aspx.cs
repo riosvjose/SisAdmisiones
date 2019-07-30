@@ -72,11 +72,25 @@ namespace SisAdmisiones.Forms
             pnMensajeOK.Visible = false;
             pnsugeridos.Visible = true;
             libDatos.StrConexion = axVarSes.Lee<string>("strConexion");
-            gvUsuarios.Visible = true;
-            gvUsuarios.Columns[0].Visible = true;
-            gvUsuarios.DataSource = libDatos.dtObtenerPersonas(tbusuario.Text);
-            gvUsuarios.DataBind();
-            gvUsuarios.Columns[0].Visible = false;
+            if (axVarSes.Lee<string>("strReimprimir").Equals("0"))
+            {
+                gvUsuarios.Visible = true;
+                gvUsuarios.Columns[0].Visible = true;
+                gvUsuarios.DataSource = libDatos.dtObtenerPersonas(tbusuario.Text);
+                gvUsuarios.DataBind();
+                gvUsuarios.Columns[0].Visible = false;
+            }
+            else
+            {
+                gvUsuarios.Visible = true;
+                gvUsuarios.Columns[0].Visible = true;
+                gvUsuarios.Columns[6].Visible = true;
+                gvUsuarios.DataSource = libDatos.dtObtenerPersonasConsolidadas(tbusuario.Text);
+                gvUsuarios.DataBind();
+                gvUsuarios.Columns[0].Visible = false;
+                gvUsuarios.Columns[6].Visible = false;
+
+            }
         }
         protected void btnVolverMenu_Click(object sender, EventArgs e)
         {
@@ -88,6 +102,7 @@ namespace SisAdmisiones.Forms
             int indice = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "ver")
             {
+
                 axVarSes.Escribe("strPersonaRegistrar", gvUsuarios.Rows[indice].Cells[0].Text);
                 axVarSes.Escribe("strOperacion", "1");
                 axVarSes.Escribe("strConsolidado", "0");
@@ -95,7 +110,10 @@ namespace SisAdmisiones.Forms
                 axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
                 axVarSes.Escribe("strNSAlumno", string.Empty);
                 axVarSes.Escribe("strNSFamiliar", string.Empty);
-                Response.Redirect("ADMIS_FormRegistro.aspx");
+                if (axVarSes.Lee<string>("strReimprimir").Equals("0"))
+                    Response.Redirect("ADMIS_FormRegistro.aspx");
+                else
+                    Response.Redirect("ADMIS_ReimprimirFormRegistro.aspx");
             }
             if (e.CommandName == "eliminar")
             {

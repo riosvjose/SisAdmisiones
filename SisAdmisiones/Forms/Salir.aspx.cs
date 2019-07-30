@@ -32,6 +32,7 @@ namespace SisAdmisiones.Forms
             //Session["strServidor"] = "ucbp";
             Session["strServidor"] = "ucbl";
 
+            Session["strReimprimir"] = "0";
             Session["strRol"] = "0"; // 1 administrativo, 0 externo
             Session["strOperacion"] = "0"; // 0 registrar, 1 consolidar
             Session["strPersonaRegistrar"] = ""; // num_sec_datos_personales tabla admins_datos_personales

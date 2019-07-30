@@ -39,11 +39,14 @@
                         <a id="sbInicio" runat="server" href="Index.aspx" visible="false" ><i class="fa fa-home fa-fw"></i> Inicio</a>
                     </li>
                     <li>
-                        <a id="sbBuscarPersona" runat="server" href="ADMIS_BuscarPersona.aspx" visible="false" ><i class="fa fa-search"></i> Buscar registro</a>
+                        <asp:LinkButton ID="lnkbtnBuscarPersona" runat="server" CausesValidation="false" Visible="false" OnClick="lnkbtnBuscarPersona_Click"><i class="fa fa-search"></i> Buscar registro</asp:LinkButton>
+                        <!--<a id="sbBuscarPersona" runat="server" href="ADMIS_BuscarPersona.aspx" visible="false" ><i class="fa fa-search"></i> Buscar registro</a>-->
                     </li>
                     <li>
-                        <%--<a id="sbRegistrarPersona" runat="server" href="ADMIS_FormRegistro.aspx" visible="false" ><i class="fa fa-home fa-fw"></i>Registrar nuevo</a>--%>
                          <asp:LinkButton ID="lnkbtnRegistarNuevo" runat="server" CausesValidation="false" Visible="false" OnClick="lnkbtnRegistarNuevo_Click"><i class="fa fa-plus"></i> Registrar nuevo</asp:LinkButton>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkbtnReimprimir" runat="server" CausesValidation="false" Visible="false" OnClick="lnkbtnReimprimir_Click"><i class="fa fa-print"></i> Reimprimir formulario</asp:LinkButton>
                     </li>
                 </ul>
         </nav>

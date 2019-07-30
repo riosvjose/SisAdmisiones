@@ -29,7 +29,9 @@ namespace SisAdmisiones.Forms
             }
             if (Convert.ToInt32(axVarSes.Lee<string>("strRol")) == 1) { 
                 sbInicio.Visible = true;
-                sbBuscarPersona.Visible = true;
+                //sbBuscarPersona.Visible = true;
+                lnkbtnBuscarPersona.Visible = true;
+                lnkbtnReimprimir.Visible = true;
                 lnkbtnRegistarNuevo.Visible = true;
                 sbCerrarSesion.Visible = true;
              }
@@ -64,6 +66,18 @@ namespace SisAdmisiones.Forms
             axVarSes.Escribe("strNSAlumno", string.Empty);
             axVarSes.Escribe("strNSFamiliar", string.Empty);
             Response.Redirect("ADMIS_FormRegistro.aspx");
+        }
+
+        protected void lnkbtnBuscarPersona_Click(object sender, EventArgs e)
+        {
+            axVarSes.Escribe("strReimprimir", "0");
+            Response.Redirect("ADMIS_BuscarPersona.aspx");
+        }
+
+        protected void lnkbtnReimprimir_Click(object sender, EventArgs e)
+        {
+            axVarSes.Escribe("strReimprimir", "1");
+            Response.Redirect("ADMIS_BuscarPersona.aspx");
         }
     }
 }
