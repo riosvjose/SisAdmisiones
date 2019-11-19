@@ -236,6 +236,18 @@ namespace nsBD_GEN
             return strSql;
         }
 
+        public string sqlCadActualizar()
+        {
+            strSql = "update BACHILLERES set  " +
+                     "num_sec_colegio=" + _num_sec_colegio.ToString() + ", " +
+                     "turno_colegio=" + _turno_colegio.ToString() + ", " +
+                     "anio_egreso= " + _anio_egreso.ToString() + ", " +
+                     "tipo=" + _tipo.ToString() + ", " +
+                     "tipo_lugar_bachiller=" + _tipo_lugar_bachiller.ToString() + " " +
+                     "where num_sec_persona= "+_num_sec_persona.ToString();
+            return strSql;
+        }
+
         #endregion
     }
 }

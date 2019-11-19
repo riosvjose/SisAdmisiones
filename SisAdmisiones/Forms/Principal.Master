@@ -48,6 +48,9 @@
                     <li>
                         <asp:LinkButton ID="lnkbtnReimprimir" runat="server" CausesValidation="false" Visible="false" OnClick="lnkbtnReimprimir_Click"><i class="fa fa-print"></i> Reimprimir formulario</asp:LinkButton>
                     </li>
+                    <li>
+                        <asp:LinkButton ID="lnkbtnCorregir" runat="server" CausesValidation="false" Visible="false" OnClick="lnkbtnCorregir_Click"><i class="fa fa-edit"></i> Corregir formulario</asp:LinkButton>
+                    </li>
                 </ul>
         </nav>
         <!-- Page Content Holder -->

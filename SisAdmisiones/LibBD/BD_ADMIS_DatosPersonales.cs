@@ -329,42 +329,15 @@ namespace SisAdmisiones
 
         public DataTable dtObtenerPersonas(string parametro)
         {
-            string[] partes;
-            partes = parametro.Split(' ');
+            parametro = parametro.Replace(" ", "%");
             strSql = string.Empty;
-            if (partes.Length == 1)
-            {
-                strSql = "select * " +
+            strSql = "select * " +
                     "from " +
                     " admis_datos_personales" +
-                    " where ( upper(primer_apellido) like  upper('%" + parametro + "%') " +
-                    " or  upper(segundo_apellido) like  upper('%" + parametro + "%') " +
-                    " or  upper(nombres) like  upper('%" + parametro + "%') " +
+                    " where ( upper(primer_apellido)||' '||upper(segundo_apellido)||' '||upper(nombres) like  upper('%" + parametro + "%') " +
+                    " or  upper(nombres)||' '| |upper(primer_apellido)||' '||upper(segundo_apellido) like  upper('%" + parametro + "%') " +
                     " or  upper(doc_identidad) like  upper('%" + parametro + "%'))" +
                     " and estado = 1 order by primer_apellido, segundo_apellido, nombres";
-            }
-            else
-            {
-                strSql = "SELECT * FROM(";
-                for (int i = 0; i < partes.Length; i++)
-                {
-                    if ((partes[i]!=" ")&&(!string.IsNullOrEmpty(partes[i]))) {
-                        if (i >0)
-                        {
-                            strSql += " UNION ";
-                        }
-                        strSql += "(select * " +
-                            "from " +
-                            " admis_datos_personales" +
-                            " where (upper(primer_apellido) like upper('%" + partes[i] + "%') " +
-                            " or upper(segundo_apellido) like upper('%" + partes[i] + "%') " +
-                            " or upper(nombres) like upper('%" + partes[i] + "%') " +
-                            " or upper(doc_identidad) like  upper('%" + partes[i] + "%')))";
-                        
-                    }
-                }
-                strSql += ") where estado = 1 order by primer_apellido, segundo_apellido, nombres";
-            }
             OracleBD.StrConexion = _strconexion;
             OracleBD.Sql = strSql;
             OracleBD.sqlDataTable();
@@ -373,43 +346,15 @@ namespace SisAdmisiones
 
         public DataTable dtObtenerPersonasConsolidadas(string parametro)
         {
-            string[] partes;
-            partes = parametro.Split(' ');
             strSql = string.Empty;
-            if (partes.Length == 1)
-            {
-                strSql = "select * " +
-                    "from " +
-                    " admis_datos_personales" +
-                    " where ( upper(primer_apellido) like  upper('%" + parametro + "%') " +
-                    " or  upper(segundo_apellido) like  upper('%" + parametro + "%') " +
-                    " or  upper(nombres) like  upper('%" + parametro + "%') " +
-                    " or  upper(doc_identidad) like  upper('%" + parametro + "%'))" +
-                    " and estado = 0 order by primer_apellido, segundo_apellido, nombres";
-            }
-            else
-            {
-                strSql = "SELECT * FROM(";
-                for (int i = 0; i < partes.Length; i++)
-                {
-                    if ((partes[i] != " ") && (!string.IsNullOrEmpty(partes[i])))
-                    {
-                        if (i > 0)
-                        {
-                            strSql += " UNION ";
-                        }
-                        strSql += "(select * " +
-                            "from " +
-                            " admis_datos_personales" +
-                            " where estado = 0 and (upper(primer_apellido) like upper('%" + partes[i] + "%') " +
-                            " or upper(segundo_apellido) like upper('%" + partes[i] + "%') " +
-                            " or upper(nombres) like upper('%" + partes[i] + "%') " +
-                            " or upper(doc_identidad) like  upper('%" + partes[i] + "%')))";
-
-                    }
-                }
-                strSql += ") order by primer_apellido, segundo_apellido, nombres";
-            }
+            parametro = parametro.Replace(" ", "%");
+            strSql = "select * " +
+                "from " +
+                " admis_datos_personales" +
+                " where ( upper(primer_apellido)||' '||upper(segundo_apellido)||' '||upper(nombres) like  upper('%" + parametro + "%') " +
+                " or  upper(nombres)||' '| |upper(primer_apellido)||' '||upper(segundo_apellido) like  upper('%" + parametro + "%') " + 
+                " or  upper(doc_identidad) like  upper('%" + parametro + "%'))" +
+                " and estado = 0 order by primer_apellido, segundo_apellido, nombres";
             OracleBD.StrConexion = _strconexion;
             OracleBD.Sql = strSql;
             OracleBD.sqlDataTable();

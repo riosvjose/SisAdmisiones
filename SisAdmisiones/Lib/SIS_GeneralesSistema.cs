@@ -49,7 +49,7 @@ namespace nsGEN
                         query = "select to_char(sysdate,'dd/mm/yyyy') from dual";
                         break;
                     case 3:
-                        query = "select 'La Paz, '||to_char(sysdate, 'dd')||' de '||to_char(sysdate, 'Month', 'NLS_DATE_LANGUAGE = spanish')||' de '|| to_char(sysdate,'yyyy') from dual";
+                        query = "select 'La Paz, '||to_char(sysdate, 'dd')||' de '||trim(to_char(sysdate, 'Month', 'NLS_DATE_LANGUAGE = spanish'))||' de '|| to_char(sysdate,'yyyy') from dual";
                         break;
                     default:
                         query = "select to_char(sysdate,'dd/mm/yyyy hh24:mi:ss') from dual";

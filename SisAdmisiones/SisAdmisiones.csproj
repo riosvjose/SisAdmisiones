@@ -141,6 +141,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Forms\ADMIS_BuscarPersona.aspx" />
+    <Content Include="Forms\ADMIS_CorregirFormRegistro.aspx" />
     <Content Include="Forms\ADMIS_ReimprimirFormRegistro.aspx" />
     <Content Include="Forms\ADMIS_FormRegistro.aspx" />
     <Content Include="Forms\Index.aspx" />
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="Forms\ADMIS_BuscarPersona.aspx.designer.cs">
       <DependentUpon>ADMIS_BuscarPersona.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ADMIS_CorregirFormRegistro.aspx.cs">
+      <DependentUpon>ADMIS_CorregirFormRegistro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\ADMIS_CorregirFormRegistro.aspx.designer.cs">
+      <DependentUpon>ADMIS_CorregirFormRegistro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\ADMIS_ReimprimirFormRegistro.aspx.cs">
       <DependentUpon>ADMIS_ReimprimirFormRegistro.aspx</DependentUpon>

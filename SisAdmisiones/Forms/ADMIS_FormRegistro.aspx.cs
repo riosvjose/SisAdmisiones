@@ -203,16 +203,6 @@ namespace SisAdmisiones.Forms
             ddlAreaColegio.DataValueField = "VALOR";
             ddlAreaColegio.DataBind();
         }
-       /* public void CargarDdlColegio()
-        {
-            BD_Colegios libColegio = new BD_Colegios();
-            libColegio.StrConexion = axVarSes.Lee<string>("strConexion");
-            libColegio.NumSecLocalidad = Convert.ToInt64(ddlCiudadBach.SelectedValue);
-            ddlColegio.DataSource = libColegio.dtColegiosLocalidad();
-            ddlColegio.DataTextField = "colegio";
-            ddlColegio.DataValueField = "NUM_SEC_COLEGIO";
-            ddlColegio.DataBind();
-        }*/
         public void CargarDdlColegios()
         {
             if (ddlCiudadBach.SelectedValue != string.Empty)
@@ -1441,7 +1431,7 @@ namespace SisAdmisiones.Forms
 
         protected void btnCancelarModalAlumno_Click(object sender, EventArgs e)
         {
-            // cerrarModals();
+            
             upAlumnoExiste.Visible = false;
             axVarSes.Escribe("strCrearNuevoAlumno", "");
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
@@ -1457,7 +1447,7 @@ namespace SisAdmisiones.Forms
 
         protected void btnCancelarModalFamiliar_Click(object sender, EventArgs e)
         {
-            // cerrarModals();
+            
             axVarSes.Escribe("strCrearNuevoFamiliar", "");
             upFamiliarExiste.Visible = false;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
@@ -1471,7 +1461,6 @@ namespace SisAdmisiones.Forms
                 axVarSes.Escribe("strNSAlumno", gvEstudiantes.Rows[indice].Cells[0].Text);
                 axVarSes.Escribe("strCrearNuevoAlumno", "no");
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
-                //Response.Redirect("ADMIS_FormRegistro.aspx");
             }
         }
 
@@ -1483,7 +1472,6 @@ namespace SisAdmisiones.Forms
                 axVarSes.Escribe("strNSFamiliar", gvTutores.Rows[indice].Cells[0].Text);
                 axVarSes.Escribe("strCrearNuevoFamiliar", "no");
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
-                //Response.Redirect("ADMIS_FormRegistro.aspx");
             }
         }
     }

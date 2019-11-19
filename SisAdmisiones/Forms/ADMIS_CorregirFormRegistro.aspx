@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Principal.Master" AutoEventWireup="true" CodeBehind="ADMIS_FormRegistro.aspx.cs" Inherits="SisAdmisiones.Forms.ADMIS_FormRegistro" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Principal.Master" AutoEventWireup="true" CodeBehind="ADMIS_CorregirFormRegistro.aspx.cs" Inherits="SisAdmisiones.Forms.ADMIS_CorregirFormRegistro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
@@ -7,10 +7,9 @@
             <asp:PostBackTrigger ControlID="btnEnviar" />
         </Triggers>
         <ContentTemplate>
-
             <div class="row">
 	            <div class="col-xs-12 col-md-6 pull-left">
-		            <h1>Registro de estudiantes</h1>
+		            <h1>Corrección de formulario</h1>
 	            </div>
                 
             </div>
@@ -39,26 +38,6 @@
 			        <div class="panel-body">
                         <br/>
                         <div class="row mb-3">
-                            <asp:Panel ID="pnTipoAdmision" runat="server" Visible="False">
-                                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                                        <div class="form-group">
-                                            <div class="form-inline">
-                                                <strong><asp:Label ID="lblTipoAdmision" runat="server" >Tipo admision:</asp:Label></strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-group">
-                                            <div class="form-inline">
-                                                <asp:DropDownList ID="ddlTipoAdmision" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
-                                            </div>
-                                        </div>
-                                      
-                                    </div>
-                                    
-                            </asp:Panel>
-                        </div>
-                        <div class="row mb-3">
                             <asp:Panel ID="pnSemestres" runat="server" Visible="false">
                                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
                                         <div class="form-group">
@@ -66,16 +45,15 @@
                                                 <strong><asp:Label ID="lblSemestre" runat="server" >Semestre:</asp:Label></strong>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-group">
-                                            <div class="form-inline">
-                                                <asp:DropDownList ID="ddlSemestre" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
-                                            </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="form-inline">
+                                            <asp:DropDownList ID="ddlSemestre" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="false"></asp:DropDownList>
                                         </div>
-                                      
                                     </div>
-                                    
+                                      
+                                </div>
                             </asp:Panel>
                         </div>
                         <div class="row mb-3">
@@ -86,34 +64,15 @@
                                                 <strong><asp:Label ID="lblCarrera" runat="server" >Carrera: </asp:Label></strong>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-group">
-                                            <div class="form-inline">
-                                                <asp:DropDownList ID="ddlCarreras" runat="server" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlCarreras_SelectedIndexChanged"></asp:DropDownList>
-                                            </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="form-inline">
+                                            <asp:DropDownList ID="ddlCarreras" runat="server" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlCarreras_SelectedIndexChanged" Enabled="false"></asp:DropDownList>
                                         </div>
+                                    </div>
                                       
-                                    </div>
-                                    
-                            </asp:Panel>
-                        </div>
-                        <div class="row mb-3">
-                            <asp:Panel ID="pnPensums" runat="server" Visible="false">
-                                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                                        <div class="form-group">
-                                            <div class="form-inline">
-                                                <strong><asp:Label ID="lblPensumIngreso" runat="server" >Pensum ingreso: </asp:Label></strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-group">
-                                            <div class="form-inline">
-                                                <asp:DropDownList ID="ddlPensumIngreso" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
                             </asp:Panel>
                         </div>
                       </div>
@@ -505,17 +464,17 @@
                                     <strong><asp:Label ID="lblParentescoTutor" runat="server">Parentesco</asp:Label></strong>
                                 </div>
                                 <div class="col-sm-5 col-md-4 col-lg-3">
-                                       <asp:DropDownList ID="ddlParentesco" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                       <asp:DropDownList ID="ddlParentesco" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="false"></asp:DropDownList>
                                 </div>
                                 <div class="col-sm-5 col-md-4 col-lg-2 text-right">
                                     <strong><asp:Label ID="lblAutseguimiento" runat="server">Autorizar seguimiento</asp:Label></strong>
                                 </div>
                                 <div class="col-sm-5 col-md-3 col-lg-2">
                                       <div class="col-xs-6 text-center">
-                                        <asp:RadioButton id="rbSi" GroupName="Seguimiento" Text="Si" runat="server" Checked="true"/>
+                                        <asp:RadioButton id="rbSi" GroupName="Seguimiento" Text="Si" runat="server" Checked="true" Enabled="false"/>
                                       </div>   
                                       <div class="col-xs-6 text-center">
-                                        <asp:RadioButton id="rbNo" GroupName="Seguimiento" Text="No" runat="server"/>
+                                        <asp:RadioButton id="rbNo" GroupName="Seguimiento" Text="No" runat="server" Enabled="false"/>
                                     </div>
                                 </div>
                             </div>
@@ -523,7 +482,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbPrimerApTutor" runat="server" CssClass="form-control" MaxLength="40" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbPrimerApTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="40" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender14" runat="server" BehaviorID="tbPrimerApTutor_FilteredTextBoxExtender" TargetControlID="tbPrimerApTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -533,7 +492,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbSegundoApTutor" runat="server" CssClass="form-control" MaxLength="40" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbSegundoApTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="40" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender15" runat="server" BehaviorID="tbSegundoApTutor_FilteredTextBoxExtender" TargetControlID="tbSegundoApTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -543,7 +502,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbNombreTutor" runat="server" CssClass="form-control" MaxLength="50" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbNombreTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="50" AutoCompleteType="Disabled" ></asp:TextBox>
                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender16" runat="server" BehaviorID="tbNombreTutor_FilteredTextBoxExtender" TargetControlID="tbNombreTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -555,7 +514,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbDocIdentidadTutor" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbDocIdentidadTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender17" runat="server" BehaviorID="tbDocIdentidadTutor_FilteredTextBoxExtender" TargetControlID="tbDocIdentidadTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/ "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -565,7 +524,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:DropDownList ID="ddlTipoDocIdentidadTutor" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                      <asp:DropDownList ID="ddlTipoDocIdentidadTutor" Enabled="false" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblTipoDocIdentidadTutor" runat="server">Tipo de documento de identidad</asp:Label></strong>
@@ -573,10 +532,10 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:DropDownList ID="ddlGeneroTutor" runat="server" CssClass="form-control" AutoPostBack="True" ></asp:DropDownList>
+                                      <asp:DropDownList ID="ddlGeneroTutor" Enabled="false" runat="server" CssClass="form-control" AutoPostBack="True" ></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <strong><asp:Label ID="lblGeneroTuror" runat="server">Género</asp:Label></strong>
+                                    <strong><asp:Label ID="lblGeneroTutor" runat="server">Género</asp:Label></strong>
                                 </div>
                             </div>
                         </div>
@@ -590,7 +549,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-8 col-md-7 col-lg-5">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbCalleAvenidaTutor" runat="server" CssClass="form-control" MaxLength="250" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbCalleAvenidaTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="250" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender18" runat="server" BehaviorID="tbCalleAvenidaTutor_FilteredTextBoxExtender" TargetControlID="tbCalleAvenidaTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -600,7 +559,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-5 col-lg-3">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbNumeroDomTutor" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbNumeroDomTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender19" runat="server" BehaviorID="tbNumeroDomTutor_FilteredTextBoxExtender" TargetControlID="tbNumeroDomTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -610,7 +569,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="col-xs-12">
-                                    <asp:TextBox ID="tbZonaTutor" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
+                                    <asp:TextBox ID="tbZonaTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender20" runat="server" BehaviorID="tbZonaTutor_FilteredTextBoxExtender" TargetControlID="tbZonaTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -622,7 +581,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-8 col-md-7 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbEdificioTutor" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbEdificioTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender21" runat="server" BehaviorID="tbEdificioTutor_FilteredTextBoxExtender" TargetControlID="tbEdificioTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -632,7 +591,7 @@
                             </div>
                            <div class="col-xs-12 col-sm-4 col-md-5 col-lg-4">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbDeptoTutor" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbDeptoTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender22" runat="server" BehaviorID="tbDeptoTutor_FilteredTextBoxExtender" TargetControlID="tbDeptoTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._\/° "/>    
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -645,7 +604,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbEmailTutor" runat="server" CssClass="form-control" TextMode="Email" MaxLength="50" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbEmailTutor" Enabled="false" runat="server" CssClass="form-control" TextMode="Email" MaxLength="50" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender23" runat="server" BehaviorID="tbEmailTutor_FilteredTextBoxExtender" TargetControlID="tbEmailTutor" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-._@ "/>  
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -655,7 +614,7 @@
                             </div>
                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbCelularTutor" runat="server" CssClass="form-control"  MaxLength="9" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbCelularTutor" Enabled="false" runat="server" CssClass="form-control"  MaxLength="9" AutoCompleteType="Disabled" ></asp:TextBox>
                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender24" runat="server" BehaviorID="tbCelularTutor_FilteredTextBoxExtender" TargetControlID="tbCelularTutor" ValidChars="1234567890-+"/>  
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -665,7 +624,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
                                 <div class="col-xs-12">
-                                      <asp:TextBox ID="tbTelefonoTutor" runat="server" CssClass="form-control" MaxLength="8" AutoCompleteType="Disabled" ></asp:TextBox>
+                                      <asp:TextBox ID="tbTelefonoTutor" Enabled="false" runat="server" CssClass="form-control" MaxLength="8" AutoCompleteType="Disabled" ></asp:TextBox>
                                     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender25" runat="server" BehaviorID="tbTelefonoTutor_FilteredTextBoxExtender" TargetControlID="tbTelefonoTutor" ValidChars="1234567890-+"/>  
                                 </div>
                                 <div class="col-xs-12 text-center">
@@ -774,35 +733,6 @@
                     <%--PIE DEL PANEL--%>	       
 			   </div>
             </asp:Panel>
-            <asp:Panel ID="pnEnviar" runat="server" Visible="false">
-		        <div class="panel panel-info">
-                    <%--ENCABEZADO DEL PANEL--%>
-			        
-                    <%--CUERPO DEL PANEL--%>
-			        <div class="panel-body">
-                        <br/>
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <img alt="" src="../BuildCaptcha.aspx"/>
-                                <div class="input-group">
-                                  <span class="input-group-addon"><i class="fa fa-shield"></i></span>
-                                  <asp:TextBox ID="tbCaptcha" CssClass="form-control" runat="server" MaxLength="7" placeholder="Ingrese el patrón" autocomplete="off"></asp:TextBox>
-                                </div>
-                                 <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender33" runat="server" BehaviorID="tbCaptcha_FilteredTextBoxExtender" TargetControlID="tbCaptcha" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-_"/>    
-                                  <asp:RequiredFieldValidator ID="tbCaptcha_RequiredFieldValidator" runat="server" ErrorMessage="Debe ingresar el patrón de la imagen." ControlToValidate="tbCaptcha" CssClass="glyphicon glyphicon-remove text-danger" Text="."></asp:RequiredFieldValidator>
-                                 </div>
-                            </div>
-                      </div>
-                    <%--PIE DEL PANEL--%>	    
-                    <div class="panel-footer">
-                        <div class="btn-toolbar" role="toolbar">
-                           <div class="btn-group center-block">
-                               <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success btn-default btn-block" Text="Enviar formulario" OnClick="btnEnviar_Click" CausesValidation="true"  ForeColor="White" />
-                            </div>
-                          </div>
-                        </div>
-			   </div>
-            </asp:Panel>
             <asp:Panel ID="pnObservaciones" runat="server" Visible="false">
 		        <div class="panel panel-info">
                     <%--ENCABEZADO DEL PANEL--%>
@@ -825,115 +755,12 @@
                         <div class="btn-toolbar" role="toolbar">
                            <div class="btn-group center-block">
                                <asp:Button ID="btnEnviar" runat="server" CssClass="btn btn-success btn-default btn-block" Text="Enviar formulario" OnClick="btnEnviar_Click" CausesValidation="true"  ForeColor="White" />
-                            </div>
-                          </div>
+                           </div>
                         </div>
+                    </div>
 			   </div>
             </asp:Panel>
-            <%--MODAL ALUMNO EXISTENTE--%>
-            <asp:UpdatePanel ID="upAlumnoExiste" runat="server" Visible="false">
-                <ContentTemplate>
-                    <div id="modalAlumnoExistente" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLblAlumno" aria-hidden="true" >
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <center><h3 class="modal-title" id="modalLblAlumno">Alumno Existente</h3></center>
-                                </div>
-                                <div class="modal-body">
-                                    <H3>Existen coincidencias con los datos del ESTUDIANTE. </H3>
-                                    <H4>Elija si quiere usar un registro existente o registrar como nueva persona. </H4>
-                                    <%--INICIO GridView de prueba--%>
-                                    <asp:Panel ID="pnsugeridos" runat="server" Visible="false">
-                                      <br />
-                                     <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="form-inline">
-                                                            <div class="form-group">
-                                                                <asp:GridView ID="gvEstudiantes" runat="server" CssClass="table table-striped table-bordered table-hover input-sm" AutoGenerateColumns="False" PageSize="15" OnRowCommand="gvEstudiantes_RowCommand" >
-                                                                    <Columns>
-                                                                        <asp:BoundField DataField="num_sec" HeaderText="ns"  Visible="false"/>
-                                                                        <asp:BoundField DataField="cedula_identidad" HeaderText="Documento de identidad" />
-                                                                        <asp:BoundField DataField="ap_paterno" HeaderText="Primer Apellido" />
-                                                                        <asp:BoundField DataField="ap_materno" HeaderText="Segundo Apellido" />
-                                                                        <asp:BoundField DataField="nombres" HeaderText="Nombre" />
-                                                                        <asp:ButtonField HeaderText="" ButtonType="Button" CommandName="elegir" Text="Elegir" >
-                                                                             <ControlStyle CssClass="btn btn-sm btn-success "/>
-                                                                        </asp:ButtonField>
-                                                                    </Columns>
-                                                                    <PagerStyle CssClass="GridPager" Wrap="True" />
-                                                                    <SelectedRowStyle BackColor="#008A8C" ForeColor="White" />
-                                                                    <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                                                                </asp:GridView>
-                                                               </div>
-                                                            </div>
-                                                    </div>
-                                               </div>
-                                            </div>
-                                        </div>
-                                     </asp:Panel>
-                                    <%--FIN GridView de prueba--%>
-                                </div>
-                                <div class="modal-footer">
-                                    <asp:Button ID="btnGuardarModalAlumno" runat="server" CssClass="btn btn-success" Text="Crear nuevo" CausesValidation="False" OnClick="btnGuardarModalAlumno_Click"/>
-                                    <asp:Button ID="btnCancelarModalAlumno" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClientClick="CancelarModalAlumno()" OnClick="btnCancelarModalAlumno_Click"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-            <%--MODAL FAMILIAR EXISTENTE--%>
-            <asp:UpdatePanel ID="upFamiliarExiste" runat="server" Visible="false">
-                <ContentTemplate>
-                    <div id="modalFamiliarExistente" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLblFamiliar" aria-hidden="true" >
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <center><h3 class="modal-title" id="modalLblFamiliar">Familiar Existente</h3></center>
-                                </div>
-                                <div class="modal-body">
-                                    <H3>Existen coincidencias con los datos del TUTOR del estudiante. </H3>
-                                    <H4>Elija si quiere usar un registro existente o registrar como nueva persona. </H4>
-                                    <%--INICIO GridView--%>
-                                    <asp:Panel ID="pnFamiliaresSugeridos" runat="server" Visible="false">
-                                      <br />
-                                        <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="form-inline">
-                                                        <div class="form-group">
-                                                            <asp:GridView ID="gvTutores" runat="server" CssClass="table table-striped table-bordered table-hover input-sm" AutoGenerateColumns="False" PageSize="15" OnRowCommand="gvTutores_RowCommand" >
-                                                                <Columns>
-                                                                    <asp:BoundField DataField="num_sec" HeaderText="ns"  Visible="false"/>
-                                                                    <asp:BoundField DataField="cedula_identidad" HeaderText="Documento de identidad" />
-                                                                    <asp:BoundField DataField="ap_paterno" HeaderText="Primer Apellido" />
-                                                                    <asp:BoundField DataField="ap_materno" HeaderText="Segundo Apellido" />
-                                                                    <asp:BoundField DataField="nombres" HeaderText="Nombre" />
-                                                                    <asp:ButtonField HeaderText="" ButtonType="Button" CommandName="elegir" Text="Elegir" >
-                                                                            <ControlStyle CssClass="btn btn-sm btn-success "/>
-                                                                    </asp:ButtonField>
-                                                                </Columns>
-                                                                <PagerStyle CssClass="GridPager" Wrap="True" />
-                                                                <SelectedRowStyle BackColor="#008A8C" ForeColor="White" />
-                                                                <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                                                            </asp:GridView>
-                                                            </div>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                     </asp:Panel>
-                                    <%--FIN GridView de prueba--%>
-                                </div>
-                                <div class="modal-footer">
-                                    <asp:Button ID="btnGuardarModalFamiliar" runat="server" CssClass="btn btn-success" Text="Crear nuevo" CausesValidation="False" OnClick="btnGuardarModalFamiliar_Click"/>
-                                    <asp:Button ID="btnCancelarModalFamiliar" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClientClick="CancelarModalFamiliar()" OnClick="btnCancelarModalFamiliar_Click"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+          
            <%--Mensajes de exito y error--%>
             <div class="row">
 	            <div class="col-md-6">
@@ -957,13 +784,6 @@
                     <%--<asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="False" ShowSummary="True" CssClass="alert alert-danger" />                    --%>
 	            </div>                
             </div>            
-            <script type="text/javascript">
-                function CancelarModalAlumno() {
-                }
-                function CancelarModalFamiliar() {
-
-                }
-            </script>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

@@ -797,7 +797,7 @@ namespace nsBD_GEN
             if ((_num_sec_nacionalidad != 0) && (!string.IsNullOrEmpty(_num_sec_nacionalidad.ToString().Trim()))){
                 strSql += ", num_sec_nacionalidad = " + _num_sec_nacionalidad.ToString() ;
             }
-            strSql="where num_sec = " + _num_sec.ToString();
+            strSql+=" where num_sec = " + _num_sec.ToString();
             return strSql;
         }
 

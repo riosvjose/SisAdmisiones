@@ -72,7 +72,7 @@ namespace SisAdmisiones.Forms
             pnMensajeOK.Visible = false;
             pnsugeridos.Visible = true;
             libDatos.StrConexion = axVarSes.Lee<string>("strConexion");
-            if (axVarSes.Lee<string>("strReimprimir").Equals("0"))
+            if (axVarSes.Lee<string>("strReimprimir").Equals("0")&& axVarSes.Lee<string>("strCorregir").Equals("0"))
             {
                 gvUsuarios.Visible = true;
                 gvUsuarios.Columns[0].Visible = true;
@@ -110,10 +110,12 @@ namespace SisAdmisiones.Forms
                 axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
                 axVarSes.Escribe("strNSAlumno", string.Empty);
                 axVarSes.Escribe("strNSFamiliar", string.Empty);
-                if (axVarSes.Lee<string>("strReimprimir").Equals("0"))
+                if (axVarSes.Lee<string>("strReimprimir").Equals("0")&& axVarSes.Lee<string>("strCorregir").Equals("0"))
                     Response.Redirect("ADMIS_FormRegistro.aspx");
-                else
-                    Response.Redirect("ADMIS_ReimprimirFormRegistro.aspx");
+                else if (axVarSes.Lee<string>("strReimprimir").Equals("1") && axVarSes.Lee<string>("strCorregir").Equals("0"))
+                        Response.Redirect("ADMIS_ReimprimirFormRegistro.aspx");
+                else if (axVarSes.Lee<string>("strReimprimir").Equals("0") && axVarSes.Lee<string>("strCorregir").Equals("1"))
+                    Response.Redirect("ADMIS_CorregirFormRegistro.aspx");
             }
             if (e.CommandName == "eliminar")
             {

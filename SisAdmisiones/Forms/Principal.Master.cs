@@ -33,6 +33,7 @@ namespace SisAdmisiones.Forms
                 lnkbtnBuscarPersona.Visible = true;
                 lnkbtnReimprimir.Visible = true;
                 lnkbtnRegistarNuevo.Visible = true;
+                lnkbtnCorregir.Visible = true;
                 sbCerrarSesion.Visible = true;
              }
             if (Request.UserAgent.IndexOf("AppleWebKit") > 0)
@@ -71,12 +72,21 @@ namespace SisAdmisiones.Forms
         protected void lnkbtnBuscarPersona_Click(object sender, EventArgs e)
         {
             axVarSes.Escribe("strReimprimir", "0");
+            axVarSes.Escribe("strCorregir", "0");
             Response.Redirect("ADMIS_BuscarPersona.aspx");
         }
 
         protected void lnkbtnReimprimir_Click(object sender, EventArgs e)
         {
             axVarSes.Escribe("strReimprimir", "1");
+            axVarSes.Escribe("strCorregir", "0");
+            Response.Redirect("ADMIS_BuscarPersona.aspx");
+        }
+
+        protected void lnkbtnCorregir_Click(object sender, EventArgs e)
+        {
+            axVarSes.Escribe("strReimprimir", "0");
+            axVarSes.Escribe("strCorregir", "1");
             Response.Redirect("ADMIS_BuscarPersona.aspx");
         }
     }

@@ -1350,6 +1350,17 @@ namespace nsBD_GEN
             OracleBD.sqlDataTable();
             return OracleBD.DataTable;
         }
+        public DataTable dtUnSemestre(string ns_semestre)
+        {
+            strSql = "select s.num_sec, s.fecha_inicio, s.resumido sem " +
+                    "from semestres s " +
+                    "where s.num_sec="+ns_semestre;
+            OracleBD.MostrarError = false;
+            OracleBD.StrConexion = _strconexion;
+            OracleBD.Sql = strSql;
+            OracleBD.sqlDataTable();
+            return OracleBD.DataTable;
+        }
         #endregion
 
     }
