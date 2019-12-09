@@ -542,7 +542,7 @@ namespace SisAdmisiones.Forms
             Generales.StrConexion = axVarSes.Lee<string>("strConexion");
             rwFila["FechaEmision"] = Generales.FechaActual(3);
             rwFila["Edad"] = Generales.EdadPersona(Convert.ToDateTime(tbFechaNac.Text.Trim()).ToString("dd/MM/yyyy")) + " años.";
-            rwFila["Semestre"] = "2-2019";
+            rwFila["Semestre"] = ddlSemestre.SelectedItem.ToString();
             rwFila["Carrera"] = ddlCarreras.SelectedItem;
             rwFila["PrimerApellido"] = tbPrimerApellido.Text.ToUpper();
             rwFila["SegundoApellido"] = tbSegundoApellido.Text.ToUpper();

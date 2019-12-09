@@ -809,7 +809,7 @@ namespace nsBD_GEN
             OracleBD.StrConexion = _strconexion;
             OracleBD.Sql = strSql;
             OracleBD.sqlDataTable();
-            string carrera = string.Empty;
+            string carrera = "0";
             if (OracleBD.DataTable.Rows.Count>0)
             {
                 carrera = OracleBD.DataTable.Rows[0][0].ToString();
