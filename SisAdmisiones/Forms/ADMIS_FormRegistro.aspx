@@ -1,8 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Principal.Master" AutoEventWireup="true" CodeBehind="ADMIS_FormRegistro.aspx.cs" Inherits="SisAdmisiones.Forms.ADMIS_FormRegistro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">   
+        function btnEnviarClick() {
+            document.getElementById('<%= btnEnviar.ClientID %>').click();                         
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
          <Triggers>
             <asp:PostBackTrigger ControlID="btnEnviar" />
         </Triggers>
@@ -588,6 +593,18 @@
                             </div>
                         </div>
                         <div class="row mb-3">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                      <div class="col-xs-12">
+                                         <strong><asp:Label ID="lblCopiarDatosDomicilioEstudiante" runat="server">Copiar datos domicilio estudiante: </asp:Label></strong>
+                                        <asp:RadioButton id="rbCopiarDatosDomicilioSi" GroupName="rbCopiarDatosDomicilio" Text="Si" runat="server" AutoPostBack="true" OnCheckedChanged="rbCopiarDatosDomicilioSi_CheckedChanged"/>
+                                        <asp:RadioButton id="rbCopiarDatosDomicilioNo" GroupName="rbCopiarDatosDomicilio" Text="No" runat="server" AutoPostBack="true" OnCheckedChanged="rbCopiarDatosDomicilioNo_CheckedChanged" Checked="true"/>
+                                    </div>
+                                    <div class="col-xs-12 text-center">
+                                       
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
                             <div class="col-xs-12 col-sm-8 col-md-7 col-lg-5">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbCalleAvenidaTutor" runat="server" CssClass="form-control" MaxLength="250" AutoCompleteType="Disabled" ></asp:TextBox>
@@ -724,7 +741,7 @@
 			        <div class="panel-body">
                         <br />
                         <div class="row mb-3">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
                                       <div class="col-xs-12">
                                          <strong><asp:Label ID="lblContactoEmergencia" runat="server">Definir tutor como contacto de emergencia: </asp:Label></strong>
                                         <asp:RadioButton id="rbContactoEmerTutorSi" GroupName="rbContactoEmerTutor" Text="Si" runat="server" AutoPostBack="true" OnCheckedChanged="rbContactoEmerTutorSi_CheckedChanged"/>
@@ -842,7 +859,7 @@
                                 <div class="modal-body">
                                     <H3>Existen coincidencias con los datos del ESTUDIANTE. </H3>
                                     <H4>Elija si quiere usar un registro existente o registrar como nueva persona. </H4>
-                                    <%--INICIO GridView de prueba--%>
+                                    <%--cuerpo modal--%>
                                     <asp:Panel ID="pnsugeridos" runat="server" Visible="false">
                                       <br />
                                      <div class="row">
@@ -873,11 +890,11 @@
                                             </div>
                                         </div>
                                      </asp:Panel>
-                                    <%--FIN GridView de prueba--%>
                                 </div>
+                                <%--pie modal--%>
                                 <div class="modal-footer">
                                     <asp:Button ID="btnGuardarModalAlumno" runat="server" CssClass="btn btn-success" Text="Crear nuevo" CausesValidation="False" OnClick="btnGuardarModalAlumno_Click"/>
-                                    <asp:Button ID="btnCancelarModalAlumno" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClientClick="CancelarModalAlumno()" OnClick="btnCancelarModalAlumno_Click"/>
+                                    <asp:Button ID="btnCancelarModalAlumno" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClick="btnCancelarModalAlumno_Click"/>
                                 </div>
                             </div>
                         </div>
@@ -896,38 +913,38 @@
                                 <div class="modal-body">
                                     <H3>Existen coincidencias con los datos del TUTOR del estudiante. </H3>
                                     <H4>Elija si quiere usar un registro existente o registrar como nueva persona. </H4>
-                                    <%--INICIO GridView--%>
+                                    <%--cuerpo modal--%>
                                     <asp:Panel ID="pnFamiliaresSugeridos" runat="server" Visible="false">
                                       <br />
                                         <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="form-inline">
-                                                        <div class="form-group">
-                                                            <asp:GridView ID="gvTutores" runat="server" CssClass="table table-striped table-bordered table-hover input-sm" AutoGenerateColumns="False" PageSize="15" OnRowCommand="gvTutores_RowCommand" >
-                                                                <Columns>
-                                                                    <asp:BoundField DataField="num_sec" HeaderText="ns"  Visible="false"/>
-                                                                    <asp:BoundField DataField="cedula_identidad" HeaderText="Documento de identidad" />
-                                                                    <asp:BoundField DataField="ap_paterno" HeaderText="Primer Apellido" />
-                                                                    <asp:BoundField DataField="ap_materno" HeaderText="Segundo Apellido" />
-                                                                    <asp:BoundField DataField="nombres" HeaderText="Nombre" />
-                                                                    <asp:ButtonField HeaderText="" ButtonType="Button" CommandName="elegir" Text="Elegir" >
-                                                                            <ControlStyle CssClass="btn btn-sm btn-success "/>
-                                                                    </asp:ButtonField>
-                                                                </Columns>
-                                                                <PagerStyle CssClass="GridPager" Wrap="True" />
-                                                                <SelectedRowStyle BackColor="#008A8C" ForeColor="White" />
-                                                                <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                                                            </asp:GridView>
-                                                            </div>
+                                            <div class="col-xs-12">
+                                                <div class="form-inline">
+                                                    <div class="form-group">
+                                                        <asp:GridView ID="gvTutores" runat="server" CssClass="table table-striped table-bordered table-hover input-sm" AutoGenerateColumns="False" PageSize="15" OnRowCommand="gvTutores_RowCommand" >
+                                                            <Columns>
+                                                                <asp:BoundField DataField="num_sec" HeaderText="ns"  Visible="false"/>
+                                                                <asp:BoundField DataField="cedula_identidad" HeaderText="Documento de identidad" />
+                                                                <asp:BoundField DataField="ap_paterno" HeaderText="Primer Apellido" />
+                                                                <asp:BoundField DataField="ap_materno" HeaderText="Segundo Apellido" />
+                                                                <asp:BoundField DataField="nombres" HeaderText="Nombre" />
+                                                                <asp:ButtonField HeaderText="" ButtonType="Button" CommandName="elegir" Text="Elegir" >
+                                                                        <ControlStyle CssClass="btn btn-sm btn-success "/>
+                                                                </asp:ButtonField>
+                                                            </Columns>
+                                                            <PagerStyle CssClass="GridPager" Wrap="True" />
+                                                            <SelectedRowStyle BackColor="#008A8C" ForeColor="White" />
+                                                            <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                                                        </asp:GridView>
                                                         </div>
-                                                </div>
+                                                    </div>
+                                            </div>
                                             </div>
                                      </asp:Panel>
-                                    <%--FIN GridView de prueba--%>
                                 </div>
+                                 <%--pie modal--%>
                                 <div class="modal-footer">
                                     <asp:Button ID="btnGuardarModalFamiliar" runat="server" CssClass="btn btn-success" Text="Crear nuevo" CausesValidation="False" OnClick="btnGuardarModalFamiliar_Click"/>
-                                    <asp:Button ID="btnCancelarModalFamiliar" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClientClick="CancelarModalFamiliar()" OnClick="btnCancelarModalFamiliar_Click"/>
+                                    <asp:Button ID="btnCancelarModalFamiliar" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClick="btnCancelarModalFamiliar_Click"/>
                                 </div>
                             </div>
                         </div>
@@ -957,13 +974,6 @@
                     <%--<asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="False" ShowSummary="True" CssClass="alert alert-danger" />                    --%>
 	            </div>                
             </div>            
-            <script type="text/javascript">
-                function CancelarModalAlumno() {
-                }
-                function CancelarModalFamiliar() {
-
-                }
-            </script>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

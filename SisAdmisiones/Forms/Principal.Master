@@ -20,7 +20,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body id="body1">
+<body id="body1" style="overflow:scroll;">
     <form id="form1" runat="server">
     <div class="wrapper">
         <!-- Sidebar Holder -->

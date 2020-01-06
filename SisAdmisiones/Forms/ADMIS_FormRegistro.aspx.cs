@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using nsGEN_VarSession;
@@ -685,20 +682,22 @@ namespace SisAdmisiones.Forms
                 }
                 catch(Exception ex)
                 {
-                    pnMensajeError.Visible = true;
-                    pnMensajeError.Focus();
-                    lblMensajeError.Text = "Se produjo un error al emitir el formulario. " + ex.ToString();
+                    MostrarError("Se produjo un error al emitir el formulario. " + ex.ToString());
                 }
 
             }
             else
             {
-                pnMensajeError.Visible = true;
-                pnMensajeError.Focus();
-                lblMensajeError.Text = "No existen datos para desplegar el reporte.";
+                MostrarError("No existen datos para desplegar el reporte.");
             }
         }
-
+        private void MostrarError(string mensaje)
+        {
+            pnMensajeOK.Visible = false;
+            pnMensajeError.Visible = true;
+            lblMensajeError.Text = mensaje;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "goBottom();", true);
+        }
         #endregion
 
         #region "Eventos"
@@ -800,15 +799,11 @@ namespace SisAdmisiones.Forms
                         if (Cadenas.Texto_Contiene_Caracteres_Especiales(tbCaptcha.Text, 1, 1))
                         {
                             axVarSes.Escribe("ContadorIngresos", axVarSes.Lee<int>("ContadorIngresos") + 1);
-                            pnMensajeError.Visible = true;
-                            lblMensajeError.Text = "NO debe ingresar caracteres especiales en el patrón.";
-                            pnMensajeError.Focus();
+                            MostrarError("NO debe ingresar caracteres especiales en el patrón.");
                         }
                         else if ((axVarSes.Lee<string>("strOperacion").Equals("1")) && (string.IsNullOrEmpty(axVarSes.Lee<string>("strPersonaRegistrar"))))
                         {
-                            pnMensajeError.Visible = true;
-                            lblMensajeError.Text = "NO existen valores para consolidar.";
-                            pnMensajeError.Focus();
+                            MostrarError("NO existen valores para consolidar.");
                             VaciarBoxes();
                             axVarSes.Escribe("strOperacion", "0");
                         }
@@ -957,10 +952,7 @@ namespace SisAdmisiones.Forms
                                 }
                                 else
                                 {
-                                    pnMensajeError.Visible = true;
-                                    pnMensajeError.Focus();
-                                    pnMensajeOK.Visible = false;
-                                    lblMensajeError.Text = "No se pudo almacenar el formulario. " + libDatosPer.Mensaje;
+                                    MostrarError("No se pudo almacenar el formulario. " + libDatosPer.Mensaje);
                                 }
                             }
                             else
@@ -985,25 +977,18 @@ namespace SisAdmisiones.Forms
                                             }
                                             else
                                             {
-                                                pnMensajeError.Visible = true;
-                                                pnMensajeError.Focus();
-                                                pnMensajeOK.Visible = false;
-                                                lblMensajeError.Text = "No se pudo almacenar el formulario. " + libDatosPer.Mensaje;
+                                                MostrarError("No se pudo almacenar el formulario. " + libDatosPer.Mensaje);
                                             }
                                         }
                                     }
                                     else
                                     {
-                                        pnMensajeError.Visible = true;
-                                        pnMensajeError.Focus();
-                                        lblMensajeError.Text = "El patrón de la imagen no coincide con el texto ingresado.";
+                                        MostrarError("El patrón de la imagen no coincide con el texto ingresado.");
                                     }
                                 }
                                 catch (Exception ex)
                                 {
-                                    pnMensajeError.Visible = true;
-                                    pnMensajeError.Focus();
-                                    lblMensajeError.Text = "Se produjo un error, por favor recargue la página y vuelva a intentarlo.";
+                                    MostrarError("Se produjo un error, por favor recargue la página y vuelva a intentarlo.");
                                 }
                             }
 
@@ -1011,23 +996,17 @@ namespace SisAdmisiones.Forms
                     }
                     else
                     {
-                        pnMensajeError.Visible = true;
-                        pnMensajeError.Focus();
-                        lblMensajeError.Text = "Debe proporcionar dos teléfonos de contacto distintos.";
+                        MostrarError("Debe proporcionar dos teléfonos de contacto distintos.");
                     }
                 }
                 else
                 {
-                    pnMensajeError.Visible = true;
-                    pnMensajeError.Focus();
-                    lblMensajeError.Text = "El cuadro de observaciones debe contener máximo 500 caracteres.";
+                    MostrarError("El cuadro de observaciones debe contener máximo 500 caracteres.");
                 }
             }
             else
             {
-                pnMensajeError.Visible = true;
-                pnMensajeError.Focus();
-                lblMensajeError.Text = "Los datos ya fueron consolidados.";
+                MostrarError("Los datos ya fueron consolidados.");
             }
         }
         #endregion
@@ -1194,8 +1173,7 @@ namespace SisAdmisiones.Forms
                     else
                     {
                         blError = true;
-                        pnMensajeError.Visible = true;
-                        lblMensajeError.Text = "Error en validacion se Registro de estudiante";
+                        MostrarError("Error en validacion de Registro de estudiante");
                     }
                     if (!Familiar.Revisar_Existe_Persona(Tutor.DocIdentidad, Tutor.PrimerApellido, Tutor.SegundoApellido, Tutor.Nombres, "") || axVarSes.Lee<string>("strCrearNuevoFamiliar").Equals("si"))
                     {
@@ -1240,9 +1218,7 @@ namespace SisAdmisiones.Forms
                     }
                     else
                     {
-                        pnMensajeError.Visible = true;
-                        pnMensajeError.Focus();
-                        lblMensajeError.Text = "Error en validacion se Registro de familiar";
+                        MostrarError("Error en validacion de Registro de familiar");
                     }
                     BD_Familiares Relacion = new BD_Familiares();
                     Relacion.StrConexion = axVarSes.Lee<string>("strConexion");
@@ -1305,15 +1281,12 @@ namespace SisAdmisiones.Forms
                         {
                             if (DatosPer.MarcarComoNoConsolidado())
                             {
-                                lblMensajeError.Text = "Se almacenó el formulario pero no se pudo crear a la persona. Los datos no fueron consolidados. " + DatosPer.Mensaje;
+                                MostrarError("Se almacenó el formulario pero no se pudo crear a la persona. Los datos no fueron consolidados. " + DatosPer.Mensaje);
                             }
                             else
                             {
-                                lblMensajeError.Text = "Se almacenó el formulario pero no se pudo crear a la persona. Los datos no fueron consolidados. " + DatosPer.Mensaje;
+                                MostrarError("Se almacenó el formulario pero no se pudo crear a la persona. Los datos no fueron consolidados. " + DatosPer.Mensaje);
                             }
-                            pnMensajeError.Visible = true;
-                            pnMensajeOK.Visible = false;
-                            pnMensajeError.Focus();
                         }
                         
                         
@@ -1426,32 +1399,51 @@ namespace SisAdmisiones.Forms
             
             axVarSes.Escribe("strCrearNuevoAlumno", "si");
             upAlumnoExiste.Visible = false;
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalAlumnoExistente').classList.remove('modal-open');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();", true);
+            ScriptManager.RegisterClientScriptBlock(this, GetType(), "Script", "btnEnviarClick();", true);
+            
         }
 
         protected void btnCancelarModalAlumno_Click(object sender, EventArgs e)
         {
-            
-            upAlumnoExiste.Visible = false;
-            axVarSes.Escribe("strCrearNuevoAlumno", "");
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
+            try
+            {
+                upAlumnoExiste.Visible = false;
+                axVarSes.Escribe("strCrearNuevoAlumno", "");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalAlumnoExistente').classList.remove('modal-open');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();", true);
+            }
+            catch (Exception ex)
+            {
+                MostrarError("Error al cerrar la ventana" + ex.Message);
+            }
         }
 
         protected void btnGuardarModalFamiliar_Click(object sender, EventArgs e)
         {
-            
             axVarSes.Escribe("strCrearNuevoFamiliar", "si");
             upFamiliarExiste.Visible = false;
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalFamiliarExistente').classList.remove('modal-open');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
+            ScriptManager.RegisterClientScriptBlock(this, GetType(), "Script", "btnEnviarClick();", true);
+            
         }
 
         protected void btnCancelarModalFamiliar_Click(object sender, EventArgs e)
         {
-            
-            axVarSes.Escribe("strCrearNuevoFamiliar", "");
-            upFamiliarExiste.Visible = false;
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
-        }
+            try
+            {
+                axVarSes.Escribe("strCrearNuevoFamiliar", "");
+                upFamiliarExiste.Visible = false;
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalFamiliarExistente').classList.remove('modal-open');", true);
+            }
+            catch (Exception ex)
+            {
+                MostrarError("Error al cerrar la ventana" + ex.Message);
+            }
+}
 
         protected void gvEstudiantes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -1460,7 +1452,10 @@ namespace SisAdmisiones.Forms
             {
                 axVarSes.Escribe("strNSAlumno", gvEstudiantes.Rows[indice].Cells[0].Text);
                 axVarSes.Escribe("strCrearNuevoAlumno", "no");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
+                upAlumnoExiste.Visible = false;
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalAlumnoExistente').classList.remove('modal-open');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();", true);
+                ScriptManager.RegisterClientScriptBlock(this, GetType(), "Script", "btnEnviarClick();", true);
             }
         }
 
@@ -1471,8 +1466,21 @@ namespace SisAdmisiones.Forms
             {
                 axVarSes.Escribe("strNSFamiliar", gvTutores.Rows[indice].Cells[0].Text);
                 axVarSes.Escribe("strCrearNuevoFamiliar", "no");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
+                upFamiliarExiste.Visible = false;
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalFamiliarExistente').classList.remove('modal-open');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
+                ScriptManager.RegisterClientScriptBlock(this, GetType(), "Script", "btnEnviarClick();", true);
             }
+        }
+
+        protected void rbCopiarDatosDomicilioSi_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void rbCopiarDatosDomicilioNo_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1255,6 +1255,33 @@ namespace SisAdmisiones.Forms {
         protected global::System.Web.UI.WebControls.Label lblGeneroTuror;
         
         /// <summary>
+        /// Control lblCopiarDatosDomicilioEstudiante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCopiarDatosDomicilioEstudiante;
+        
+        /// <summary>
+        /// Control rbCopiarDatosDomicilioSi.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbCopiarDatosDomicilioSi;
+        
+        /// <summary>
+        /// Control rbCopiarDatosDomicilioNo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbCopiarDatosDomicilioNo;
+        
+        /// <summary>
         /// Control tbCalleAvenidaTutor.
         /// </summary>
         /// <remarks>
