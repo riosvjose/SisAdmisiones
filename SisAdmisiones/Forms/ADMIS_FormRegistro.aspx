@@ -4,6 +4,10 @@
         function btnEnviarClick() {
             document.getElementById('<%= btnEnviar.ClientID %>').click();                         
         }
+        function goBottom()
+        {
+            $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
@@ -843,8 +847,8 @@
                            <div class="btn-group center-block">
                                <asp:Button ID="btnEnviar" runat="server" CssClass="btn btn-success btn-default btn-block" Text="Enviar formulario" OnClick="btnEnviar_Click" CausesValidation="true"  ForeColor="White" />
                             </div>
-                          </div>
                         </div>
+                    </div>
 			   </div>
             </asp:Panel>
             <%--MODAL ALUMNO EXISTENTE--%>
@@ -893,8 +897,16 @@
                                 </div>
                                 <%--pie modal--%>
                                 <div class="modal-footer">
-                                    <asp:Button ID="btnGuardarModalAlumno" runat="server" CssClass="btn btn-success" Text="Crear nuevo" CausesValidation="False" OnClick="btnGuardarModalAlumno_Click"/>
-                                    <asp:Button ID="btnCancelarModalAlumno" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClick="btnCancelarModalAlumno_Click"/>
+                                    <div class="row mb-3">
+                                        <div class="form-inline">
+                                            <div class="col-xs-12 col-sm-6 col-xs-6 text-left">
+                                                <asp:Button ID="btnGuardarModalAlumno" runat="server" CssClass="btn btn-success" Text="Crear nuevo" CausesValidation="False" OnClick="btnGuardarModalAlumno_Click"/>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-xs-6 text-right">
+                                                <asp:Button ID="btnCancelarModalAlumno" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClick="btnCancelarModalAlumno_Click"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -943,8 +955,16 @@
                                 </div>
                                  <%--pie modal--%>
                                 <div class="modal-footer">
-                                    <asp:Button ID="btnGuardarModalFamiliar" runat="server" CssClass="btn btn-success" Text="Crear nuevo" CausesValidation="False" OnClick="btnGuardarModalFamiliar_Click"/>
-                                    <asp:Button ID="btnCancelarModalFamiliar" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClick="btnCancelarModalFamiliar_Click"/>
+                                    <div class="row mb-3">
+                                        <div class="form-inline">
+                                            <div class="col-xs-12 col-sm-6 col-xs-6 text-left">
+                                                <asp:Button ID="btnGuardarModalFamiliar" runat="server" CssClass="btn btn-success" Text="Crear nuevo" CausesValidation="False" OnClick="btnGuardarModalFamiliar_Click"/>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-xs-6 text-right">
+                                                <asp:Button ID="btnCancelarModalFamiliar" runat="server" CssClass="btn btn-danger" Text="Cancelar" CausesValidation="False" OnClick="btnCancelarModalFamiliar_Click"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

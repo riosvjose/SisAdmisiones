@@ -33,8 +33,8 @@ namespace SisAdmisiones.Forms
         #region "Funciones y procedimientos"
         private void CargarDatosIniciales(string strCon)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('body1').classList.remove('modal-open');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
             if (!string.IsNullOrEmpty(strCon.Trim()))
             {
                 pnMensajeOK.Visible = false;
@@ -396,6 +396,17 @@ namespace SisAdmisiones.Forms
             ddlTipoDocIdentidadTutor.SelectedValue = "1";
         }
 
+        public void EliminarEspaciosExtras()
+        {
+            tbNombreCompleto.Text= Regex.Replace(tbNombreCompleto.Text, @"\s+", " ");
+            tbNombres.Text = Regex.Replace(tbNombres.Text, @"\s+", " ");
+            tbNombreTutor.Text = Regex.Replace(tbNombreTutor.Text, @"\s+", " ");
+            tbPrimerApellido.Text = Regex.Replace(tbPrimerApellido.Text, @"\s+", " ");
+            tbPrimerApTutor.Text = Regex.Replace(tbPrimerApTutor.Text, @"\s+", " ");
+            tbSegundoApellido.Text = Regex.Replace(tbSegundoApellido.Text, @"\s+", " ");
+            tbSegundoApTutor.Text = Regex.Replace(tbSegundoApTutor.Text, @"\s+", " ");
+        }
+
         protected void evaluarLlenado()
         {
             long aux = 0;
@@ -698,6 +709,93 @@ namespace SisAdmisiones.Forms
             lblMensajeError.Text = mensaje;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "goBottom();", true);
         }
+        private bool ValidarPersonaEstudiante(BD_ADMIS_DatosPersonales DatosPer)
+        {
+            BD_Personas Personas = new BD_Personas();
+            Personas.StrConexion = axVarSes.Lee<string>("strConexion");
+            bool correcto = false;
+            if (!(Personas.Revisar_Existe_Persona(DatosPer.DocIdentidad, DatosPer.PrimerApellido, DatosPer.SegundoApellido, DatosPer.Nombres, "")) || !string.IsNullOrEmpty(axVarSes.Lee<string>("strCrearNuevoAlumno")))
+            {
+                correcto = true;
+            }
+            else
+            {
+                gvEstudiantes.Visible = true;
+                gvEstudiantes.Columns[0].Visible = true;
+                gvEstudiantes.DataSource = Personas.dtObtenerCoincidencias(DatosPer.DocIdentidad, DatosPer.PrimerApellido, DatosPer.SegundoApellido, DatosPer.Nombres, "");
+                gvEstudiantes.DataBind();
+                gvEstudiantes.Columns[0].Visible = false;
+                bool blIgual = false;
+                for (int i = 0; i < gvEstudiantes.Rows.Count; i++)
+                {
+                    string carnet = gvEstudiantes.Rows[i].Cells[1].Text;
+                    string primer_ap = gvEstudiantes.Rows[i].Cells[2].Text;
+                    string segundo_ap = gvEstudiantes.Rows[i].Cells[3].Text;
+                    string nombre = gvEstudiantes.Rows[i].Cells[4].Text;
+                    if ((carnet.Equals(tbDocIdentidad.Text)) && (primer_ap.Equals(tbPrimerApellido.Text.ToUpper())) && (segundo_ap.Equals(tbSegundoApellido.Text.ToUpper())) && (nombre.Equals(tbNombres.Text.ToUpper())))
+                    {
+                        axVarSes.Escribe("strNSAlumno", gvEstudiantes.Rows[i].Cells[0].Text);
+                        axVarSes.Escribe("strCrearNuevoAlumno", "no");
+                        blIgual = true;
+                        i = gvEstudiantes.Rows.Count;
+                    }
+                }
+                if (blIgual)
+                {
+                    correcto = true;
+                }
+                else
+                {
+                    correcto = false;
+                }
+            }
+
+            return correcto;
+        }
+
+        private bool ValidarPersonaFamiliar(BD_ADMIS_DatosTutor Tutor)
+        {
+            BD_Personas Personas = new BD_Personas();
+            Personas.StrConexion = axVarSes.Lee<string>("strConexion");
+            bool correcto = false;
+            if (!Personas.Revisar_Existe_Persona(Tutor.DocIdentidad, Tutor.PrimerApellido, Tutor.SegundoApellido, Tutor.Nombres, "") || !string.IsNullOrEmpty(axVarSes.Lee<string>("strCrearNuevoFamiliar")))
+            {
+                correcto = true;
+            }
+            else
+            {
+                gvTutores.Visible = true;
+                gvTutores.Columns[0].Visible = true;
+                gvTutores.DataSource = Personas.dtObtenerCoincidencias(Tutor.DocIdentidad, Tutor.PrimerApellido, Tutor.SegundoApellido, Tutor.Nombres, "");
+                gvTutores.DataBind();
+                gvTutores.Columns[0].Visible = false;
+                bool blIgual = false;
+                for (int i = 0; i < gvTutores.Rows.Count; i++)
+                {
+                    string carnet = gvTutores.Rows[i].Cells[1].Text;
+                    string primer_ap = gvTutores.Rows[i].Cells[2].Text;
+                    string segundo_ap = gvTutores.Rows[i].Cells[3].Text;
+                    string nombre = gvTutores.Rows[i].Cells[4].Text;
+                    if ((carnet.Equals(tbDocIdentidadTutor.Text)) && (primer_ap.Equals(tbPrimerApTutor.Text.ToUpper())) && (segundo_ap.Equals(tbSegundoApTutor.Text.ToUpper())) && (nombre.Equals(tbNombreTutor.Text.ToUpper())))
+                    {
+                        axVarSes.Escribe("strNSFamiliar", gvTutores.Rows[i].Cells[0].Text);
+                        axVarSes.Escribe("strCrearNuevoFamiliar", "no");
+                        blIgual = true;
+                        i = gvTutores.Rows.Count;
+                    }
+                }
+                if (blIgual)
+                {
+                    correcto = true;
+                }
+                else
+                {
+                    correcto = false;
+                }
+            }
+
+            return correcto;
+        }
         #endregion
 
         #region "Eventos"
@@ -793,6 +891,7 @@ namespace SisAdmisiones.Forms
             {
                 if (((axVarSes.Lee<string>("strRol").Equals("1")) && (tbObservaciones.Text.Length < 500)) || (axVarSes.Lee<string>("strRol").Equals("0")))
                 {
+                    EliminarEspaciosExtras();
                     if (!tbTelefonoContacto1.Text.Equals(tbTelefonoContacto2.Text))
                     {
                         GEN_Cadenas Cadenas = new GEN_Cadenas();
@@ -988,7 +1087,7 @@ namespace SisAdmisiones.Forms
                                 }
                                 catch (Exception ex)
                                 {
-                                    MostrarError("Se produjo un error, por favor recargue la página y vuelva a intentarlo.");
+                                    MostrarError("Se produjo un error, por favor recargue la página y vuelva a intentarlo. "+ex.Message);
                                 }
                             }
 
@@ -1105,9 +1204,11 @@ namespace SisAdmisiones.Forms
             {
                 DatosAdicionales.PermitirAccesoPadres = 1;
             }
-            if (!(Personas.Revisar_Existe_Persona(DatosPer.DocIdentidad, DatosPer.PrimerApellido, DatosPer.SegundoApellido, DatosPer.Nombres, "")) || !string.IsNullOrEmpty(axVarSes.Lee<string>("strCrearNuevoAlumno")))
+            //if (!(Personas.Revisar_Existe_Persona(DatosPer.DocIdentidad, DatosPer.PrimerApellido, DatosPer.SegundoApellido, DatosPer.Nombres, "")) || !string.IsNullOrEmpty(axVarSes.Lee<string>("strCrearNuevoAlumno")))
+            if(ValidarPersonaEstudiante(DatosPer))
             {
-                if (!Familiar.Revisar_Existe_Persona(Tutor.DocIdentidad, Tutor.PrimerApellido, Tutor.SegundoApellido, Tutor.Nombres, "") || !string.IsNullOrEmpty(axVarSes.Lee<string>("strCrearNuevoFamiliar")))
+                //if (!Familiar.Revisar_Existe_Persona(Tutor.DocIdentidad, Tutor.PrimerApellido, Tutor.SegundoApellido, Tutor.Nombres, "") || !string.IsNullOrEmpty(axVarSes.Lee<string>("strCrearNuevoFamiliar")))
+                if(ValidarPersonaFamiliar(Tutor))
                 {
                     if (!Personas.Revisar_Existe_Persona(DatosPer.DocIdentidad, DatosPer.PrimerApellido, DatosPer.SegundoApellido, DatosPer.Nombres, "") || axVarSes.Lee<string>("strCrearNuevoAlumno").Equals("si"))
                     {
@@ -1308,8 +1409,6 @@ namespace SisAdmisiones.Forms
             }
             else
             {
-                upAlumnoExiste.Visible = true;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#modalAlumnoExistente').modal('show');", true);
                 pnMensajeError.Visible = false;
                 pnMensajeOK.Visible = false;
                 pnsugeridos.Visible = true;
@@ -1318,6 +1417,8 @@ namespace SisAdmisiones.Forms
                 gvEstudiantes.DataSource = Personas.dtObtenerCoincidencias(DatosPer.DocIdentidad, DatosPer.PrimerApellido, DatosPer.SegundoApellido, DatosPer.Nombres, "");
                 gvEstudiantes.DataBind();
                 gvEstudiantes.Columns[0].Visible = false;
+                upAlumnoExiste.Visible = true;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#modalAlumnoExistente').modal('show');", true);               
             }
         }
         public void VaciarBoxes()
@@ -1399,7 +1500,6 @@ namespace SisAdmisiones.Forms
             
             axVarSes.Escribe("strCrearNuevoAlumno", "si");
             upAlumnoExiste.Visible = false;
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalAlumnoExistente').classList.remove('modal-open');", true);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();", true);
             ScriptManager.RegisterClientScriptBlock(this, GetType(), "Script", "btnEnviarClick();", true);
             
@@ -1424,7 +1524,6 @@ namespace SisAdmisiones.Forms
         {
             axVarSes.Escribe("strCrearNuevoFamiliar", "si");
             upFamiliarExiste.Visible = false;
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalFamiliarExistente').classList.remove('modal-open');", true);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
             ScriptManager.RegisterClientScriptBlock(this, GetType(), "Script", "btnEnviarClick();", true);
             
@@ -1436,8 +1535,7 @@ namespace SisAdmisiones.Forms
             {
                 axVarSes.Escribe("strCrearNuevoFamiliar", "");
                 upFamiliarExiste.Visible = false;
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalFamiliarExistente').classList.remove('modal-open');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
             }
             catch (Exception ex)
             {
@@ -1453,7 +1551,6 @@ namespace SisAdmisiones.Forms
                 axVarSes.Escribe("strNSAlumno", gvEstudiantes.Rows[indice].Cells[0].Text);
                 axVarSes.Escribe("strCrearNuevoAlumno", "no");
                 upAlumnoExiste.Visible = false;
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalAlumnoExistente').classList.remove('modal-open');", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();", true);
                 ScriptManager.RegisterClientScriptBlock(this, GetType(), "Script", "btnEnviarClick();", true);
             }
@@ -1467,7 +1564,6 @@ namespace SisAdmisiones.Forms
                 axVarSes.Escribe("strNSFamiliar", gvTutores.Rows[indice].Cells[0].Text);
                 axVarSes.Escribe("strCrearNuevoFamiliar", "no");
                 upFamiliarExiste.Visible = false;
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();document.getElementById('modalFamiliarExistente').classList.remove('modal-open');", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
                 ScriptManager.RegisterClientScriptBlock(this, GetType(), "Script", "btnEnviarClick();", true);
             }
@@ -1475,12 +1571,22 @@ namespace SisAdmisiones.Forms
 
         protected void rbCopiarDatosDomicilioSi_CheckedChanged(object sender, EventArgs e)
         {
-
+            tbCalleAvenidaTutor.Text = tbCalleAvenida.Text;
+            tbDeptoTutor.Text = tbNumeroDepto.Text;
+            tbEdificioTutor.Text = tbNombreEdificio.Text;
+            tbNumeroDomTutor.Text = tbNumeroDom.Text;
+            tbTelefonoTutor.Text = tbTelefonoDomicilio.Text;
+            tbZonaTutor.Text = tbZona.Text;
         }
 
         protected void rbCopiarDatosDomicilioNo_CheckedChanged(object sender, EventArgs e)
         {
-
+            tbCalleAvenidaTutor.Text = "";
+            tbDeptoTutor.Text = "";
+            tbEdificioTutor.Text = "";
+            tbNumeroDomTutor.Text = "";
+            tbTelefonoTutor.Text = "";
+            tbZonaTutor.Text = "";
         }
     }
 }
