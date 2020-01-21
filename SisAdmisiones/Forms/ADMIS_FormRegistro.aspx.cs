@@ -1165,18 +1165,7 @@ namespace SisAdmisiones.Forms
             Personas.Tipo = 2; //define estudiante segun dominios
 
             
-            DatosAdicionales.Email = DatosPer.Email;
-            DatosAdicionales.NumSecSemestreIngreso = DatosPer.NumSecSemestre;
-            DatosAdicionales.Telefono = DatosPer.Telefono;
-            DatosAdicionales.Celular = DatosPer.Celular;
-            DatosAdicionales.AvenidaCalle = DatosPer.AvenidaCalle;
-            DatosAdicionales.Numero = DatosPer.Numero;
-            DatosAdicionales.Zona = DatosPer.Zona;
-            DatosAdicionales.Barrio = DatosPer.Zona;
-            DatosAdicionales.Edificio = DatosPer.Edificio;
-            DatosAdicionales.Depto = DatosPer.Depto;
-            DatosAdicionales.Piso = DatosPer.Piso;
-            DatosAdicionales.TipoLugarNacimiento =DatosPer.AreaNacimiento;
+            
 
 
             Familiar.CedulaIdentidad = Tutor.DocIdentidad;
@@ -1191,14 +1180,7 @@ namespace SisAdmisiones.Forms
             Familiar.Nombres = Tutor.Nombres.ToUpper();
             Familiar.Sexo = Tutor.Genero;
             Familiar.Tipo = 32; //define familiar segun dominio
-         
-            DatosAdicionalesFamiliares.Email = Tutor.Email;
-            DatosAdicionalesFamiliares.Telefono = Tutor.Telefono;
-            DatosAdicionalesFamiliares.Celular = Tutor.Celular;
-            DatosAdicionalesFamiliares.AvenidaCalle = Tutor.AvenidaCalle;
-            DatosAdicionalesFamiliares.Numero = Tutor.Numero;
-            DatosAdicionalesFamiliares.Zona = Tutor.Zona;
-            DatosAdicionalesFamiliares.Barrio = Tutor.Zona;
+        
 
             if (rbSi.Checked)
             {
@@ -1222,6 +1204,18 @@ namespace SisAdmisiones.Forms
                         CadSqls[numSqls] = DatosPer.CadsqlActualizar();
                         numSqls++;
                         DatosAdicionales.NumSecPersona = Personas.NumSec;
+                        DatosAdicionales.Email = DatosPer.Email;
+                        DatosAdicionales.NumSecSemestreIngreso = DatosPer.NumSecSemestre;
+                        DatosAdicionales.Telefono = DatosPer.Telefono;
+                        DatosAdicionales.Celular = DatosPer.Celular;
+                        DatosAdicionales.AvenidaCalle = DatosPer.AvenidaCalle;
+                        DatosAdicionales.Numero = DatosPer.Numero;
+                        DatosAdicionales.Zona = DatosPer.Zona;
+                        DatosAdicionales.Barrio = DatosPer.Zona;
+                        DatosAdicionales.Edificio = DatosPer.Edificio;
+                        DatosAdicionales.Depto = DatosPer.Depto;
+                        DatosAdicionales.Piso = DatosPer.Piso;
+                        DatosAdicionales.TipoLugarNacimiento = DatosPer.AreaNacimiento;
                         CadSqls[numSqls] = DatosAdicionales.cadSqlInsertar();
                         numSqls++;
                         Bachilleres.NumSecPersona = Personas.NumSec;
@@ -1253,6 +1247,19 @@ namespace SisAdmisiones.Forms
                         CadSqls[numSqls] = DatosPer.CadsqlActualizar();
                         numSqls++;
                         DatosAdicionales.NumSecPersona = Personas.NumSec;
+                        DatosAdicionales.Ver();
+                        DatosAdicionales.Email = DatosPer.Email;
+                        DatosAdicionales.NumSecSemestreIngreso = DatosPer.NumSecSemestre;
+                        DatosAdicionales.Telefono = DatosPer.Telefono;
+                        DatosAdicionales.Celular = DatosPer.Celular;
+                        DatosAdicionales.AvenidaCalle = DatosPer.AvenidaCalle;
+                        DatosAdicionales.Numero = DatosPer.Numero;
+                        DatosAdicionales.Zona = DatosPer.Zona;
+                        DatosAdicionales.Barrio = DatosPer.Zona;
+                        DatosAdicionales.Edificio = DatosPer.Edificio;
+                        DatosAdicionales.Depto = DatosPer.Depto;
+                        DatosAdicionales.Piso = DatosPer.Piso;
+                        DatosAdicionales.TipoLugarNacimiento = DatosPer.AreaNacimiento;
                         CadSqls[numSqls] = DatosAdicionales.sqlCadActualizar();
                         numSqls++;
                         CadSqls[numSqls] = Personas.sqlCadActualizarTipoPersona();
@@ -1289,6 +1296,13 @@ namespace SisAdmisiones.Forms
                         CadSqls[numSqls] = Tutor.cadSqlActualizar();
                         numSqls++;
                         DatosAdicionalesFamiliares.NumSecPersona = Familiar.NumSec;
+                        DatosAdicionalesFamiliares.Email = Tutor.Email;
+                        DatosAdicionalesFamiliares.Telefono = Tutor.Telefono;
+                        DatosAdicionalesFamiliares.Celular = Tutor.Celular;
+                        DatosAdicionalesFamiliares.AvenidaCalle = Tutor.AvenidaCalle;
+                        DatosAdicionalesFamiliares.Numero = Tutor.Numero;
+                        DatosAdicionalesFamiliares.Zona = Tutor.Zona;
+                        DatosAdicionalesFamiliares.Barrio = Tutor.Zona;
                         CadSqls[numSqls] = DatosAdicionalesFamiliares.cadSqlInsertar();
                         numSqls++;
                     }
@@ -1312,6 +1326,14 @@ namespace SisAdmisiones.Forms
                         CadSqls[numSqls] = Tutor.cadSqlActualizar();
                         numSqls++;
                         DatosAdicionalesFamiliares.NumSecPersona = Familiar.NumSec;
+                        DatosAdicionalesFamiliares.Ver();
+                        DatosAdicionalesFamiliares.Email = Tutor.Email;
+                        DatosAdicionalesFamiliares.Telefono = Tutor.Telefono;
+                        DatosAdicionalesFamiliares.Celular = Tutor.Celular;
+                        DatosAdicionalesFamiliares.AvenidaCalle = Tutor.AvenidaCalle;
+                        DatosAdicionalesFamiliares.Numero = Tutor.Numero;
+                        DatosAdicionalesFamiliares.Zona = Tutor.Zona;
+                        DatosAdicionalesFamiliares.Barrio = Tutor.Zona;
                         CadSqls[numSqls] = DatosAdicionalesFamiliares.sqlCadActualizar();
                         numSqls++;
                         CadSqls[numSqls] = Familiar.sqlCadActualizarTipoPersona();
@@ -1353,6 +1375,7 @@ namespace SisAdmisiones.Forms
                         numSqls++;
                     }
                     DatosPer.Estado = 0;//consolidado
+                    DatosPer.NumSecSemestre = Convert.ToInt64(ddlSemestre.SelectedValue);
                     CadSqls[numSqls] = DatosPer.CadsqlActualizar();
                     numSqls++;
                     

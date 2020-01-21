@@ -233,7 +233,7 @@ namespace nsBD_GEN
             string strSql = string.Empty;
             if (!string.IsNullOrEmpty(_num_sec_persona.ToString()))
             {
-                strSql = "select num_sec_persona,email,num_sec_semestre,telefono,celular, nvl(casilla,0) casilla,nvl(titulo_bachiller,0) titulo_bachiller, " +
+                strSql = "select num_sec_persona,email,num_sec_semestre_ingreso,telefono,celular, nvl(casilla,0) casilla,nvl(titulo_bachiller,0) titulo_bachiller, " +
                          "email_ucb,email_pass,nvl(email_activo,0) email_activo,avenida_calle,numero,zona,barrio,edificio,piso,depto, " +
                          "nvl(codigo_regional,0) codigo_regional,nvl(cambiar,0) cambiar,nvl(permitir_acceso_padres,0) permitir_acceso_padres,nvl(tipo_lugar_nacimiento,0) tipo_lugar_nacimiento, nvl(interno_ucb,0) interno_ucb " +
                          "from personas_datos_adicionales  " +
@@ -247,10 +247,10 @@ namespace nsBD_GEN
                     blEncontrado = true;
                     _num_sec_persona = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_persona"].ToString());
                     _email = OracleBD.DataTable.Rows[0]["email"].ToString();
-                    if (OracleBD.DataTable.Rows[0]["num_sec_semestre"].ToString().Trim() == "")
+                    if (OracleBD.DataTable.Rows[0]["num_sec_semestre_ingreso"].ToString().Trim() == "")
                         _num_sec_semestre = 0;
                     else
-                        _num_sec_semestre = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_semestre"].ToString());
+                        _num_sec_semestre = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_semestre_ingreso"].ToString());
                     if (OracleBD.DataTable.Rows[0]["telefono"].ToString().Trim() == "")
                         _telefono = 0;
                     else
@@ -542,8 +542,6 @@ namespace nsBD_GEN
                         "telefono = " + GeneralesSistema.IIf(_telefono == 0, "NULL", _telefono.ToString().Trim()) + ", " +
                         "celular = " + GeneralesSistema.IIf(_celular.Trim() == "", "NULL", "'" + _celular + "'") + ", " +
                         "email = " + GeneralesSistema.IIf(_email.Trim() == "", "NULL", "'" + _email + "'") + ", " +
-                        "email_ucb = " + GeneralesSistema.IIf(_email_ucb.Trim() == "", "NULL", "'" + _email_ucb + "'") + ", " +
-                        "interno_ucb = " + GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _interno_ucb.ToString().Trim()) + ", " +
                         "permitir_acceso_padres = " + GeneralesSistema.IIf(_permitir_acceso_padres == 0, "NULL", _permitir_acceso_padres.ToString().Trim()) + ", " +
                         "TIPO_LUGAR_NACIMIENTO = " + GeneralesSistema.IIf(_tipo_lugar_nacimiento == 0, "NULL",TipoLugarNacimiento.ToString().Trim()) + " " +
                         "where num_sec_persona = " + _num_sec_persona.ToString();

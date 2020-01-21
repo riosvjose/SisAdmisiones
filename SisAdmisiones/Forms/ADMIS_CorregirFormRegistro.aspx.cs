@@ -963,6 +963,7 @@ namespace SisAdmisiones.Forms
             CadSqls[numSqls] = DatosPer.CadsqlActualizar();
             numSqls++;
             DatosAdicionales.NumSecPersona = Personas.NumSec;
+            DatosAdicionales.Ver();
             CadSqls[numSqls] = DatosAdicionales.sqlCadActualizar();
             numSqls++;
             Personas.NumSec = DatosPer.NumSecPersona;
