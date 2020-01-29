@@ -39,25 +39,44 @@
                         <br/>
                         <div class="row mb-3">
                             <asp:Panel ID="pnSemestres" runat="server" Visible="false">
-                                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                               <div class="row mb-3 ml-2">
+                                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
                                         <div class="form-group">
                                             <div class="form-inline">
                                                 <strong><asp:Label ID="lblSemestre" runat="server" >Semestre:</asp:Label></strong>
                                             </div>
                                         </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <div class="form-group">
-                                        <div class="form-inline">
-                                            <asp:DropDownList ID="ddlSemestre" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="false"></asp:DropDownList>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <div class="form-inline">
+                                                <asp:DropDownList ID="ddlSemestre" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="false"></asp:DropDownList>
+                                            </div>
                                         </div>
                                     </div>
-                                      
+                                </div>
+                                <div class="row mb-3 ml-2">
+                                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                        <div class="form-group">
+                                            <div class="form-inline">
+                                                <strong><asp:Label ID="lblLugarInscripcion" runat="server" >Lugar de inscripción:</asp:Label></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <div class="form-inline">
+                                                <asp:DropDownList ID="ddlLugarInscripcion" runat="server" CssClass="form-control" AutoPostBack="false" Enabled="false"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </asp:Panel>
+
                         </div>
                         <div class="row mb-3">
                             <asp:Panel ID="pnCarreras" runat="server" Visible="true">
+                                <div class="row mb-3 ml-2">
                                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
                                         <div class="form-group">
                                             <div class="form-inline">
@@ -72,6 +91,7 @@
                                         </div>
                                     </div>
                                       
+                                </div>
                                 </div>
                             </asp:Panel>
                         </div>
@@ -244,17 +264,10 @@
                     <%--PIE DEL PANEL--%>	       
 			   </div>
             </asp:Panel>
-            <asp:Panel ID="pnDatosDomicilio" runat="server">
-		        <div class="panel panel-info">
-                    <%--ENCABEZADO DEL PANEL--%>
-			        <div class="panel-heading">
-                        <h3> <strong><asp:Label ID="lblTitulopnDatosDom" runat="server" Text="Datos de domicilio"></asp:Label></strong></h3>
-			        </div>
-                    <%--CUERPO DEL PANEL--%>
-			        <div class="panel-body">
+            <div class="panel-body">
                         <br/>
                         <div class="row mb-3">
-                            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+                            <div class="col-xs-12 col-sm-7 col-md-5 col-lg-5">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbCalleAvenida" runat="server" CssClass="form-control" MaxLength="250" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" BehaviorID="tbCalleAvenida_FilteredTextBoxExtender" TargetControlID="tbCalleAvenida" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-./\# " />
@@ -264,7 +277,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbCalleAvenida" CssClass="text-danger" ErrorMessage="El campo 'Calle o avenida' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                            <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbNumeroDom" runat="server" CssClass="form-control" MaxLength="20" AutoCompleteType="Disabled" ></asp:TextBox>
                                      <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" BehaviorID="tbNumeroDom_FilteredTextBoxExtender" TargetControlID="tbNumeroDom" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-/\ " />
@@ -274,7 +287,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="tbNumeroDom" CssClass="text-danger" ErrorMessage="El campo 'N°' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
                                 <div class="col-xs-12">
                                       <asp:TextBox ID="tbZona" runat="server" CssClass="form-control" MaxLength="60" AutoCompleteType="Disabled" ></asp:TextBox>
                                       <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender7" runat="server" BehaviorID="tbZona_FilteredTextBoxExtender" TargetControlID="tbZona" ValidChars="1234567890QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm-./\° " />
@@ -284,6 +297,14 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="tbZona" CssClass="text-danger" ErrorMessage="El campo 'Zona' es obligatorio.">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
+                                    <div class="col-xs-12">
+                                        <asp:DropDownList ID="ddlLocalidadZona" runat="server" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
+                                    </div>
+                                    <div class="col-xs-12 text-center">
+                                        <strong><asp:Label ID="lblLocalidadZona" runat="server" >Ubicación domicilio</asp:Label></strong>
+                                    </div>
+                                </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-5">

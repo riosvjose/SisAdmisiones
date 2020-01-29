@@ -73,6 +73,8 @@ namespace SisAdmisiones.Forms
                 CargarDdlTipoDoc();
                 CargarDdlAnios();
                 CargarDdlAreaNac();
+                CargarDdlLocalidadZona();
+                CargarDdlLugarInscripcion();
 
                 if (!string.IsNullOrEmpty(axVarSes.Lee<string>("strMensajeExito")))
                 {
@@ -93,6 +95,30 @@ namespace SisAdmisiones.Forms
                 Response.Redirect("~/Default.aspx");
             }
         }
+        public void CargarDdlLugarInscripcion()
+        {
+            BD_GEN_Subunidades_Ubicaciones Ubicaciones = new BD_GEN_Subunidades_Ubicaciones();
+            Ubicaciones.StrConexion = axVarSes.Lee<string>("strConexion");
+            ddlLugarInscripcion.DataSource = Ubicaciones.DTUbicaciones(axVarSes.Lee<string>("strNsSubunidad"), "1", false);
+            ddlLugarInscripcion.DataTextField = "nombre";
+            ddlLugarInscripcion.DataValueField = "num_sec_ubicacion";
+            ddlLugarInscripcion.DataBind();
+            ddlLugarInscripcion.SelectedValue = "1";
+        }
+        public void CargarDdlLocalidadZona()
+        {
+            BD_Localidades libLocalidades = new BD_Localidades();
+            libLocalidades.StrConexion = axVarSes.Lee<string>("strConexion");
+            DataTable dt = libLocalidades.ListaLocalidadesBuscadas("1");
+            if (dt.Rows.Count > 0)
+            {
+                ddlLocalidadZona.DataSource = dt;
+                ddlLocalidadZona.DataTextField = "nombre";
+                ddlLocalidadZona.DataValueField = "num_sec";
+                ddlLocalidadZona.SelectedValue = "1";
+                ddlLocalidadZona.DataBind();
+            }
+        }
         public void CargarDdlAnios()
         {
             BD_ADMIS_DatosPersonales libDatos = new BD_ADMIS_DatosPersonales();
@@ -102,6 +128,7 @@ namespace SisAdmisiones.Forms
             ddlAnio.DataValueField = "anio";
             ddlAnio.DataBind();
         }
+        
         public void CargarDdlSemestreSeleccionado(string valor)
         {
             BD_Semestres libSemestres = new BD_Semestres();
@@ -258,7 +285,7 @@ namespace SisAdmisiones.Forms
                     ddlCiudadNac.DataSource = dt;
                     ddlCiudadNac.DataTextField = "nombre";
                     ddlCiudadNac.DataValueField = "num_sec";
-                    ddlCiudadNac.SelectedIndex = 0;
+                    //ddlCiudadNac.SelectedIndex = 0;
                     ddlCiudadNac.DataBind();
                 }
 
@@ -377,6 +404,8 @@ namespace SisAdmisiones.Forms
             libDatosPer.Ver();
             CargarDdlSemestreSeleccionado(libDatosPer.NumSecSemestre.ToString());
             ddlCarreras.SelectedValue= (libDatosPer.NumSecSubdepartamento.ToString());
+            ddlLocalidadZona.SelectedValue = libDatosPer.NumSecLocalidadDomicilio.ToString();
+            ddlLugarInscripcion.SelectedValue = libDatosPer.NumSecUbicacionInscripcion.ToString();
             tbPrimerApellido.Text = libDatosPer.PrimerApellido;
             tbSegundoApellido.Text = libDatosPer.SegundoApellido;
             tbNombres.Text = libDatosPer.Nombres;
@@ -535,6 +564,8 @@ namespace SisAdmisiones.Forms
             dtDatos.Columns.Add("Areabach", Type.GetType("System.String"));
             dtDatos.Columns.Add("AutorizaSeguimientoNo", Type.GetType("System.String"));
             dtDatos.Columns.Add("FechaEmision", Type.GetType("System.String"));
+            dtDatos.Columns.Add("Localidad_Domicilio", Type.GetType("System.String"));
+            dtDatos.Columns.Add("Ubicacion_Inscripcion", Type.GetType("System.String"));
 
             DataRow rwFila;
             rwFila = dtDatos.NewRow();
@@ -569,6 +600,8 @@ namespace SisAdmisiones.Forms
             rwFila["PaisBach"] = ddlPaisBach.SelectedItem;
             rwFila["CiudadBach"] = ddlCiudadBach.SelectedItem;
             rwFila["Discapacidad"] = ddlDiscapacidad.SelectedItem;
+            rwFila["Localidad_Domicilio"] = ddlLocalidadZona.SelectedItem;
+            rwFila["Ubicacion_Inscripcion"] = ddlLugarInscripcion.SelectedItem;
 
             rwFila["TipoTutor"] = ddlParentesco.SelectedItem;
             rwFila["TutorDocIdentidad"] = tbDocIdentidadTutor.Text;
@@ -792,7 +825,8 @@ namespace SisAdmisiones.Forms
                         libDatosPer.TipoColegio = Convert.ToInt16(ddlTipoColegio.SelectedValue);
                         libDatosPer.AreaColegio = Convert.ToInt16(ddlAreaColegio.SelectedValue);
                         libDatosPer.Turno = Convert.ToInt16(ddlTurno.SelectedValue);
-
+                        libDatosPer.NumSecLocalidadDomicilio = Convert.ToInt64(ddlLocalidadZona.SelectedValue);
+                        libDatosPer.NumSecUbicacionInscripcion = Convert.ToInt64(ddlLugarInscripcion.SelectedValue);
                         libDatosPer.NumSecSubdepartamento = Convert.ToInt64(ddlCarreras.SelectedValue);
                         //libDatosPer.NumSecSemestre = 0;
                         libDatosPer.UsuarioRegistro = axVarSes.Lee<string>("UsuarioLogin");
@@ -952,6 +986,8 @@ namespace SisAdmisiones.Forms
             DatosAdicionales.Edificio = DatosPer.Edificio;
             DatosAdicionales.Depto = DatosPer.Depto;
             DatosAdicionales.Piso = DatosPer.Piso;
+            DatosAdicionales.NumSecUbicacion = DatosPer.NumSecUbicacionInscripcion;
+            DatosAdicionales.NumSecLocalidadDomicilio = DatosPer.NumSecLocalidadDomicilio;
             DatosAdicionales.TipoLugarNacimiento = DatosPer.AreaNacimiento;
             if (rbSi.Checked)
             {

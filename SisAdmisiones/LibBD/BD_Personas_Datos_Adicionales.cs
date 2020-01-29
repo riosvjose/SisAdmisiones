@@ -53,6 +53,8 @@ namespace nsBD_GEN
         private short _permitir_acceso_padres = 0;    
         private short _tipo_lugar_nacimiento = 0;
         private short _interno_ucb = 0;
+        private long _num_sec_ubicacion = 0;
+        private long _num_sec_localidad_domicilio = 0;
 
         // Otras propiedades
         private string _mensaje = string.Empty;
@@ -60,6 +62,8 @@ namespace nsBD_GEN
 
         // Definicion GET y SET de los campos de la tabla PERSONAS_DATOS_ADICIONALES
         public long NumSecPersona { get { return _num_sec_persona; } set { _num_sec_persona = value; } }
+        public long NumSecUbicacion { get { return _num_sec_ubicacion; } set { _num_sec_ubicacion = value; } }
+        public long NumSecLocalidadDomicilio { get { return _num_sec_localidad_domicilio; } set { _num_sec_localidad_domicilio = value; } }
         public string Email { get { return _email; } set { _email = value; } }
         public long NumSecSemestreIngreso { get { return _num_sec_semestre; } set { _num_sec_semestre = value; } }
         public long Telefono { get { return _telefono; } set { _telefono = value; } }
@@ -122,6 +126,8 @@ namespace nsBD_GEN
             _permitir_acceso_padres = 0;   
             _tipo_lugar_nacimiento = 0;
             _interno_ucb = 0;
+            _num_sec_localidad_domicilio = 0;
+            _num_sec_ubicacion = 0;
 
             _mensaje = string.Empty;
             _strconexion = string.Empty;
@@ -139,7 +145,7 @@ namespace nsBD_GEN
             {
                 strSql = "insert into personas_datos_adicionales " +
                         "(num_sec_persona, zona, barrio, avenida_calle, numero, edificio, piso, depto, " +
-                        "telefono, celular, email, email_ucb, interno_ucb, permitir_acceso_padres) " +
+                        "telefono, celular, email, permitir_acceso_padres, num_sec_ubicacion, num_sec_localidad_domicilio) " +
                         "values " +
                         "(" + _num_sec_persona.ToString() + ", " +
                         GeneralesSistema.IIf(_zona.Trim() == "", "NULL", "'" + _zona + "'") + ", " +
@@ -152,9 +158,9 @@ namespace nsBD_GEN
                         GeneralesSistema.IIf(_telefono == 0, "NULL", _telefono.ToString().Trim()).ToString() + ", " +
                         GeneralesSistema.IIf(_celular.Trim() == "", "NULL", "'" + _celular + "'") + ", " +
                         GeneralesSistema.IIf(_email.Trim() == "", "NULL", "'" + _email + "'") + ", " +
-                        GeneralesSistema.IIf(_email_ucb.Trim() == "", "NULL", "'" + _email_ucb + "'") + ", " +
-                        GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _interno_ucb.ToString().Trim()) + ", " +
-                        GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _permitir_acceso_padres.ToString().Trim()) + ")";
+                        _permitir_acceso_padres + ", " +
+                        _num_sec_ubicacion+"," +
+                        _num_sec_localidad_domicilio+")";
 
                 OracleBD.MostrarError = false;
                 OracleBD.StrConexion = _strconexion;
@@ -188,6 +194,8 @@ namespace nsBD_GEN
                          "email = " + GeneralesSistema.IIf(_email.Trim() == "", "NULL", "'" + _email + "'") + ", " +
                          "email_ucb = " + GeneralesSistema.IIf(_email_ucb.Trim() == "", "NULL", "'" + _email_ucb + "'") + ", " +
                          "interno_ucb = " + GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _interno_ucb.ToString().Trim()) + ", " +
+                         "num_sec_ubicacion = "+ _num_sec_ubicacion+","+
+                         "num_sec_localidad_domicilio = " + _num_sec_localidad_domicilio + "," +
                          "permitir_acceso_padres = " + GeneralesSistema.IIf(_permitir_acceso_padres == 0, "NULL", _permitir_acceso_padres.ToString().Trim()) + " " +
                          "where num_sec_persona = " + _num_sec_persona.ToString();
 

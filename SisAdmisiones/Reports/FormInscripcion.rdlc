@@ -125,8 +125,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>5.71231cm</Top>
-        <Left>0.28227cm</Left>
+        <Top>5.16579cm</Top>
+        <Left>0.2823cm</Left>
         <Height>0.6cm</Height>
         <Width>1.865cm</Width>
         <ZIndex>4</ZIndex>
@@ -155,7 +155,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Carrera</rd:DefaultName>
-        <Top>5.71231cm</Top>
+        <Top>5.16579cm</Top>
         <Left>2.45992cm</Left>
         <Height>0.6cm</Height>
         <Width>9.00875cm</Width>
@@ -1224,7 +1224,7 @@
         <Top>19.93402cm</Top>
         <Left>0.39619cm</Left>
         <Height>0.6cm</Height>
-        <Width>7.03242cm</Width>
+        <Width>5.30307cm</Width>
         <ZIndex>45</ZIndex>
         <Style>
           <Border>
@@ -1256,7 +1256,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>19.93402cm</Top>
-        <Left>7.97279cm</Left>
+        <Left>6.21374cm</Left>
         <Height>0.6cm</Height>
         <Width>2.6237cm</Width>
         <ZIndex>46</ZIndex>
@@ -1290,9 +1290,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>19.93402cm</Top>
-        <Left>10.8454cm</Left>
+        <Left>9.29628cm</Left>
         <Height>0.6cm</Height>
-        <Width>5.40552cm</Width>
+        <Width>3.09173cm</Width>
         <ZIndex>47</ZIndex>
         <Style>
           <Border>
@@ -1478,7 +1478,7 @@
         <Top>19.86346cm</Top>
         <Left>0.39619cm</Left>
         <Height>0cm</Height>
-        <Width>7.03242cm</Width>
+        <Width>5.30307cm</Width>
         <ZIndex>53</ZIndex>
         <Style>
           <Border>
@@ -1500,7 +1500,7 @@
       </Line>
       <Line Name="Line17">
         <Top>19.86346cm</Top>
-        <Left>7.97279cm</Left>
+        <Left>6.21374cm</Left>
         <Height>0cm</Height>
         <Width>2.6237cm</Width>
         <ZIndex>55</ZIndex>
@@ -1512,9 +1512,9 @@
       </Line>
       <Line Name="Line18">
         <Top>19.86346cm</Top>
-        <Left>10.8454cm</Left>
+        <Left>9.29628cm</Left>
         <Height>0cm</Height>
-        <Width>5.51943cm</Width>
+        <Width>3.20564cm</Width>
         <ZIndex>56</ZIndex>
         <Style>
           <Border>
@@ -1794,7 +1794,7 @@
         </Paragraphs>
         <rd:DefaultName>Numero</rd:DefaultName>
         <Top>19.26346cm</Top>
-        <Left>8.04531cm</Left>
+        <Left>6.28626cm</Left>
         <Height>0.6cm</Height>
         <Width>2.55118cm</Width>
         <ZIndex>68</ZIndex>
@@ -1828,7 +1828,7 @@
         <Top>19.26346cm</Top>
         <Left>0.39619cm</Left>
         <Height>0.6cm</Height>
-        <Width>7.03242cm</Width>
+        <Width>5.30307cm</Width>
         <ZIndex>69</ZIndex>
         <Style>
           <Border>
@@ -1858,9 +1858,9 @@
         </Paragraphs>
         <rd:DefaultName>Zona</rd:DefaultName>
         <Top>19.26346cm</Top>
-        <Left>10.8454cm</Left>
+        <Left>9.29628cm</Left>
         <Height>0.6cm</Height>
-        <Width>5.40552cm</Width>
+        <Width>3.09173cm</Width>
         <ZIndex>70</ZIndex>
         <Style>
           <Border>
@@ -4320,6 +4320,144 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox64">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Ubicación de inscripción:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>6.06537cm</Top>
+        <Left>0.2823cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.75822cm</Width>
+        <ZIndex>172</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Ubicacion_Inscripcion">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Ubicacion_Inscripcion.Value, "DsDatos")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Ubicacion_Inscripcion</rd:DefaultName>
+        <Top>6.06537cm</Top>
+        <Left>5.25107cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.63645cm</Width>
+        <ZIndex>173</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox65">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Ubicación</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>19.86346cm</Top>
+        <Left>12.75254cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.09173cm</Width>
+        <ZIndex>174</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line53">
+        <Top>19.84967cm</Top>
+        <Left>12.77677cm</Left>
+        <Height>0cm</Height>
+        <Width>3.20564cm</Width>
+        <ZIndex>175</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Localidad_Domicilio">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Localidad_Domicilio.Value, "DsDatos")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Localidad_Domicilio</rd:DefaultName>
+        <Top>19.26346cm</Top>
+        <Left>12.75254cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.09173cm</Width>
+        <ZIndex>176</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>19.72044in</Height>
     <Style />
@@ -4552,6 +4690,14 @@
         </Field>
         <Field Name="AutorizaSeguimientoNo">
           <DataField>AutorizaSeguimientoNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Localidad_Domicilio">
+          <DataField>Localidad_Domicilio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Ubicacion_Inscripcion">
+          <DataField>Ubicacion_Inscripcion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FechaEmision">

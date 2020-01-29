@@ -76,6 +76,24 @@ namespace SisAdmisiones.Forms {
         protected global::System.Web.UI.WebControls.DropDownList ddlSemestre;
         
         /// <summary>
+        /// Control lblLugarInscripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLugarInscripcion;
+        
+        /// <summary>
+        /// Control ddlLugarInscripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLugarInscripcion;
+        
+        /// <summary>
         /// Control pnCarreras.
         /// </summary>
         /// <remarks>
@@ -481,24 +499,6 @@ namespace SisAdmisiones.Forms {
         protected global::System.Web.UI.WebControls.Label lblNacionalidad;
         
         /// <summary>
-        /// Control pnDatosDomicilio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnDatosDomicilio;
-        
-        /// <summary>
-        /// Control lblTitulopnDatosDom.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitulopnDatosDom;
-        
-        /// <summary>
         /// Control tbCalleAvenida.
         /// </summary>
         /// <remarks>
@@ -605,6 +605,24 @@ namespace SisAdmisiones.Forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+        
+        /// <summary>
+        /// Control ddlLocalidadZona.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidadZona;
+        
+        /// <summary>
+        /// Control lblLocalidadZona.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLocalidadZona;
         
         /// <summary>
         /// Control tbNombreEdificio.

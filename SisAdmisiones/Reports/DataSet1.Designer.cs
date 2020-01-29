@@ -375,6 +375,10 @@ namespace SisAdmisiones.Reports {
             
             private global::System.Data.DataColumn columnAutorizaSeguimientoNo;
             
+            private global::System.Data.DataColumn columnLocalidad_Domicilio;
+            
+            private global::System.Data.DataColumn columnUbicacion_Inscripcion;
+            
             private global::System.Data.DataColumn columnFechaEmision;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -796,6 +800,22 @@ namespace SisAdmisiones.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Localidad_DomicilioColumn {
+                get {
+                    return this.columnLocalidad_Domicilio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Ubicacion_InscripcionColumn {
+                get {
+                    return this.columnUbicacion_Inscripcion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn FechaEmisionColumn {
                 get {
                     return this.columnFechaEmision;
@@ -888,6 +908,8 @@ namespace SisAdmisiones.Reports {
                         string CiudadNac, 
                         string AreaBach, 
                         string AutorizaSeguimientoNo, 
+                        string Localidad_Domicilio, 
+                        string Ubicacion_Inscripcion, 
                         string FechaEmision) {
                 ReporteFormularioRegistroRow rowReporteFormularioRegistroRow = ((ReporteFormularioRegistroRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -939,6 +961,8 @@ namespace SisAdmisiones.Reports {
                         CiudadNac,
                         AreaBach,
                         AutorizaSeguimientoNo,
+                        Localidad_Domicilio,
+                        Ubicacion_Inscripcion,
                         FechaEmision};
                 rowReporteFormularioRegistroRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReporteFormularioRegistroRow);
@@ -1010,6 +1034,8 @@ namespace SisAdmisiones.Reports {
                 this.columnCiudadNac = base.Columns["CiudadNac"];
                 this.columnAreaBach = base.Columns["AreaBach"];
                 this.columnAutorizaSeguimientoNo = base.Columns["AutorizaSeguimientoNo"];
+                this.columnLocalidad_Domicilio = base.Columns["Localidad_Domicilio"];
+                this.columnUbicacion_Inscripcion = base.Columns["Ubicacion_Inscripcion"];
                 this.columnFechaEmision = base.Columns["FechaEmision"];
             }
             
@@ -1112,6 +1138,10 @@ namespace SisAdmisiones.Reports {
                 base.Columns.Add(this.columnAreaBach);
                 this.columnAutorizaSeguimientoNo = new global::System.Data.DataColumn("AutorizaSeguimientoNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAutorizaSeguimientoNo);
+                this.columnLocalidad_Domicilio = new global::System.Data.DataColumn("Localidad_Domicilio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLocalidad_Domicilio);
+                this.columnUbicacion_Inscripcion = new global::System.Data.DataColumn("Ubicacion_Inscripcion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUbicacion_Inscripcion);
                 this.columnFechaEmision = new global::System.Data.DataColumn("FechaEmision", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaEmision);
             }
@@ -2070,6 +2100,40 @@ namespace SisAdmisiones.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Localidad_Domicilio {
+                get {
+                    try {
+                        return ((string)(this[this.tableReporteFormularioRegistro.Localidad_DomicilioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Localidad_Domicilio\' de la tabla \'ReporteFormularioRegist" +
+                                "ro\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReporteFormularioRegistro.Localidad_DomicilioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Ubicacion_Inscripcion {
+                get {
+                    try {
+                        return ((string)(this[this.tableReporteFormularioRegistro.Ubicacion_InscripcionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ubicacion_Inscripcion\' de la tabla \'ReporteFormularioRegi" +
+                                "stro\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReporteFormularioRegistro.Ubicacion_InscripcionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string FechaEmision {
                 get {
                     try {
@@ -2659,6 +2723,30 @@ namespace SisAdmisiones.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetAutorizaSeguimientoNoNull() {
                 this[this.tableReporteFormularioRegistro.AutorizaSeguimientoNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsLocalidad_DomicilioNull() {
+                return this.IsNull(this.tableReporteFormularioRegistro.Localidad_DomicilioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetLocalidad_DomicilioNull() {
+                this[this.tableReporteFormularioRegistro.Localidad_DomicilioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsUbicacion_InscripcionNull() {
+                return this.IsNull(this.tableReporteFormularioRegistro.Ubicacion_InscripcionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetUbicacion_InscripcionNull() {
+                this[this.tableReporteFormularioRegistro.Ubicacion_InscripcionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

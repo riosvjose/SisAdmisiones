@@ -73,6 +73,8 @@ namespace SisAdmisiones.Forms
                 CargarDdlAnios();
                 CargarDdlTipoAdmision();
                 CargarDdlAreaNac();
+                CargarDdlLocalidadZona();
+                CargarDdlLugarInscripcion();
 
                 if (!string.IsNullOrEmpty(axVarSes.Lee<string>("strMensajeExito")))
                 {
@@ -109,6 +111,30 @@ namespace SisAdmisiones.Forms
             ddlTipoAdmision.DataValueField = "VALOR";
             ddlTipoAdmision.DataBind();
             ddlTipoAdmision.SelectedValue = "1";
+        }
+        public void CargarDdlLugarInscripcion()
+        {
+            BD_GEN_Subunidades_Ubicaciones Ubicaciones = new BD_GEN_Subunidades_Ubicaciones();
+            Ubicaciones.StrConexion = axVarSes.Lee<string>("strConexion");
+            ddlLugarInscripcion.DataSource = Ubicaciones.DTUbicaciones(axVarSes.Lee<string>("strNsSubunidad"),"1",false);
+            ddlLugarInscripcion.DataTextField = "nombre";
+            ddlLugarInscripcion.DataValueField = "num_sec_ubicacion";
+            ddlLugarInscripcion.DataBind();
+            ddlLugarInscripcion.SelectedValue = "1";
+        }
+        public void CargarDdlLocalidadZona()
+        {
+            BD_Localidades libLocalidades = new BD_Localidades();
+            libLocalidades.StrConexion = axVarSes.Lee<string>("strConexion");
+            DataTable dt = libLocalidades.ListaLocalidadesBuscadas("1");
+            if (dt.Rows.Count > 0)
+            {
+                ddlLocalidadZona.DataSource = dt;
+                ddlLocalidadZona.DataTextField = "nombre";
+                ddlLocalidadZona.DataValueField = "num_sec";
+                ddlLocalidadZona.SelectedValue = "1";
+                ddlLocalidadZona.DataBind();
+            }
         }
         public void CargarDdlAnios()
         {
@@ -291,7 +317,7 @@ namespace SisAdmisiones.Forms
                     ddlCiudadNac.DataSource = dt;
                     ddlCiudadNac.DataTextField = "nombre";
                     ddlCiudadNac.DataValueField = "num_sec";
-                    ddlCiudadNac.SelectedIndex = 0;
+                    //ddlCiudadNac.SelectedIndex = 0;
                     ddlCiudadNac.DataBind();
                 }
                 
@@ -423,6 +449,8 @@ namespace SisAdmisiones.Forms
                 libDatosPer.Ver();
                 tbPrimerApellido.Text = libDatosPer.PrimerApellido;
                 tbSegundoApellido.Text = libDatosPer.SegundoApellido;
+                ddlLocalidadZona.SelectedValue = libDatosPer.NumSecLocalidadDomicilio.ToString();
+                ddlLugarInscripcion.SelectedValue = libDatosPer.NumSecUbicacionInscripcion.ToString();
                 tbNombres.Text= libDatosPer.Nombres;
                 tbDocIdentidad.Text = libDatosPer.DocIdentidad;
                 ddlTipoDocIdentidad.SelectedValue = libDatosPer.TipoDocIdentidad.ToString();
@@ -592,6 +620,8 @@ namespace SisAdmisiones.Forms
             dtDatos.Columns.Add("Areabach", Type.GetType("System.String"));
             dtDatos.Columns.Add("AutorizaSeguimientoNo", Type.GetType("System.String"));
             dtDatos.Columns.Add("FechaEmision", Type.GetType("System.String"));
+            dtDatos.Columns.Add("Localidad_Domicilio", Type.GetType("System.String"));
+            dtDatos.Columns.Add("Ubicacion_Inscripcion", Type.GetType("System.String"));
 
             DataRow rwFila;
             rwFila = dtDatos.NewRow();
@@ -626,7 +656,9 @@ namespace SisAdmisiones.Forms
             rwFila["PaisBach"] = ddlPaisBach.SelectedItem;
             rwFila["CiudadBach"] = ddlCiudadBach.SelectedItem;
             rwFila["Discapacidad"] = ddlDiscapacidad.SelectedItem;
-            
+            rwFila["Localidad_Domicilio"] = ddlLocalidadZona.SelectedItem;
+            rwFila["Ubicacion_Inscripcion"] = ddlLugarInscripcion.SelectedItem;
+
             rwFila["TipoTutor"] = ddlParentesco.SelectedItem;
             rwFila["TutorDocIdentidad"] = tbDocIdentidadTutor.Text;
             rwFila["TutorPrimerAp"] = tbPrimerApTutor.Text.ToUpper();
@@ -935,6 +967,8 @@ namespace SisAdmisiones.Forms
                             libDatosPer.Piso = tbPiso.Text;
                             libDatosPer.Depto = tbNumeroDepto.Text;
                             libDatosPer.AreaNacimiento = Convert.ToInt16(ddlAreaNacimiento.SelectedValue);
+                            libDatosPer.NumSecLocalidadDomicilio = Convert.ToInt64(ddlLocalidadZona.SelectedValue);
+                            libDatosPer.NumSecUbicacionInscripcion = Convert.ToInt64(ddlLugarInscripcion.SelectedValue);
                             Match me = Regex.Match(tbTelefonoDomicilio.Text, "(\\d+)");
                             if (me.Success)
                             {
@@ -1216,6 +1250,8 @@ namespace SisAdmisiones.Forms
                         DatosAdicionales.Depto = DatosPer.Depto;
                         DatosAdicionales.Piso = DatosPer.Piso;
                         DatosAdicionales.TipoLugarNacimiento = DatosPer.AreaNacimiento;
+                        DatosAdicionales.NumSecUbicacion = DatosPer.NumSecUbicacionInscripcion;
+                        DatosAdicionales.NumSecLocalidadDomicilio = DatosPer.NumSecLocalidadDomicilio;
                         CadSqls[numSqls] = DatosAdicionales.cadSqlInsertar();
                         numSqls++;
                         Bachilleres.NumSecPersona = Personas.NumSec;
@@ -1260,6 +1296,8 @@ namespace SisAdmisiones.Forms
                         DatosAdicionales.Depto = DatosPer.Depto;
                         DatosAdicionales.Piso = DatosPer.Piso;
                         DatosAdicionales.TipoLugarNacimiento = DatosPer.AreaNacimiento;
+                        DatosAdicionales.NumSecUbicacion = DatosPer.NumSecUbicacionInscripcion;
+                        DatosAdicionales.NumSecLocalidadDomicilio = DatosPer.NumSecLocalidadDomicilio;
                         CadSqls[numSqls] = DatosAdicionales.sqlCadActualizar();
                         numSqls++;
                         CadSqls[numSqls] = Personas.sqlCadActualizarTipoPersona();

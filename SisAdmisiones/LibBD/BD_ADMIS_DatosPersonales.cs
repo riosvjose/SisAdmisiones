@@ -65,6 +65,8 @@ namespace SisAdmisiones
         private short _estado = 0;
         private long _num_sec_semestre = 0;
         private long _num_sec_subdepartamento = 0;
+        private long _num_sec_ubicacion_inscripcion = 0;
+        private long _num_sec_localidad_domicilio = 0;
         public string _observaciones = string.Empty;
         public string _usuario_registro = string.Empty;
         public string _fecha_registro = string.Empty;
@@ -101,6 +103,8 @@ namespace SisAdmisiones
         public short Turno { get { return _turno; } set { _turno = value; } }
         public long NumSecSubdepartamento { get { return _num_sec_subdepartamento; } set { _num_sec_subdepartamento = value; } }
         public long NumSecLocalidadBachillerato { get { return _num_sec_localidad_bachillerato; } set { _num_sec_localidad_bachillerato = value; } }
+        public long NumSecLocalidadDomicilio { get { return _num_sec_localidad_domicilio; } set { _num_sec_localidad_domicilio = value; } }
+        public long NumSecUbicacionInscripcion { get { return _num_sec_ubicacion_inscripcion; } set { _num_sec_ubicacion_inscripcion = value; } }
         public string AvenidaCalle { get { return _avenida_calle; } set { _avenida_calle = value; } }
         public string Numero { get { return _numero; } set { _numero = value; } }
         public string Zona { get { return _zona; } set { _zona = value; } }
@@ -165,6 +169,8 @@ namespace SisAdmisiones
             _estado = 0;
             _num_sec_semestre = 0;
             _num_sec_subdepartamento = 0;
+            _num_sec_ubicacion_inscripcion = 11;
+            _num_sec_localidad_domicilio = 1;
             _observaciones = string.Empty;
             _usuario_registro = string.Empty;
             _fecha_registro = string.Empty;
@@ -274,6 +280,8 @@ namespace SisAdmisiones
                     _estado = Convert.ToInt16(OracleBD.DataTable.Rows[0]["ESTADO"].ToString());
                     _num_sec_semestre = Convert.ToInt64(OracleBD.DataTable.Rows[0]["num_sec_semestre"].ToString());
                     _num_sec_subdepartamento = Convert.ToInt64(OracleBD.DataTable.Rows[0]["NUM_SEC_SUBDEPARTAMENTO"].ToString());
+                    _num_sec_ubicacion_inscripcion = Convert.ToInt64(OracleBD.DataTable.Rows[0]["NUM_SEC_UBICACION_INSCRIPCION"].ToString());
+                    _num_sec_localidad_domicilio = Convert.ToInt64(OracleBD.DataTable.Rows[0]["NUM_SEC_LOCALIDAD_DOMICILIO"].ToString());
                     _observaciones = OracleBD.DataTable.Rows[0]["OBSERVACIONES"].ToString();
                     _area_nacimiento = Convert.ToInt16(OracleBD.DataTable.Rows[0]["TIPO_LUGAR_NACIMIENTO"].ToString());
                     _usuario_registro = OracleBD.DataTable.Rows[0]["USUARIO_REGISTRO"].ToString();
@@ -311,6 +319,8 @@ namespace SisAdmisiones
                 _tipo_colegio = 0;
                 _turno = 0;
                 _num_sec_localidad_bachillerato = 0;
+                _num_sec_ubicacion_inscripcion = 0;
+                _num_sec_localidad_domicilio = 0;
                 _area_bachillerato = 0;
                 _num_sec_persona = 0;
                 _estado = 0;
@@ -389,7 +399,8 @@ namespace SisAdmisiones
                        "(NUM_SEC_DATOS_PER, PRIMER_APELLIDO, NOMBRES, SEGUNDO_APELLIDO, DOC_IDENTIDAD, TIPO_DOC, GENERO, GRUPO_SANGUINEO, ESTADO_CIVIL, TIPO_DISCAPACIDAD," +
                        " AVENIDA_CALLE, NUMERO, ZONA, EDIFICIO, PISO, DEPTO,TELEFONO, CELULAR, EMAIL, VIVE_CON, FECHA_NACIMIENTO, NUM_SEC_LOCALIDAD_NACIMIENTO, " +
                        " NUM_SEC_COLEGIO, ANIO_EGRESO, TIPO_COLEGIO, TURNO, NUM_SEC_LOCALIDAD_BACHILLERATO, AREA_BACHILLERATO,OBSERVACIONES, NUM_SEC_PERSONA," +
-                       " ESTADO, NUM_SEC_SUBDEPARTAMENTO, num_sec_semestre, NUM_SEC_NACIONALIDAD, TIPO_LUGAR_NACIMIENTO, FECHA_REGISTRO, USUARIO_REGISTRO) " +
+                       " ESTADO, NUM_SEC_SUBDEPARTAMENTO, num_sec_semestre, NUM_SEC_NACIONALIDAD, TIPO_LUGAR_NACIMIENTO, NUM_SEC_LOCALIDAD_DOMICILIO, " +
+                       " NUM_SEC_UBICACION_INSCRIPCION, FECHA_REGISTRO, USUARIO_REGISTRO) " +
                        "values " +
                        "(" + _num_sec_datos_personales + ", " +
                        "upper('" + _primer_apellido + "')," +
@@ -426,6 +437,8 @@ namespace SisAdmisiones
                        _num_sec_semestre + "," +
                        _num_sec_nacionalidad + "," +
                        _area_nacimiento + "," +
+                       _num_sec_localidad_domicilio + "," +
+                       _num_sec_ubicacion_inscripcion + "," +
                        " sysdate, " +
                        "upper('" + _usuario_registro + "'))";
             return strSql;
@@ -468,6 +481,8 @@ namespace SisAdmisiones
                        ", NUM_SEC_SEMESTRE=" + _num_sec_semestre +
                        ", NUM_SEC_NACIONALIDAD=" + _num_sec_nacionalidad +
                        ", TIPO_LUGAR_NACIMIENTO=" + _area_nacimiento +
+                       ", NUM_SEC_UBICACION_INSCRIPCION ="+_num_sec_ubicacion_inscripcion+
+                       ", NUM_SEC_LOCALIDAD_DOMICILIO =" + _num_sec_localidad_domicilio +
                        ", FECHA_REGISTRO=sysdate" +
                        ", USUARIO_REGISTRO=" + " upper('" + _usuario_registro + "')" +
                        " where num_sec_datos_per= " + _num_sec_datos_personales;

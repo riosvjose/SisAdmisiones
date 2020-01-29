@@ -53,6 +53,7 @@ namespace SisAdmisiones
             Session["strUsuarioBD"] = "USR_SIS_ADMISIONES";
             Session["strPassword"] = "vhtmP.37609_c";
             Session["strServidor"] = "ucbl";
+            Session["strNsSubunidad"] = "11";
 
             Session["EnviarNotificaciones"] = false;
             Session["Path"] = "";

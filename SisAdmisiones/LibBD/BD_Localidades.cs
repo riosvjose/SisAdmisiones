@@ -121,6 +121,19 @@ namespace nsBD_GEN
             return OracleBD.DataTable;
         }
 
+        public DataTable ListaLocalidadesBuscadas(string NSEstado)
+        {
+            strSql = "select num_sec, nombre " +
+                    "from localidades " +
+                    "where num_sec_estado = " + NSEstado + " " +
+                    "and (upper(nombre) = 'LA PAZ' or upper(nombre) = 'EL ALTO')" +
+                    "order by nombre";
+            OracleBD.StrConexion = _strconexion;
+            OracleBD.Sql = strSql;
+            OracleBD.sqlDataTable();
+            return OracleBD.DataTable;
+        }
+
         // Método para desplegar el estado de una localidad
         public string EstadoLocalidad()
         {

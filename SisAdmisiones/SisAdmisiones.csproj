@@ -314,6 +314,7 @@
     <Compile Include="LibBD\BD_Estados.cs" />
     <Compile Include="LibBD\BD_Familiares.cs" />
     <Compile Include="LibBD\BD_GEN_SubDepartamentos.cs" />
+    <Compile Include="LibBD\BD_GEN_Subunidades_Ubicaciones.cs" />
     <Compile Include="LibBD\BD_Localidades.cs" />
     <Compile Include="LibBD\BD_Paises.cs" />
     <Compile Include="LibBD\BD_Paralelos.cs" />

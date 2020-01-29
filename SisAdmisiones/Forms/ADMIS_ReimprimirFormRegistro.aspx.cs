@@ -47,6 +47,30 @@ namespace SisAdmisiones.Forms
                 Response.Redirect("Salir.aspx");
             }
         }
+        public void CargarDdlLugarInscripcion()
+        {
+            BD_GEN_Subunidades_Ubicaciones Ubicaciones = new BD_GEN_Subunidades_Ubicaciones();
+            Ubicaciones.StrConexion = axVarSes.Lee<string>("strConexion");
+            ddlLugarInscripcion.DataSource = Ubicaciones.DTUbicaciones(axVarSes.Lee<string>("strNsSubunidad"), "1", false);
+            ddlLugarInscripcion.DataTextField = "nombre";
+            ddlLugarInscripcion.DataValueField = "num_sec_ubicacion";
+            ddlLugarInscripcion.DataBind();
+            ddlLugarInscripcion.SelectedValue = "1";
+        }
+        public void CargarDdlLocalidadZona()
+        {
+            BD_Localidades libLocalidades = new BD_Localidades();
+            libLocalidades.StrConexion = axVarSes.Lee<string>("strConexion");
+            DataTable dt = libLocalidades.ListaLocalidadesBuscadas("1");
+            if (dt.Rows.Count > 0)
+            {
+                ddlLocalidadZona.DataSource = dt;
+                ddlLocalidadZona.DataTextField = "nombre";
+                ddlLocalidadZona.DataValueField = "num_sec";
+                ddlLocalidadZona.SelectedValue = "1";
+                ddlLocalidadZona.DataBind();
+            }
+        }
         public void CargarDdlTipoAdmision()
         {
             BD_Dominios libDominios = new BD_Dominios();
@@ -239,7 +263,7 @@ namespace SisAdmisiones.Forms
                     ddlCiudadNac.DataSource = dt;
                     ddlCiudadNac.DataTextField = "nombre";
                     ddlCiudadNac.DataValueField = "num_sec";
-                    ddlCiudadNac.SelectedIndex = 0;
+                    //ddlCiudadNac.SelectedIndex = 0;
                     ddlCiudadNac.DataBind();
                 }
                 
@@ -360,6 +384,8 @@ namespace SisAdmisiones.Forms
                 libDatosPer.Ver();
                 tbPrimerApellido.Text = libDatosPer.PrimerApellido;
                 tbSegundoApellido.Text = libDatosPer.SegundoApellido;
+                ddlLocalidadZona.SelectedValue = libDatosPer.NumSecLocalidadDomicilio.ToString();
+                ddlLugarInscripcion.SelectedValue = libDatosPer.NumSecUbicacionInscripcion.ToString();
                 tbNombres.Text= libDatosPer.Nombres;
                 tbDocIdentidad.Text = libDatosPer.DocIdentidad;
                 ddlTipoDocIdentidad.SelectedValue = libDatosPer.TipoDocIdentidad.ToString();
@@ -529,6 +555,8 @@ namespace SisAdmisiones.Forms
             dtDatos.Columns.Add("Areabach", Type.GetType("System.String"));
             dtDatos.Columns.Add("AutorizaSeguimientoNo", Type.GetType("System.String"));
             dtDatos.Columns.Add("FechaEmision", Type.GetType("System.String"));
+            dtDatos.Columns.Add("Localidad_Domicilio", Type.GetType("System.String"));
+            dtDatos.Columns.Add("Ubicacion_Inscripcion", Type.GetType("System.String"));
 
             DataRow rwFila;
             rwFila = dtDatos.NewRow();
@@ -563,7 +591,9 @@ namespace SisAdmisiones.Forms
             rwFila["PaisBach"] = ddlPaisBach.SelectedItem;
             rwFila["CiudadBach"] = ddlCiudadBach.SelectedItem;
             rwFila["Discapacidad"] = ddlDiscapacidad.SelectedItem;
-            
+            rwFila["Localidad_Domicilio"] = ddlLocalidadZona.SelectedItem;
+            rwFila["Ubicacion_Inscripcion"] = ddlLugarInscripcion.SelectedItem;
+
             rwFila["TipoTutor"] = ddlParentesco.SelectedItem;
             rwFila["TutorDocIdentidad"] = tbDocIdentidadTutor.Text;
             rwFila["TutorPrimerAp"] = tbPrimerApTutor.Text.ToUpper();
@@ -849,7 +879,7 @@ namespace SisAdmisiones.Forms
 
         public void consolidar(BD_ADMIS_DatosPersonales DatosPer, BD_ADMIS_ContactoEmergencia Contacto, BD_ADMIS_DatosTutor Tutor)
         {
-            CargarFormulario();
+            //CargarFormulario();
             Exportar_Reporte1(DatosPer.PrimerApellido+" "+DatosPer.SegundoApellido+" "+DatosPer.Nombres);
             axVarSes.Escribe("strCrearNuevoFamiliar", string.Empty);
             axVarSes.Escribe("strCrearNuevoAlumno", string.Empty);
@@ -895,6 +925,8 @@ namespace SisAdmisiones.Forms
             CargarDdlAnios();
             CargarDdlTipoAdmision();
             CargarDdlAreaNac();
+            CargarDdlLocalidadZona();
+            CargarDdlLugarInscripcion();
 
             if (axVarSes.Lee<string>("strRol").Equals("1"))
             {
