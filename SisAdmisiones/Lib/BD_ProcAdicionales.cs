@@ -147,7 +147,7 @@ namespace SisAdmisiones
             strSql = "SELECT distinct o.num_sec_objeto, o.nombre " +
                         "FROM sam_usuarios_funciones fu, sam_funciones f, sam_accesos a, sam_objetos o " +
                         "WHERE fu.num_sec_usuario = " + strUser +
-                        " and o.nombre like 'ADMIS_%' " + //Obtener todos los objetos que tienen el dominio ALM de Almacenes
+                        " and o.nombre like 'ADMIS_%' " + //Obtener todos los objetos que tienen el modulo admisiones
                         "and a.acceso = 1 " +
                         "and fu.num_sec_funcion = f.num_sec_funcion " +
                         "and f.num_sec_funcion = a.num_sec_funcion " +

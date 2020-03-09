@@ -126,8 +126,8 @@ namespace nsBD_GEN
             _permitir_acceso_padres = 0;   
             _tipo_lugar_nacimiento = 0;
             _interno_ucb = 0;
-            _num_sec_localidad_domicilio = 0;
-            _num_sec_ubicacion = 0;
+            _num_sec_localidad_domicilio = 1;
+            _num_sec_ubicacion = 11;
 
             _mensaje = string.Empty;
             _strconexion = string.Empty;
@@ -453,7 +453,7 @@ namespace nsBD_GEN
         {
             strSql = "insert into personas_datos_adicionales " +
                         "(num_sec_persona, zona, barrio, avenida_calle, numero, edificio, piso, depto, " +
-                        "telefono, celular, email, email_ucb, interno_ucb, permitir_acceso_padres, tipo_lugar_nacimiento) " +
+                        "telefono, celular, email, email_ucb, interno_ucb, permitir_acceso_padres, tipo_lugar_nacimiento, num_sec_ubicacion, num_sec_localidad_domicilio) " +
                         "values " +
                         "(" + _num_sec_persona.ToString() + ", " +
                         GeneralesSistema.IIf(_zona.Trim() == "", "NULL", "'" + _zona + "'") + ", " +
@@ -469,7 +469,9 @@ namespace nsBD_GEN
                         GeneralesSistema.IIf(_email_ucb.Trim() == "", "NULL", "'" + _email_ucb + "'") + ", " +
                         GeneralesSistema.IIf(string.IsNullOrEmpty(_interno_ucb.ToString()) , "0", _interno_ucb.ToString().Trim()) + ", " +
                         GeneralesSistema.IIf(_permitir_acceso_padres!=1, "NULL",_permitir_acceso_padres.ToString().Trim()) +","+
-                        GeneralesSistema.IIf(_tipo_lugar_nacimiento == 0, "NULL", _tipo_lugar_nacimiento)+ ")";
+                        GeneralesSistema.IIf(_tipo_lugar_nacimiento == 0, "NULL", _tipo_lugar_nacimiento)+ "," +
+                        _num_sec_ubicacion+","+
+                        _num_sec_localidad_domicilio+")";
             return strSql;
         }
         #endregion
@@ -551,33 +553,14 @@ namespace nsBD_GEN
                         "celular = " + GeneralesSistema.IIf(_celular.Trim() == "", "NULL", "'" + _celular + "'") + ", " +
                         "email = " + GeneralesSistema.IIf(_email.Trim() == "", "NULL", "'" + _email + "'") + ", " +
                         "permitir_acceso_padres = " + GeneralesSistema.IIf(_permitir_acceso_padres == 0, "NULL", _permitir_acceso_padres.ToString().Trim()) + ", " +
+                        "num_sec_localidad_domicilio="+_num_sec_localidad_domicilio+", "+
+                        "num_sec_ubicacion=" + _num_sec_ubicacion + ", " +
                         "TIPO_LUGAR_NACIMIENTO = " + GeneralesSistema.IIf(_tipo_lugar_nacimiento == 0, "NULL",TipoLugarNacimiento.ToString().Trim()) + " " +
                         "where num_sec_persona = " + _num_sec_persona.ToString();
             return strSql;
         }
 
-        public string sqlCadInsertar()
-        {
-            strSql = "insert into personas_datos_adicionales " +
-                      "(num_sec_persona, zona, barrio, avenida_calle, numero, edificio, piso, depto, " +
-                      "telefono, celular, email, email_ucb, interno_ucb, permitir_acceso_padres) " +
-                      "values " +
-                      "(" + _num_sec_persona.ToString() + ", " +
-                      GeneralesSistema.IIf(_zona.Trim() == "", "NULL", "'" + _zona + "'") + ", " +
-                      GeneralesSistema.IIf(_barrio.Trim() == "", "NULL", "'" + _barrio + "'") + ", " +
-                      GeneralesSistema.IIf(_avenida_calle.Trim() == "", "NULL", "'" + _avenida_calle + "'") + ", " +
-                      GeneralesSistema.IIf(_numero.Trim() == "", "NULL", "'" + _numero + "'") + ", " +
-                      GeneralesSistema.IIf(_edificio.Trim() == "", "NULL", "'" + _edificio + "'") + ", " +
-                      GeneralesSistema.IIf(_piso.Trim() == "", "NULL", "'" + _piso + "'") + ", " +
-                      GeneralesSistema.IIf(_depto.Trim() == "", "NULL", "'" + _depto + "'") + ", " +
-                      GeneralesSistema.IIf(_telefono == 0, "NULL", _telefono.ToString().Trim()).ToString() + ", " +
-                      GeneralesSistema.IIf(_celular.Trim() == "", "NULL", "'" + _celular + "'") + ", " +
-                      GeneralesSistema.IIf(_email.Trim() == "", "NULL", "'" + _email + "'") + ", " +
-                      GeneralesSistema.IIf(_email_ucb.Trim() == "", "NULL", "'" + _email_ucb + "'") + ", " +
-                      GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _interno_ucb.ToString().Trim()) + ", " +
-                      GeneralesSistema.IIf(_interno_ucb == 0, "NULL", _permitir_acceso_padres.ToString().Trim()) + ")";
-            return strSql;
-        }
+        
         #endregion
     }
 }

@@ -33,6 +33,8 @@ namespace SisAdmisiones.Forms
         #region "Funciones y procedimientos"
         private void CargarDatosIniciales(string strCon)
         {
+            pnMensajeError.Visible = false;
+            pnMensajeOK.Visible = false;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalAlumnoExistente').hide();$('.modal-backdrop').hide();", true);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "$('#modalFamiliarExistente').hide();$('.modal-backdrop').hide();", true);
             if (!string.IsNullOrEmpty(strCon.Trim()))

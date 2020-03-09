@@ -339,7 +339,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                 <div class="col-xs-12">
-                                      <asp:DropDownList ID="ddlViveCon" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                      <asp:DropDownList ID="ddlViveCon" runat="server" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblViveCon" runat="server">Vive con</asp:Label></strong>
@@ -420,7 +420,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                     <div class="col-xs-12">
-                                        <asp:DropDownList ID="ddlAreaColegio" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlAreaColegio" runat="server" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
                                     </div>
                                     <div class="col-xs-12 text-center">
                                         <strong><asp:Label ID="lblAreaColegio" runat="server">En el área</asp:Label></strong>
@@ -428,7 +428,7 @@
                                 </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                     <div class="col-xs-12">
-                                        <asp:DropDownList ID="ddlTipoColegio" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlTipoColegio" runat="server" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
                                     </div>
                                     <div class="col-xs-12 text-center">
                                         <strong><asp:Label ID="lblTipoColegio" runat="server">Tipo de colegio</asp:Label></strong>
@@ -436,7 +436,7 @@
                                 </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                     <div class="col-xs-12">
-                                        <asp:DropDownList ID="ddlTurno" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlTurno" runat="server" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
                                     </div>
                                     <div class="col-xs-12 text-center">
                                         <strong><asp:Label ID="lblTurno" runat="server">Turno</asp:Label></strong>
@@ -446,7 +446,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                 <div class="col-xs-12">
-                                      <asp:DropDownList ID="ddlColegio" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                      <asp:DropDownList ID="ddlColegio" runat="server" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblColegio" runat="server">Colegio</asp:Label></strong>
@@ -454,7 +454,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                 <div class="col-xs-12">
-                                     <asp:DropDownList ID="ddlAnio" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                                     <asp:DropDownList ID="ddlAnio" runat="server" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-12 text-center">
                                     <strong><asp:Label ID="lblAnio" runat="server">Año egreso</asp:Label></strong>
@@ -485,7 +485,7 @@
                                     <strong><asp:Label ID="lblParentescoTutor" runat="server">Parentesco</asp:Label></strong>
                                 </div>
                                 <div class="col-sm-5 col-md-4 col-lg-3">
-                                       <asp:DropDownList ID="ddlParentesco" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="false"></asp:DropDownList>
+                                       <asp:DropDownList ID="ddlParentesco" runat="server" CssClass="form-control" AutoPostBack="false" Enabled="false"></asp:DropDownList>
                                 </div>
                                 <div class="col-sm-5 col-md-4 col-lg-2 text-right">
                                     <strong><asp:Label ID="lblAutseguimiento" runat="server">Autorizar seguimiento</asp:Label></strong>
